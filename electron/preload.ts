@@ -1,10 +1,10 @@
 import { IpcRendererEvent, contextBridge, ipcRenderer } from "electron";
-import { ICompany, IDriver } from "./types/interfaces";
+import { IAdmin, IDriver } from "./types/interfaces";
 
 type CallbackType = (event: IpcRendererEvent, ...args: any[]) => void;
 
 contextBridge.exposeInMainWorld("api", {
-  signUp: (company: ICompany) => {
+  signUp: (company: IAdmin) => {
     ipcRenderer.invoke("create-new-company", company);
   },
   signIn: (email: string, password: string) => {

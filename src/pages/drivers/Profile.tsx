@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useData } from "../hooks/context/AppContext";
 import { useNavigate } from "react-router-dom";
+import { useData } from "../../hooks/context/AppContext";
 
-const DriverProfile = () => {
+const Profile = () => {
   const { driver, fetchDriver, navigateBack, driverId } = useData();
   const navigate = useNavigate();
 
@@ -21,4 +21,4 @@ const DriverProfile = () => {
   );
 };
 
-export default DriverProfile;
+export default Profile;

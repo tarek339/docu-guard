@@ -1,8 +1,8 @@
 import { ipcMain } from "electron";
-import { ICompany } from "../types/interfaces";
+import { IAdmin } from "../types/interfaces";
 import fs from "fs";
 
-const logSignUp = (company: ICompany) => {
+const logSignUp = (company: IAdmin) => {
   const file = `database/company.json`;
   let newProfile = {
     companyProfile: {
@@ -20,7 +20,7 @@ const logSignUp = (company: ICompany) => {
 };
 
 export function signUp() {
-  ipcMain.handle("create-new-company", (event, company: ICompany) => {
+  ipcMain.handle("create-new-company", (event, company: IAdmin) => {
     try {
       logSignUp(company);
       event.sender.send("send-message", "Sign up succeeded");

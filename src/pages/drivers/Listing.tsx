@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useData } from "../hooks/context/AppContext";
 import { useNavigate } from "react-router-dom";
+import { useData } from "../../hooks/context/AppContext";
 
-const Drivers = () => {
+const Listing = () => {
   const { setDriverId, fetchDrivers, drivers } = useData();
   const navigate = useNavigate();
 
@@ -35,4 +35,4 @@ const Drivers = () => {
   );
 };
 
-export default Drivers;
+export default Listing;

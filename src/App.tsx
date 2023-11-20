@@ -1,11 +1,11 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
-import CreateDriver from "./pages/CreateDriver";
-import SignUp from "./pages/SignUp";
-import SignIn from "./pages/SignIn";
-import DriverProfile from "./pages/DriverProfile";
-import Drivers from "./pages/Drivers";
-import EditDriver from "./pages/EditDriver";
+import SignUp from "./pages/admin/SignUp";
+import SignIn from "./pages/admin/SignIn";
+import Create from "./pages/drivers/Create";
+import Edit from "./pages/drivers/Edit";
+import Profile from "./pages/drivers/Profile";
+import Listing from "./pages/drivers/Listing";
 
 function App() {
   const navigate = useNavigate();
@@ -18,11 +18,11 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<SignUp />} />
-        <Route path="/create-driver" element={<CreateDriver />} />
         <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/driver-profile/:id" element={<DriverProfile />} />
-        <Route path="/drivers" element={<Drivers />} />
-        <Route path="/edit-driver/:id" element={<EditDriver />} />
+        <Route path="/create-driver" element={<Create />} />
+        <Route path="/driver-profile/:id" element={<Profile />} />
+        <Route path="/drivers" element={<Listing />} />
+        <Route path="/edit-driver/:id" element={<Edit />} />
       </Routes>
     </div>
   );
