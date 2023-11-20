@@ -1,12 +1,12 @@
 import { IpcRendererEvent } from "electron";
-import { ICompany, IDriver } from "./interfaces/components";
+import { IAdmin, IDriver } from "./interfaces/components";
 
 type CallbackType = (event: IpcRendererEvent, ...args: any[]) => void;
 
 declare global {
   interface Window {
     api: {
-      signUp: (company: ICompany) => void;
+      signUp: (company: IAdmin) => void;
       signIn: (email: string, password: string) => void;
       sendMessage: (callback: CallbackType) => void;
       createDriver: (driver: IDriver) => void;

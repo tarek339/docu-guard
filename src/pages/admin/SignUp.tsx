@@ -1,16 +1,18 @@
 import { useCallback, useEffect, useState } from "react";
-import { ICompany } from "../types/interfaces/components";
 import { useNavigate } from "react-router-dom";
-import { useData } from "../hooks/context/AppContext";
+import { useData } from "../../hooks/context/AppContext";
+import { IAdmin } from "../../types/interfaces/components";
 
 const SignUp = () => {
-  const [company, setCompany] = useState<ICompany>({
+  const [admin, setAdmin] = useState<IAdmin>({
     companyName: "",
+    adminName: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
   const [companyName, setCompanyName] = useState("");
+  const [adminName, setAdminName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -18,44 +20,46 @@ const SignUp = () => {
   const { resMessage, setResMessage } = useData();
 
   const reset = () => {
-    setCompany({
+    setAdmin({
       companyName: "",
+      adminName: "",
       email: "",
       password: "",
       confirmPassword: "",
     });
   };
 
-  const createCompany = useCallback(() => {
-    setCompany({
-      ...company,
+  const createAdmin = useCallback(() => {
+    setAdmin({
+      ...admin,
       companyName: companyName,
+      adminName: adminName,
       email: email,
       password: password,
       confirmPassword: confirmPassword,
     });
-  }, [company, companyName, email, password, confirmPassword]);
+  }, [admin, companyName, email, password, confirmPassword]);
 
   useEffect(() => {
-    if (Object.values(company).some((value) => value !== "")) {
-      window.api.signUp(company);
+    if (Object.values(admin).some((value) => value !== "")) {
+      window.api.signUp(admin);
       reset();
-      // navigate("/create-driver");
-      window.api.sendMessage((event, message) => {
+      navigate("/create-driver");
+      window.api.sendMessage((_event, message) => {
         setResMessage(message);
         setTimeout(() => {
           setResMessage("");
         }, 2000);
       });
     }
-  }, [company]);
+  }, [admin]);
   return (
     <div>
-      <h3>Company</h3>
+      <h3>Admin</h3>
       <form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
-          createCompany();
+          createAdmin();
         }}
       >
         <input
@@ -64,6 +68,14 @@ const SignUp = () => {
           value={companyName}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setCompanyName(e.target.value)
+          }
+        />
+        <input
+          required
+          type="text"
+          value={adminName}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setAdminName(e.target.value)
           }
         />
         <input

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { useData } from "../hooks/context/AppContext";
+import { useData } from "../../hooks/context/AppContext";
 
-const EditDriver = () => {
+const Edit = () => {
   const {
     firstName,
     lastName,
@@ -121,4 +121,4 @@ const EditDriver = () => {
   );
 };
 
-export default EditDriver;
+export default Edit;

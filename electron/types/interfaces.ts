@@ -7,13 +7,12 @@ export interface IDriver {
   licenseValidity: string;
   licenseType: string;
   typeValidity: string;
-  // codeNumber95: boolean;
   codeNumValidity: string;
   driverCardNum: string;
   driverCardValidity: string;
 }
 
-export interface ICompany {
+export interface IAdmin {
   companyName: string;
   email: string;
   password: string;
