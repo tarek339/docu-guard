@@ -2,14 +2,16 @@ import { ipcMain } from "electron";
 import { IAdmin } from "../types/interfaces";
 import fs from "fs";
 
-const logSignUp = (company: IAdmin) => {
-  const file = `database/company.json`;
+const logSignUp = (admin: IAdmin) => {
+  const file = `database/admin.json`;
   let newProfile = {
-    companyProfile: {
-      companyName: company.companyName,
-      email: company.email,
-      password: company.password,
-      confirmPassword: company.confirmPassword,
+    admin: {
+      id: admin.id,
+      companyName: admin.companyName,
+      adminName: admin.adminName,
+      email: admin.email,
+      password: admin.password,
+      confirmPassword: admin.confirmPassword,
     },
   };
   try {
@@ -20,9 +22,9 @@ const logSignUp = (company: IAdmin) => {
 };
 
 export function signUp() {
-  ipcMain.handle("create-new-company", (event, company: IAdmin) => {
+  ipcMain.handle("create-new-admin", (event, admin: IAdmin) => {
     try {
-      logSignUp(company);
+      logSignUp(admin);
       event.sender.send("send-message", "Sign up succeeded");
     } catch (error) {
       console.log(error);

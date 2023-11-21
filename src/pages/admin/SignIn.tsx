@@ -1,29 +1,29 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useData } from "../../hooks/context/AppContext";
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { resMessage, setResMessage } = useData();
+  const {
+    resMessage,
+    setResMessage,
+    adminName,
+    setAdminName,
+    password,
+    setPassword,
+  } = useData();
 
   const sendRequest = useCallback(() => {
-    window.api.signIn(email, password);
+    window.api.signIn(adminName, password);
     window.api.sendMessage(
       (_event: Electron.IpcRendererEvent, message: string) => {
-        if (message === "verified") {
-          navigate("/drivers");
-        } else setResMessage(message);
+        setResMessage(message);
         setTimeout(() => {
           setResMessage("");
         }, 2000);
-        console.log(message);
       }
     );
-    setEmail("");
-    setPassword("");
-  }, [email, password]);
+  }, [adminName, password]);
 
   return (
     <div>
@@ -32,14 +32,16 @@ const SignIn = () => {
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
           sendRequest();
+          setAdminName("");
+          setPassword("");
         }}
       >
         <input
           required
           type="text"
-          value={email}
+          value={adminName}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setEmail(e.target.value)
+            setAdminName(e.target.value)
           }
         />
         <input

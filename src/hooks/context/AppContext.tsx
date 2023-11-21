@@ -6,13 +6,29 @@ import {
   useState,
 } from "react";
 import { IAppContext } from "../../types/interfaces/appContext";
-import { IDriver } from "../../types/interfaces/components";
+import { IAdmin, IDriver } from "../../types/interfaces/components";
 import { useNavigate } from "react-router-dom";
 
 export const AppContext = createContext({});
 
 export function AppContextProvider(props: { children: JSX.Element }) {
   const navigate = useNavigate();
+
+  const [admin, setAdmin] = useState<IAdmin | null>({
+    id: "",
+    companyName: "",
+    adminName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [companyName, setCompanyName] = useState("");
+  const [adminName, setAdminName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [adminId, setAdminId] = useState("");
   const [resMessage, setResMessage] = useState(null);
 
   const [driver, setDriver] = useState({
@@ -28,6 +44,7 @@ export function AppContextProvider(props: { children: JSX.Element }) {
     driverCardNum: "",
     driverCardValidity: "",
   });
+  const [driverId, setDriverId] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -39,7 +56,6 @@ export function AppContextProvider(props: { children: JSX.Element }) {
   const [driverCardNum, setDriverCardNum] = useState("");
   const [driverCardValidity, setDriverCardValidity] = useState("");
   const [drivers, setDrivers] = useState([]);
-  const [driverId, setDriverId] = useState("");
 
   const reset = () => {
     setDriver({
@@ -68,9 +84,30 @@ export function AppContextProvider(props: { children: JSX.Element }) {
   };
 
   const navigateBack = () => {
-    localStorage.removeItem("driverId");
     navigate("/drivers");
   };
+
+  const createAdmin = useCallback(() => {
+    setAdmin({
+      ...admin,
+      id: crypto.randomUUID(),
+      companyName: companyName,
+      adminName: adminName,
+      email: email,
+      password: password,
+      confirmPassword: confirmPassword,
+    });
+  }, [admin, companyName, email, password, confirmPassword]);
+
+  const signIn = useCallback(() => {
+    window.api.fetchAdmin(async (_event, currentAdmin: IAdmin) => {
+      localStorage.setItem("adminId", currentAdmin.id);
+      localStorage.setItem("adminUser", JSON.stringify(currentAdmin));
+      setAdminId(currentAdmin.id);
+      setAdmin(currentAdmin);
+      navigate("/drivers");
+    });
+  }, [admin, adminId]);
 
   const createNewDriver = useCallback(() => {
     const newDriver = {
@@ -117,9 +154,8 @@ export function AppContextProvider(props: { children: JSX.Element }) {
   const fetchDriver = useCallback(() => {
     const savedDriverId = localStorage.getItem("driverId");
     let currentDriverId: string;
-    if (savedDriverId) {
-      currentDriverId = savedDriverId;
-    } else {
+    if (savedDriverId) currentDriverId = savedDriverId;
+    else {
       currentDriverId = driverId;
       localStorage.setItem("driverId", currentDriverId);
     }
@@ -200,6 +236,22 @@ export function AppContextProvider(props: { children: JSX.Element }) {
 
   const contextValue = useMemo(
     () => ({
+      admin,
+      setAdmin,
+      companyName,
+      setCompanyName,
+      adminName,
+      setAdminName,
+      email,
+      setEmail,
+      password,
+      setPassword,
+      confirmPassword,
+      setConfirmPassword,
+
+      adminId,
+      setAdminId,
+
       resMessage,
       setResMessage,
 
@@ -231,6 +283,8 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       driverCardValidity,
       setDriverCardValidity,
 
+      createAdmin,
+      signIn,
       reset,
       fetchDrivers,
       fetchDriver,
@@ -240,6 +294,21 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       deleteData,
     }),
     [
+      admin,
+      setAdmin,
+      companyName,
+      setCompanyName,
+      adminName,
+      setAdminName,
+      email,
+      setEmail,
+      password,
+      setPassword,
+      confirmPassword,
+      setConfirmPassword,
+
+      adminId,
+      setAdminId,
       resMessage,
       setResMessage,
 
@@ -271,6 +340,8 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       driverCardValidity,
       setDriverCardValidity,
 
+      createAdmin,
+      signIn,
       reset,
       fetchDrivers,
       fetchDriver,

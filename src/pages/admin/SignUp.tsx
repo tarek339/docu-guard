@@ -1,56 +1,28 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useData } from "../../hooks/context/AppContext";
-import { IAdmin } from "../../types/interfaces/components";
 
 const SignUp = () => {
-  const [admin, setAdmin] = useState<IAdmin>({
-    companyName: "",
-    adminName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-  const [companyName, setCompanyName] = useState("");
-  const [adminName, setAdminName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
-  const { resMessage, setResMessage } = useData();
-
-  const reset = () => {
-    setAdmin({
-      companyName: "",
-      adminName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
-  };
-
-  const createAdmin = useCallback(() => {
-    setAdmin({
-      ...admin,
-      companyName: companyName,
-      adminName: adminName,
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword,
-    });
-  }, [admin, companyName, email, password, confirmPassword]);
+  const {
+    admin,
+    createAdmin,
+    companyName,
+    setCompanyName,
+    adminName,
+    setAdminName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    confirmPassword,
+    setConfirmPassword,
+  } = useData();
 
   useEffect(() => {
     if (Object.values(admin).some((value) => value !== "")) {
       window.api.signUp(admin);
-      reset();
-      navigate("/create-driver");
-      window.api.sendMessage((_event, message) => {
-        setResMessage(message);
-        setTimeout(() => {
-          setResMessage("");
-        }, 2000);
-      });
+      navigate("/sign-in");
     }
   }, [admin]);
   return (
@@ -104,7 +76,6 @@ const SignUp = () => {
         />
         <button type="submit">Submit</button>
       </form>
-      <h3>{resMessage} </h3>
       <button onClick={() => navigate("/sign-in")}>sign in</button>
     </div>
   );

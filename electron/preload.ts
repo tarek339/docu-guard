@@ -4,11 +4,14 @@ import { IAdmin, IDriver } from "./types/interfaces";
 type CallbackType = (event: IpcRendererEvent, ...args: any[]) => void;
 
 contextBridge.exposeInMainWorld("api", {
-  signUp: (company: IAdmin) => {
-    ipcRenderer.invoke("create-new-company", company);
+  signUp: (admin: IAdmin) => {
+    ipcRenderer.invoke("create-new-admin", admin);
   },
-  signIn: (email: string, password: string) => {
-    ipcRenderer.invoke("sign-in", email, password);
+  signIn: (adminName: string, password: string) => {
+    ipcRenderer.invoke("sign-in", adminName, password);
+  },
+  fetchAdmin: (callback: CallbackType) => {
+    ipcRenderer.on("send-admin", callback);
   },
   sendMessage: (callback: CallbackType) => {
     ipcRenderer.on("send-message", callback);

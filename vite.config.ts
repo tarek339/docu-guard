@@ -10,12 +10,10 @@ export default defineConfig({
     react(),
     tsconfigPaths(),
     electron([
-      {
-        // Main-Process entry file of the Electron App.
-        entry: "electron/main.ts",
-      },
-      { entry: "electron/logDrivers.ts" },
+      // Main-Process entry file of the Electron App.
+      { entry: "electron/main.ts" },
       { entry: "electron/createFiles.ts" },
+      { entry: "electron/database.ts" },
       {
         entry: "electron/preload.ts",
         onstart(options) {
