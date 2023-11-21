@@ -13,6 +13,8 @@ export interface IDriver {
 }
 
 export interface IAdmin {
+  id: string;
+  adminName: string;
   companyName: string;
   email: string;
   password: string;

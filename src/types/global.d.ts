@@ -6,8 +6,9 @@ type CallbackType = (event: IpcRendererEvent, ...args: any[]) => void;
 declare global {
   interface Window {
     api: {
-      signUp: (company: IAdmin) => void;
-      signIn: (email: string, password: string) => void;
+      signUp: (admin: IAdmin) => void;
+      signIn: (adminName: string, password: string) => void;
+      fetchAdmin: (callback: CallbackType) => void;
       sendMessage: (callback: CallbackType) => void;
       createDriver: (driver: IDriver) => void;
       fetchDrivers: (drivers: IDriver[]) => void;

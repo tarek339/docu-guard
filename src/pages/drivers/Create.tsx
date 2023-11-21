@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useData } from "../../hooks/context/AppContext";
+import { useEffect } from "react";
 
 const Create = () => {
   const {
@@ -24,8 +25,14 @@ const Create = () => {
     driverCardValidity,
     setDriverCardValidity,
     createNewDriver,
+    reset,
   } = useData();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    reset();
+    localStorage.removeItem("driverId");
+  }, []);
 
   return (
     <div>
