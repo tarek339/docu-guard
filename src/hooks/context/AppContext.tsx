@@ -106,6 +106,10 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       setAdminId(currentAdmin.id);
       setAdmin(currentAdmin);
       navigate("/drivers");
+      setTimeout(() => {
+        setAdminName("");
+        setPassword("");
+      }, 2000);
     });
   }, [admin, adminId]);
 

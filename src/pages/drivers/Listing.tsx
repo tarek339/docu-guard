@@ -30,7 +30,6 @@ const Listing = () => {
           </div>
         );
       })}
-      <button onClick={() => navigate("/")}>back</button>
     </div>
   );
 };

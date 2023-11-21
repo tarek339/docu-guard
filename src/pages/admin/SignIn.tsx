@@ -32,8 +32,6 @@ const SignIn = () => {
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
           sendRequest();
-          setAdminName("");
-          setPassword("");
         }}
       >
         <input

@@ -11,7 +11,7 @@ import { useData } from "./hooks/context/AppContext";
 
 function App() {
   const navigate = useNavigate();
-  const { admin, setAdminId, signIn, reset } = useData();
+  const { admin, adminId, setAdminId, signIn, reset } = useData();
 
   useEffect(() => {
     signIn();
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div>
-      {admin ? (
+      {adminId ? (
         <>
           <div>
             <button onClick={() => navigate("/drivers")}>drivers</button>
