@@ -7,12 +7,17 @@ contextBridge.exposeInMainWorld("api", {
   signUp: (admin: IAdmin) => {
     ipcRenderer.invoke("create-new-admin", admin);
   },
-  signIn: (adminName: string, password: string) => {
-    ipcRenderer.invoke("sign-in", adminName, password);
+
+  signIn: (reqAdminName: string, reqPassword: string) => {
+    ipcRenderer.invoke("sign-in", reqAdminName, reqPassword);
   },
   fetchAdmin: (callback: CallbackType) => {
     ipcRenderer.on("send-admin", callback);
   },
+  fetchAdminId: (callback: CallbackType) => {
+    ipcRenderer.on("send-adminId", callback);
+  },
+
   sendMessage: (callback: CallbackType) => {
     ipcRenderer.on("send-message", callback);
   },

@@ -23,6 +23,8 @@ const SignIn = () => {
         }, 2000);
       }
     );
+    setAdminName("");
+    setPassword("");
   }, [adminName, password]);
 
   return (

@@ -12,7 +12,7 @@ import {
 import { createFiles } from "./createFiles";
 import { signUp } from "./core/signUp";
 import { signIn } from "./core/signIn";
-import mongoose from "mongoose";
+import { connectToDatabase } from "../backend/database";
 
 // The built directory structure
 //
@@ -70,20 +70,17 @@ app.on("window-all-closed", () => {
   app.quit();
 });
 
-const dbName = "docu-guard";
-const url = `mongodb+srv://tarek:Sony2020@cluster0.ywzi97j.mongodb.net/${dbName}?retryWrites=true&w=majority`;
-
 app
   .whenReady()
   .then(createWindow)
   .then(() => {
-    // mongoose.connect(url);
     createFiles();
+    connectToDatabase();
   });
 
-createDriver();
 signUp();
 signIn();
+createDriver();
 fetchDriver();
 fetchDrivers();
 editDriver();

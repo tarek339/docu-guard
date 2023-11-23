@@ -1,40 +1,53 @@
 import { ipcMain } from "electron";
-import fs from "fs";
-import { IAdmin } from "../types/interfaces";
+import { adminModel as AdminUser } from "../../backend/models/adminModel";
+import { IAdmin, IParsedUser } from "../types/interfaces";
 
-let success: boolean;
+let authorized: boolean = false;
 let adminUser: IAdmin;
-const checkRequest = (adminName: string, password: string) => {
-  const file = `database/admin.json`;
+let parsedUser: IParsedUser;
+const checkRequest = async (reqAdminName: string, reqPassword: string) => {
   try {
-    const data = fs.readFileSync(file, "utf-8");
-    const jsonData = JSON.parse(data);
-    const profile: IAdmin = jsonData.admin;
-    const reqName = adminName;
-    const reqPassword = password;
-    adminUser = profile;
-    reqName === profile.adminName && reqPassword === profile.password
-      ? (success = true)
-      : (success = false);
+    const admin = await AdminUser.findOne({
+      adminName: reqAdminName,
+      password: reqPassword,
+    });
+    if (admin) {
+      adminUser = admin;
+      authorized = true;
+    }
+    let parsedId = adminUser.id;
+    let parsedName = adminUser.adminName;
+    let parsedCompanyName = adminUser.companyName;
+    let parsedEmail = adminUser.email;
+
+    let parsed = {
+      parsedId,
+      parsedName,
+      parsedCompanyName,
+      parsedEmail,
+    };
+
+    parsedUser = parsed;
   } catch (error) {
-    console.log(error);
+    console.log("Wrong name or password");
   }
 };
 
 export function signIn() {
-  ipcMain.handle("sign-in", (event, adminName: string, password: string) => {
-    try {
-      checkRequest(adminName, password);
-      console.log(success);
-      const filteredAdminUser = {
-        ...adminUser,
-        password: "***",
-        confirmPassword: "***",
-      };
-      if (success) event.sender.send("send-admin", filteredAdminUser);
-      else event.sender.send("send-message", "failed");
-    } catch (error) {
-      console.log(error);
+  ipcMain.handle(
+    "sign-in",
+    async (event, reqAdminName: string, reqPassword: string) => {
+      try {
+        await checkRequest(reqAdminName, reqPassword);
+        if (authorized) {
+          event.sender.send("send-admin", parsedUser);
+        } else event.sender.send("send-message", "Wrong name or password");
+        setTimeout(() => {
+          authorized = false;
+        }, 1000);
+      } catch (error) {
+        console.log(`ipcMain: ${error}`);
+      }
     }
-  });
+  );
 }

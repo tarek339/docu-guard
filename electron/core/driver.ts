@@ -2,8 +2,9 @@ import { ipcMain } from "electron";
 import { IDriver } from "../types/interfaces";
 import fs from "fs";
 
+const file = "backend/json/drivers.json";
+
 const logDrivers = (driver: IDriver): void => {
-  const file = `database/drivers.json`;
   let newPerson = {
     drivers: [
       {
@@ -63,7 +64,6 @@ export function createDriver() {
 let profile: IDriver | undefined;
 const readProfile = (id: string) => {
   try {
-    const file = "database/drivers.json";
     const data = fs.readFileSync(file, "utf-8");
     const jsonData = JSON.parse(data);
     const drivers: IDriver[] = jsonData.drivers;
@@ -95,7 +95,6 @@ export function fetchDriver() {
 let listing: IDriver[] | undefined;
 const readDrivers = () => {
   try {
-    const file = "database/drivers.json";
     const data = fs.readFileSync(file, "utf-8");
     const jsonData = JSON.parse(data);
     const drivers: IDriver[] = jsonData.drivers;
