@@ -1,6 +1,8 @@
 import { IAdmin, IDriver } from "./components";
 
 export interface IAppContext {
+  adminId: string;
+  setAdminId: React.Dispatch<React.SetStateAction<string>>;
   admin: IAdmin;
   setAdmin: React.Dispatch<React.SetStateAction<IAdmin>>;
   companyName: string;
@@ -13,9 +15,6 @@ export interface IAppContext {
   setPassword: React.Dispatch<React.SetStateAction<string>>;
   confirmPassword: string;
   setConfirmPassword: React.Dispatch<React.SetStateAction<string>>;
-
-  adminId: string;
-  setAdminId: React.Dispatch<React.SetStateAction<string>>;
 
   resMessage: string | null;
   setResMessage: React.Dispatch<React.SetStateAction<string | null>>;
@@ -51,7 +50,7 @@ export interface IAppContext {
   setDriverCardValidity: React.Dispatch<React.SetStateAction<string>>;
 
   createAdmin: () => void;
-  signIn: () => void;
+  getAdminProfile: () => void;
   reset: () => void;
   navigateBack: () => void;
   fetchDrivers: () => void;
@@ -59,4 +58,5 @@ export interface IAppContext {
   createNewDriver: () => void;
   editDriver: () => void;
   deleteData: () => void;
+  logOut: () => void;
 }

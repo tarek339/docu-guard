@@ -20,3 +20,10 @@ export interface IAdmin {
   password: string;
   confirmPassword: string;
 }
+
+export interface IParsedUser {
+  parsedId: string;
+  parsedName: string;
+  parsedCompanyName: string;
+  parsedEmail: string;
+}

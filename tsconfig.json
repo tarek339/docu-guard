@@ -20,6 +20,13 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "electron"],
+  "include": [
+    "src",
+    "electron",
+    "backend/database/index.ts",
+    "backend/database/dbConfig.ts",
+    "backend/models/database.js",
+    "backend/models/adminModel.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

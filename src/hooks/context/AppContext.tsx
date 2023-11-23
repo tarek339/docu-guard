@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import { IAppContext } from "../../types/interfaces/appContext";
-import { IAdmin, IDriver } from "../../types/interfaces/components";
+import { IDriver, IParsedUser } from "../../types/interfaces/components";
 import { useNavigate } from "react-router-dom";
 
 export const AppContext = createContext({});
@@ -14,7 +14,7 @@ export const AppContext = createContext({});
 export function AppContextProvider(props: { children: JSX.Element }) {
   const navigate = useNavigate();
 
-  const [admin, setAdmin] = useState<IAdmin | null>({
+  const [admin, setAdmin] = useState({
     id: "",
     companyName: "",
     adminName: "",
@@ -57,36 +57,6 @@ export function AppContextProvider(props: { children: JSX.Element }) {
   const [driverCardValidity, setDriverCardValidity] = useState("");
   const [drivers, setDrivers] = useState([]);
 
-  const reset = () => {
-    setDriver({
-      id: "",
-      firstName: "",
-      lastName: "",
-      phoneNumber: "",
-      licenseNumber: "",
-      licenseValidity: "",
-      licenseType: "",
-      typeValidity: "",
-      codeNumValidity: "",
-      driverCardNum: "",
-      driverCardValidity: "",
-    });
-    setFirstName(""),
-      setLastName(""),
-      setPhoneNumber(""),
-      setLicenseNumber(""),
-      setLicenseValidity(""),
-      setLicenseType(""),
-      setTypeValidity(""),
-      setCodeNumValidity(""),
-      setDriverCardNum(""),
-      setDriverCardValidity("");
-  };
-
-  const navigateBack = () => {
-    navigate("/drivers");
-  };
-
   const createAdmin = useCallback(() => {
     setAdmin({
       ...admin,
@@ -97,14 +67,21 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       password: password,
       confirmPassword: confirmPassword,
     });
-  }, [admin, companyName, email, password, confirmPassword]);
+  }, [adminName, companyName, email, password, confirmPassword]);
 
-  const signIn = useCallback(() => {
-    window.api.fetchAdmin(async (_event, currentAdmin: IAdmin) => {
-      localStorage.setItem("adminId", currentAdmin.id);
-      localStorage.setItem("adminUser", JSON.stringify(currentAdmin));
-      setAdminId(currentAdmin.id);
-      setAdmin(currentAdmin);
+  const getAdminProfile = useCallback(() => {
+    localStorage.getItem("adminId");
+    window.api.fetchAdmin((_event, parsedUser: IParsedUser) => {
+      localStorage.setItem("adminId", parsedUser.parsedId);
+      setAdmin({
+        id: parsedUser.parsedId,
+        companyName: parsedUser.parsedCompanyName,
+        adminName: parsedUser.parsedName,
+        email: parsedUser.parsedEmail,
+        password: "",
+        confirmPassword: "",
+      });
+      setAdminId(parsedUser.parsedId);
       navigate("/drivers");
     });
   }, [admin, adminId]);
@@ -234,6 +211,43 @@ export function AppContextProvider(props: { children: JSX.Element }) {
     navigate("/drivers");
   };
 
+  const logOut = () => {
+    localStorage.removeItem("adminId");
+    localStorage.removeItem("driverId");
+    setAdminId("");
+    navigate("sign-in");
+  };
+
+  const reset = () => {
+    setDriver({
+      id: "",
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      licenseNumber: "",
+      licenseValidity: "",
+      licenseType: "",
+      typeValidity: "",
+      codeNumValidity: "",
+      driverCardNum: "",
+      driverCardValidity: "",
+    });
+    setFirstName(""),
+      setLastName(""),
+      setPhoneNumber(""),
+      setLicenseNumber(""),
+      setLicenseValidity(""),
+      setLicenseType(""),
+      setTypeValidity(""),
+      setCodeNumValidity(""),
+      setDriverCardNum(""),
+      setDriverCardValidity("");
+  };
+
+  const navigateBack = () => {
+    navigate("/drivers");
+  };
+
   const contextValue = useMemo(
     () => ({
       admin,
@@ -284,7 +298,7 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       setDriverCardValidity,
 
       createAdmin,
-      signIn,
+      getAdminProfile,
       reset,
       fetchDrivers,
       fetchDriver,
@@ -292,6 +306,7 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       navigateBack,
       editDriver,
       deleteData,
+      logOut,
     }),
     [
       admin,
@@ -341,7 +356,7 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       setDriverCardValidity,
 
       createAdmin,
-      signIn,
+      getAdminProfile,
       reset,
       fetchDrivers,
       fetchDriver,
@@ -349,6 +364,7 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       navigateBack,
       editDriver,
       deleteData,
+      logOut,
     ]
   );
 

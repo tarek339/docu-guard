@@ -1,32 +1,32 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import SignUp from "./pages/admin/SignUp";
-import SignIn from "./pages/admin/SignIn";
 import Create from "./pages/drivers/Create";
 import Edit from "./pages/drivers/Edit";
 import Profile from "./pages/drivers/Profile";
 import Listing from "./pages/drivers/Listing";
 import { useEffect } from "react";
 import { useData } from "./hooks/context/AppContext";
+import SignIn from "./pages/admin/SignIn";
 
 function App() {
   const navigate = useNavigate();
-  const { admin, setAdminId, signIn, reset } = useData();
+  const { adminId, getAdminProfile, reset, logOut, setAdminId } = useData();
 
   useEffect(() => {
-    signIn();
-  }, []);
+    getAdminProfile();
+  }, [adminId]);
 
-  const logOut = () => {
-    localStorage.removeItem("adminId");
-    localStorage.removeItem("adminUser");
-    setAdminId("");
-    navigate("sign-in");
-  };
+  useEffect(() => {
+    if (!adminId) {
+      localStorage.getItem("adminId");
+      setAdminId(localStorage.getItem("adminId") as string);
+    }
+  }, [adminId]);
 
   return (
     <div>
-      {admin ? (
+      {adminId ? (
         <>
           <div>
             <button onClick={() => navigate("/drivers")}>drivers</button>

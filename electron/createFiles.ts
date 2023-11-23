@@ -1,13 +1,14 @@
 import fs from "fs";
 
 export const createFiles = () => {
-  // check if file exists
-  const driversFile = `database/drivers.json`;
-  const trucksFile = `database/trucks.json`;
-  const trailersFile = `database/trailers.json`;
+  const driversFile = "backend/json/drivers.json";
+  const trucksFile = "backend/json/trucks.json";
+  const trailersFile = "backend/json/trailers.json";
+
   const driversFileExists = fs.existsSync(driversFile);
   const trucksFileExists = fs.existsSync(trucksFile);
   const trailersFileExists = fs.existsSync(trailersFile);
+
   let driversData = {
     drivers: [],
   };

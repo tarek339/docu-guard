@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useData } from "../../hooks/context/AppContext";
 
 const Listing = () => {
-  const { setDriverId, fetchDrivers, drivers } = useData();
+  const { admin, setDriverId, fetchDrivers, drivers, adminId } = useData();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,7 +30,6 @@ const Listing = () => {
           </div>
         );
       })}
-      <button onClick={() => navigate("/")}>back</button>
     </div>
   );
 };
