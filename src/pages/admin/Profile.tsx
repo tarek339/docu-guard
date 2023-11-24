@@ -1,29 +1,30 @@
-import { useNavigate } from "react-router-dom";
 import { useData } from "../../hooks/context/AppContext";
-
-const SignUp = () => {
-  const navigate = useNavigate();
+const Profile = () => {
   const {
-    createAdmin,
-    companyName,
-    setCompanyName,
+    admin,
     adminName,
-    setAdminName,
+    companyName,
     email,
-    setEmail,
     password,
-    setPassword,
     confirmPassword,
+    setCompanyName,
+    setAdminName,
+    setEmail,
+    setPassword,
     setConfirmPassword,
+    editAmin,
   } = useData();
 
   return (
     <div>
-      <h3>Admin</h3>
+      <h3>Profile</h3>
+      <h3>{admin.companyName}</h3>
+      <h3>{admin.adminName}</h3>
+      <h3>{admin.email}</h3>
       <form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
-          createAdmin();
+          editAmin();
         }}
       >
         <input
@@ -68,9 +69,8 @@ const SignUp = () => {
         />
         <button type="submit">Submit</button>
       </form>
-      <button onClick={() => navigate("/sign-in")}>sign in</button>
     </div>
   );
 };
 
-export default SignUp;
+export default Profile;
