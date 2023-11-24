@@ -2,6 +2,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -58,7 +59,7 @@ export function AppContextProvider(props: { children: JSX.Element }) {
   const [drivers, setDrivers] = useState([]);
 
   const createAdmin = useCallback(() => {
-    setAdmin({
+    const newAdmin = {
       ...admin,
       id: crypto.randomUUID(),
       companyName: companyName,
@@ -66,13 +67,18 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       email: email,
       password: password,
       confirmPassword: confirmPassword,
-    });
-  }, [adminName, companyName, email, password, confirmPassword]);
+    };
+    setAdmin(newAdmin);
+    window.api.signUp(newAdmin);
+    navigate("/sign-in");
+  }, [admin, adminName, companyName, email, password, confirmPassword]);
 
   const getAdminProfile = useCallback(() => {
     localStorage.getItem("adminId");
+    localStorage.getItem("admin");
     window.api.fetchAdmin((_event, parsedUser: IParsedUser) => {
       localStorage.setItem("adminId", parsedUser.parsedId);
+      localStorage.setItem("admin", JSON.stringify(parsedUser));
       setAdmin({
         id: parsedUser.parsedId,
         companyName: parsedUser.parsedCompanyName,
@@ -85,6 +91,51 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       navigate("/drivers");
     });
   }, [admin, adminId]);
+
+  const regetAdminProfile = useCallback(() => {
+    const storedUser = localStorage.getItem("admin");
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser as string);
+      setAdmin({
+        id: parsedUser.parsedId,
+        companyName: parsedUser.parsedCompanyName,
+        adminName: parsedUser.parsedName,
+        email: parsedUser.parsedEmail,
+        password: "",
+        confirmPassword: "",
+      });
+      setAdminName(parsedUser.parsedName);
+      setCompanyName(parsedUser.parsedCompanyName);
+      setEmail(parsedUser.parsedEmail);
+      setPassword("");
+      setConfirmPassword("");
+    } else return;
+  }, [admin]);
+
+  const editAmin = useCallback(() => {
+    const newData = {
+      id: adminId,
+      companyName: companyName,
+      adminName: adminName,
+      email: email,
+      password: password,
+      confirmPassword: confirmPassword,
+    };
+    setAdmin(newData);
+    window.api.editProfile(newData);
+    window.api.sendMessage((_event, message) => {
+      setResMessage(message);
+    });
+    console.log(newData);
+  }, [
+    admin,
+    adminName,
+    companyName,
+    email,
+    password,
+    confirmPassword,
+    adminId,
+  ]);
 
   const createNewDriver = useCallback(() => {
     const newDriver = {
@@ -211,13 +262,6 @@ export function AppContextProvider(props: { children: JSX.Element }) {
     navigate("/drivers");
   };
 
-  const logOut = () => {
-    localStorage.removeItem("adminId");
-    localStorage.removeItem("driverId");
-    setAdminId("");
-    navigate("sign-in");
-  };
-
   const reset = () => {
     setDriver({
       id: "",
@@ -248,6 +292,32 @@ export function AppContextProvider(props: { children: JSX.Element }) {
     navigate("/drivers");
   };
 
+  const logOut = useCallback(() => {
+    localStorage.removeItem("adminId");
+    localStorage.removeItem("driverId");
+    localStorage.removeItem("admin");
+    setAdminId("");
+    setAdmin({
+      id: "",
+      companyName: "",
+      adminName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+    setAdminName("");
+    setPassword("");
+    navigate("sign-in");
+  }, [admin, adminId]);
+
+  const turnOffApp = () => {
+    window.api.turnOffApp(logOut());
+  };
+
+  useEffect(() => {
+    window.api.resetStates(logOut());
+  }, []);
+
   const contextValue = useMemo(
     () => ({
       admin,
@@ -265,6 +335,7 @@ export function AppContextProvider(props: { children: JSX.Element }) {
 
       adminId,
       setAdminId,
+      editAmin,
 
       resMessage,
       setResMessage,
@@ -307,6 +378,9 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       editDriver,
       deleteData,
       logOut,
+      regetAdminProfile,
+      navigate,
+      turnOffApp,
     }),
     [
       admin,
@@ -324,6 +398,8 @@ export function AppContextProvider(props: { children: JSX.Element }) {
 
       adminId,
       setAdminId,
+      editAmin,
+
       resMessage,
       setResMessage,
 
@@ -365,6 +441,9 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       editDriver,
       deleteData,
       logOut,
+      regetAdminProfile,
+      navigate,
+      turnOffApp,
     ]
   );
 

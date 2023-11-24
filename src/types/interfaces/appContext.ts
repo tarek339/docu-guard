@@ -59,4 +59,7 @@ export interface IAppContext {
   editDriver: () => void;
   deleteData: () => void;
   logOut: () => void;
+  regetAdminProfile: () => void;
+  editAmin: () => void;
+  turnOffApp: () => void;
 }

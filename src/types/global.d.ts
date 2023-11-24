@@ -10,6 +10,7 @@ declare global {
       signIn: (reqAdminName: string, reqPassword: string) => void;
       fetchAdmin: (callback: CallbackType) => void;
       fetchAdminId: (callback: CallbackType) => void;
+      editProfile: (admin: IAdmin) => void;
       sendMessage: (callback: CallbackType) => void;
       createDriver: (driver: IDriver) => void;
       fetchDrivers: (drivers: IDriver[]) => void;
@@ -18,6 +19,8 @@ declare global {
       sendDriver: (callback: CallbackType) => void;
       editDriver: (driver: IDriver) => void;
       deleteDriver: (driverId: string) => void;
+      turnOffApp: (logOut: void) => void;
+      resetStates: (logOut: void) => void;
     };
   }
 }

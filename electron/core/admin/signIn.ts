@@ -1,6 +1,6 @@
 import { ipcMain } from "electron";
-import { adminModel as AdminUser } from "../../backend/models/adminModel";
-import { IAdmin, IParsedUser } from "../types/interfaces";
+import { adminModel as AdminUser } from "../../../backend/models/adminModel";
+import { IAdmin, IParsedUser } from "../../types/interfaces";
 
 let authorized: boolean = false;
 let adminUser: IAdmin;

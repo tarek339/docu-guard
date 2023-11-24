@@ -8,11 +8,13 @@ import {
   editDriver,
   fetchDriver,
   fetchDrivers,
-} from "./core/driver";
+} from "./core/driver/driver";
 import { createFiles } from "./createFiles";
-import { signUp } from "./core/signUp";
-import { signIn } from "./core/signIn";
+import { signUp } from "./core/admin/signUp";
+import { signIn } from "./core/admin/signIn";
 import { connectToDatabase } from "../backend/database";
+import { editAdmin } from "./core/admin/edit";
+import { resetStates, trunOff } from "./core/deviceInteractions";
 
 // The built directory structure
 //
@@ -72,6 +74,7 @@ app.on("window-all-closed", () => {
 
 app
   .whenReady()
+  .then(resetStates)
   .then(createWindow)
   .then(() => {
     createFiles();
@@ -80,8 +83,10 @@ app
 
 signUp();
 signIn();
+editAdmin();
 createDriver();
 fetchDriver();
 fetchDrivers();
 editDriver();
 deleteDriver();
+trunOff();

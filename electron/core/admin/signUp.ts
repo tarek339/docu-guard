@@ -1,6 +1,6 @@
 import { ipcMain } from "electron";
-import { IAdmin } from "../types/interfaces";
-import { adminModel as AdminUser } from "../../backend/models/adminModel";
+import { IAdmin } from "../../types/interfaces";
+import { adminModel as AdminUser } from "../../../backend/models/adminModel";
 
 const logSignUp = async (admin: IAdmin) => {
   const adminUser = new AdminUser({

@@ -1,9 +1,10 @@
 import { ipcMain } from "electron";
-import { IDriver } from "../types/interfaces";
+import { IDriver } from "../../types/interfaces";
 import fs from "fs";
 
 const file = "backend/json/drivers.json";
 
+// create driver
 const logDrivers = (driver: IDriver): void => {
   let newPerson = {
     drivers: [
@@ -48,7 +49,6 @@ const logDrivers = (driver: IDriver): void => {
   }
 };
 
-// create driver
 export function createDriver() {
   ipcMain.handle("create-new-driver", (event, driver: IDriver) => {
     try {
@@ -155,6 +155,7 @@ export function editDriver() {
   });
 }
 
+// delete driver
 const readDelete = (reqId: string) => {
   try {
     const file = "database/drivers.json";

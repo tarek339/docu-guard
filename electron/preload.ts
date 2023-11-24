@@ -7,7 +7,6 @@ contextBridge.exposeInMainWorld("api", {
   signUp: (admin: IAdmin) => {
     ipcRenderer.invoke("create-new-admin", admin);
   },
-
   signIn: (reqAdminName: string, reqPassword: string) => {
     ipcRenderer.invoke("sign-in", reqAdminName, reqPassword);
   },
@@ -16,6 +15,9 @@ contextBridge.exposeInMainWorld("api", {
   },
   fetchAdminId: (callback: CallbackType) => {
     ipcRenderer.on("send-adminId", callback);
+  },
+  editProfile: (admin: IAdmin) => {
+    ipcRenderer.invoke("edit-admin", admin);
   },
 
   sendMessage: (callback: CallbackType) => {
@@ -41,5 +43,11 @@ contextBridge.exposeInMainWorld("api", {
   },
   deleteDriver: (driverId: string) => {
     ipcRenderer.invoke("delete-driver", driverId);
+  },
+  turnOffApp: (logOut: void) => {
+    ipcRenderer.send("turn-off-app", logOut);
+  },
+  resetStates: (logOut: void) => {
+    ipcRenderer.send("logOut-state", logOut);
   },
 });
