@@ -1,17 +1,12 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { useData } from "../../hooks/context/AppContext";
+import { useAdminData } from "../../hooks/context/admin/AdminContext";
+import { useFunctionsData } from "../../hooks/context/functions/FunctionsContext";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const {
-    resMessage,
-    setResMessage,
-    adminName,
-    setAdminName,
-    password,
-    setPassword,
-  } = useData();
+  const { adminName, setAdminName, password, setPassword } = useAdminData();
+  const { resMessage, setResMessage } = useFunctionsData();
 
   const sendRequest = useCallback(() => {
     window.api.signIn(adminName, password);

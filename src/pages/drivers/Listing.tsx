@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useData } from "../../hooks/context/AppContext";
+import { useDriversData } from "../../hooks/context/drivers/DriversContext";
+import { useFunctionsData } from "../../hooks/context/functions/FunctionsContext";
 
 const Listing = () => {
-  const { setDriverId, fetchDrivers, drivers, resMessage, setResMessage } =
-    useData();
+  const { setDriverId, fetchDrivers, drivers } = useDriversData();
+  const { resMessage, setResMessage } = useFunctionsData();
   const navigate = useNavigate();
 
   useEffect(() => {

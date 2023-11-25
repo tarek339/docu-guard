@@ -5,22 +5,19 @@ import Create from "./pages/drivers/Create";
 import Edit from "./pages/drivers/Edit";
 import Listing from "./pages/drivers/Listing";
 import { useEffect } from "react";
-import { useData } from "./hooks/context/AppContext";
 import SignIn from "./pages/admin/SignIn";
 import DriverProfile from "./pages/drivers/Profile";
 import Profile from "./pages/admin/Profile";
+import { useAdminData } from "./hooks/context/admin/AdminContext";
+import { useDriversData } from "./hooks/context/drivers/DriversContext";
+import { useFunctionsData } from "./hooks/context/functions/FunctionsContext";
 
 function App() {
   const navigate = useNavigate();
-  const {
-    adminId,
-    getAdminProfile,
-    reset,
-    logOut,
-    setAdminId,
-    regetAdminProfile,
-    turnOffApp,
-  } = useData();
+  const { adminId, getAdminProfile, setAdminId, regetAdminProfile } =
+    useAdminData();
+  const { resetDriver } = useDriversData();
+  const { turnOffApp, logOut } = useFunctionsData();
 
   useEffect(() => {
     getAdminProfile();
@@ -43,7 +40,7 @@ function App() {
             <button onClick={() => navigate(`/admin-profile`)}>profile</button>
             <button
               onClick={() => {
-                reset();
+                resetDriver();
                 navigate("/create-driver");
               }}
             >
