@@ -254,7 +254,7 @@ export function AppContextProvider(props: { children: JSX.Element }) {
     driverCardValidity,
   ]);
 
-  const deleteData = () => {
+  const deleteDriver = () => {
     window.api.deleteDriver(driverId);
     if (driverId === "") {
       return;
@@ -370,15 +370,17 @@ export function AppContextProvider(props: { children: JSX.Element }) {
 
       createAdmin,
       getAdminProfile,
-      reset,
+      regetAdminProfile,
+
+      createNewDriver,
       fetchDrivers,
       fetchDriver,
-      createNewDriver,
-      navigateBack,
       editDriver,
-      deleteData,
+      deleteDriver,
+
+      reset,
+      navigateBack,
       logOut,
-      regetAdminProfile,
       navigate,
       turnOffApp,
     }),
@@ -433,15 +435,17 @@ export function AppContextProvider(props: { children: JSX.Element }) {
 
       createAdmin,
       getAdminProfile,
-      reset,
+      regetAdminProfile,
+
+      createNewDriver,
       fetchDrivers,
       fetchDriver,
-      createNewDriver,
-      navigateBack,
       editDriver,
-      deleteData,
+      deleteDriver,
+
+      reset,
+      navigateBack,
       logOut,
-      regetAdminProfile,
       navigate,
       turnOffApp,
     ]

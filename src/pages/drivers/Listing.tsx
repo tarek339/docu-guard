@@ -3,13 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { useData } from "../../hooks/context/AppContext";
 
 const Listing = () => {
-  const { admin, setDriverId, fetchDrivers, drivers, adminId } = useData();
+  const { setDriverId, fetchDrivers, drivers, resMessage, setResMessage } =
+    useData();
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchDrivers();
     localStorage.removeItem("driverId");
   }, []);
+
+  const backUp = () => {
+    window.api.backUpDriver();
+    window.api.sendMessage((_event, message: string) => {
+      setResMessage(message);
+    });
+  };
 
   return (
     <div>
@@ -30,6 +38,12 @@ const Listing = () => {
           </div>
         );
       })}
+      <div>
+        <button onClick={backUp}>back up db</button>
+      </div>
+      <div>
+        <h3>{resMessage}</h3>
+      </div>
     </div>
   );
 };

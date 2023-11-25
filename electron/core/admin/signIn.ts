@@ -1,6 +1,7 @@
 import { ipcMain } from "electron";
 import { adminModel as AdminUser } from "../../../backend/models/adminModel";
 import { IAdmin, IParsedUser } from "../../types/interfaces";
+import { browserWindow } from "../../main";
 
 let authorized: boolean = false;
 let adminUser: IAdmin;
@@ -41,7 +42,11 @@ export function signIn() {
         await checkRequest(reqAdminName, reqPassword);
         if (authorized) {
           event.sender.send("send-admin", parsedUser);
-        } else event.sender.send("send-message", "Wrong name or password");
+        } else
+          browserWindow?.webContents.send(
+            "send-message",
+            "Wrong name or password"
+          );
         setTimeout(() => {
           authorized = false;
         }, 1000);

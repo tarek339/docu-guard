@@ -23,6 +23,7 @@ contextBridge.exposeInMainWorld("api", {
   sendMessage: (callback: CallbackType) => {
     ipcRenderer.on("send-message", callback);
   },
+
   createDriver: (driver: IDriver) => {
     ipcRenderer.invoke("create-new-driver", driver);
   },
@@ -44,6 +45,10 @@ contextBridge.exposeInMainWorld("api", {
   deleteDriver: (driverId: string) => {
     ipcRenderer.invoke("delete-driver", driverId);
   },
+  backUpDriver: () => {
+    ipcRenderer.invoke("back-up-driver");
+  },
+
   turnOffApp: (logOut: void) => {
     ipcRenderer.send("turn-off-app", logOut);
   },
