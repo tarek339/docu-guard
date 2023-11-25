@@ -3,6 +3,7 @@ import isDev from "electron-is-dev";
 import path from "node:path";
 // import { screen } from "electron";
 import {
+  backUpDriver,
   createDriver,
   deleteDriver,
   editDriver,
@@ -14,7 +15,7 @@ import { signUp } from "./core/admin/signUp";
 import { signIn } from "./core/admin/signIn";
 import { connectToDatabase } from "../backend/database";
 import { editAdmin } from "./core/admin/edit";
-import { resetStates, trunOff } from "./core/deviceInteractions";
+import { resetStates, trunOff } from "./core/appInteractions";
 
 // The built directory structure
 //
@@ -84,9 +85,12 @@ app
 signUp();
 signIn();
 editAdmin();
+
 createDriver();
 fetchDriver();
 fetchDrivers();
 editDriver();
 deleteDriver();
+backUpDriver();
+
 trunOff();

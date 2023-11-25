@@ -51,15 +51,17 @@ export interface IAppContext {
 
   createAdmin: () => void;
   getAdminProfile: () => void;
-  reset: () => void;
-  navigateBack: () => void;
-  fetchDrivers: () => void;
-  fetchDriver: () => void;
-  createNewDriver: () => void;
-  editDriver: () => void;
-  deleteData: () => void;
-  logOut: () => void;
   regetAdminProfile: () => void;
   editAmin: () => void;
+
+  createNewDriver: () => void;
+  fetchDrivers: () => void;
+  fetchDriver: () => void;
+  editDriver: () => void;
+  deleteDriver: () => void;
+
+  navigateBack: () => void;
+  reset: () => void;
+  logOut: () => void;
   turnOffApp: () => void;
 }

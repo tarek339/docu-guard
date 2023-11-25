@@ -13,7 +13,6 @@ const logSignUp = async (admin: IAdmin) => {
   });
   try {
     await adminUser.save();
-    console.log("user saved");
   } catch (error) {
     console.log(error);
   }

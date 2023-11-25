@@ -11,7 +11,9 @@ declare global {
       fetchAdmin: (callback: CallbackType) => void;
       fetchAdminId: (callback: CallbackType) => void;
       editProfile: (admin: IAdmin) => void;
+
       sendMessage: (callback: CallbackType) => void;
+
       createDriver: (driver: IDriver) => void;
       fetchDrivers: (drivers: IDriver[]) => void;
       sendDrivers: (callback: CallbackType) => void;
@@ -19,6 +21,8 @@ declare global {
       sendDriver: (callback: CallbackType) => void;
       editDriver: (driver: IDriver) => void;
       deleteDriver: (driverId: string) => void;
+      backUpDriver: () => void;
+
       turnOffApp: (logOut: void) => void;
       resetStates: (logOut: void) => void;
     };

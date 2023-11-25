@@ -27,7 +27,7 @@ const Edit = () => {
     navigateBack,
     driverId,
     editDriver,
-    deleteData,
+    deleteDriver,
   } = useData();
 
   useEffect(() => {
@@ -115,7 +115,7 @@ const Edit = () => {
         />
         <button type="submit">Submit</button>
       </form>
-      <button onClick={deleteData}>Delete profile</button>
+      <button onClick={deleteDriver}>Delete profile</button>
       <button onClick={navigateBack}>Back</button>
     </div>
   );
