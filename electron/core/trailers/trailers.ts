@@ -149,3 +149,35 @@ export function editTrailer() {
     }
   });
 }
+
+// delete trailer
+const readDelete = (reqId: string) => {
+  try {
+    const data = fs.readFileSync(file, "utf-8");
+    const jsonData = JSON.parse(data);
+    const trailers = jsonData.trailers;
+    const updateDb = trailers.filter((trailer: ITrailer) => {
+      return trailer.id !== reqId;
+    });
+    let updatedData;
+    if (updateDb.length > 0) {
+      updatedData = JSON.stringify({ trailers: updateDb }, null, 2);
+    } else {
+      updatedData = JSON.stringify({ trailers: [] }, null, 2);
+    }
+    fs.promises.writeFile(file, updatedData, "utf-8");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export function deleteTrailer() {
+  ipcMain.handle("delete-trailer", (_event, trailerId: string) => {
+    try {
+      readDelete(trailerId);
+      browserWindow?.webContents.send("send-message", "trailer deleted");
+    } catch (error) {
+      console.log(error);
+    }
+  });
+}

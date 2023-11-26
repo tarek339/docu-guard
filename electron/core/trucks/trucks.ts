@@ -149,3 +149,35 @@ export function editTruck() {
     }
   });
 }
+
+// delete truck
+const readDelete = (reqId: string) => {
+  try {
+    const data = fs.readFileSync(file, "utf-8");
+    const jsonData = JSON.parse(data);
+    const trucks = jsonData.trucks;
+    const updateDb = trucks.filter((truck: ITruck) => {
+      return truck.id !== reqId;
+    });
+    let updatedData;
+    if (updateDb.length > 0) {
+      updatedData = JSON.stringify({ trucks: updateDb }, null, 2);
+    } else {
+      updatedData = JSON.stringify({ trucks: [] }, null, 2);
+    }
+    fs.promises.writeFile(file, updatedData, "utf-8");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export function deleteTruck() {
+  ipcMain.handle("delete-truck", (_event, truckId: string) => {
+    try {
+      readDelete(truckId);
+      browserWindow?.webContents.send("send-message", "truck deleted");
+    } catch (error) {
+      console.log(error);
+    }
+  });
+}

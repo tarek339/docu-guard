@@ -124,6 +124,14 @@ export function TrailersContextProvider(props: { children: JSX.Element }) {
     nextSP,
   ]);
 
+  const deleteTrailer = () => {
+    window.api.deleteTrailer(trailerId);
+    if (trailerId === "") {
+      return;
+    }
+    navigate("/trailers");
+  };
+
   const resetTrailer = () => {
     setIndicator("");
     setProducer("");
@@ -158,6 +166,7 @@ export function TrailersContextProvider(props: { children: JSX.Element }) {
       fetchTrailers,
       fetchTrailer,
       editTrailer,
+      deleteTrailer,
     }),
     [
       trailerId,
@@ -183,6 +192,7 @@ export function TrailersContextProvider(props: { children: JSX.Element }) {
       fetchTrailers,
       fetchTrailer,
       editTrailer,
+      deleteTrailer,
     ]
   );
 

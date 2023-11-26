@@ -19,6 +19,7 @@ const EditTruck = () => {
     setNextSP,
     fetchTruck,
     editTruck,
+    deleteTruck,
   } = useTrucksData();
   const { navigateBack, resMessage } = useFunctionsData();
 
@@ -85,7 +86,7 @@ const EditTruck = () => {
         />
         <button type="submit">Submit</button>
       </form>
-      {/* <button onClick={deleteDriver}>Delete profile</button> */}
+      <button onClick={deleteTruck}>Delete profile</button>
       <button onClick={navigateBack}>Back</button>
       <div>
         <h3>{resMessage}</h3>

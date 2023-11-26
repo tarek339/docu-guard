@@ -18,12 +18,14 @@ import { editAdmin } from "./core/admin/edit";
 import { trunOff } from "./core/appInteractions";
 import {
   createTruck,
+  deleteTruck,
   editTruck,
   fetchTruck,
   fetchTrucks,
 } from "./core/trucks/trucks";
 import {
   createTrailer,
+  deleteTrailer,
   editTrailer,
   fetchTrailer,
   fetchTrailers,
@@ -108,10 +110,12 @@ createTruck();
 fetchTrucks();
 fetchTruck();
 editTruck();
+deleteTruck();
 
 createTrailer();
 fetchTrailers();
 fetchTrailer();
 editTrailer();
+deleteTrailer();
 
 trunOff();

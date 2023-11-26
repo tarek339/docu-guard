@@ -22,21 +22,12 @@ import EditTrailer from "./pages/trailers/EditTrailer";
 
 function App() {
   const navigate = useNavigate();
-  const { adminId, getAdminProfile, setAdminId, regetAdminProfile } =
-    useAdminData();
+  const { adminId, getAdminProfile } = useAdminData();
   const { resetDriver } = useDriversData();
   const { turnOffApp, logOut } = useFunctionsData();
 
   useEffect(() => {
     getAdminProfile();
-  }, [adminId]);
-
-  useEffect(() => {
-    if (!adminId) {
-      localStorage.getItem("adminId");
-      setAdminId(localStorage.getItem("adminId") as string);
-    }
-    regetAdminProfile();
   }, [adminId]);
 
   return (

@@ -8,7 +8,7 @@ const TrailersListing = () => {
 
   useEffect(() => {
     fetchTrailers();
-    // localStorage.removeItem("driverId");
+    localStorage.removeItem("trailerId");
   }, []);
 
   return (

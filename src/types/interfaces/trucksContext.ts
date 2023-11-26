@@ -26,4 +26,5 @@ export interface ITruckContext {
   fetchTrucks: () => void;
   fetchTruck: () => void;
   editTruck: () => void;
+  deleteTruck: () => void;
 }

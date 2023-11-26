@@ -19,6 +19,7 @@ const EditTrailer = () => {
     setNextSP,
     fetchTrailer,
     editTrailer,
+    deleteTrailer,
   } = useTrailersData();
   const { navigateBack, resMessage } = useFunctionsData();
 
@@ -85,7 +86,7 @@ const EditTrailer = () => {
         />
         <button type="submit">Submit</button>
       </form>
-      {/* <button onClick={deleteDriver}>Delete profile</button> */}
+      <button onClick={deleteTrailer}>Delete profile</button>
       <button onClick={navigateBack}>Back</button>
       <div>
         <h3>{resMessage}</h3>

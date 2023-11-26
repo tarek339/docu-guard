@@ -113,6 +113,14 @@ export function TrucksContextProvider(props: { children: JSX.Element }) {
     });
   }, [resMessage, truckId, indicator, producer, type, weight, nextHU, nextSP]);
 
+  const deleteTruck = () => {
+    window.api.deleteTruck(truckId);
+    if (truckId === "") {
+      return;
+    }
+    navigate("/trucks");
+  };
+
   const resetTruck = () => {
     setIndicator("");
     setProducer("");
@@ -147,6 +155,7 @@ export function TrucksContextProvider(props: { children: JSX.Element }) {
       fetchTrucks,
       fetchTruck,
       editTruck,
+      deleteTruck,
     }),
     [
       truckId,
@@ -172,6 +181,7 @@ export function TrucksContextProvider(props: { children: JSX.Element }) {
       fetchTrucks,
       fetchTruck,
       editTruck,
+      deleteTruck,
     ]
   );
 
