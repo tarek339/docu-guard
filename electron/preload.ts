@@ -1,5 +1,5 @@
 import { IpcRendererEvent, contextBridge, ipcRenderer } from "electron";
-import { IAdmin, IDriver } from "./types/interfaces";
+import { IAdmin, IDriver, ITrailer, ITruck } from "./types/interfaces";
 
 type CallbackType = (event: IpcRendererEvent, ...args: any[]) => void;
 
@@ -22,6 +22,9 @@ contextBridge.exposeInMainWorld("api", {
 
   sendMessage: (callback: CallbackType) => {
     ipcRenderer.on("send-message", callback);
+  },
+  sendResponse: (callback: CallbackType) => {
+    ipcRenderer.on("send-response", callback);
   },
 
   createDriver: (driver: IDriver) => {
@@ -49,10 +52,54 @@ contextBridge.exposeInMainWorld("api", {
     ipcRenderer.invoke("back-up-driver");
   },
 
+  createTruck: (truck: ITruck) => {
+    ipcRenderer.invoke("create-truck", truck);
+  },
+  fetchTrucks: (trucks: ITruck[]) => {
+    ipcRenderer.invoke("fetch-trucks", trucks);
+  },
+  sendTrucks: (callback: CallbackType) => {
+    ipcRenderer.on("send-trucks", callback);
+  },
+  fetchTruck: (trucks: ITruck[]) => {
+    ipcRenderer.invoke("fetch-truck", trucks);
+  },
+  sendTruck: (callback: CallbackType) => {
+    ipcRenderer.on("send-truck", callback);
+  },
+  editTruck: (truck: ITruck) => {
+    ipcRenderer.invoke("edit-truck", truck);
+  },
+  deleteTruck: (truckId: string) => {
+    ipcRenderer.invoke("delete-truck", truckId);
+  },
+
+  createTrailer: (trailer: ITruck) => {
+    ipcRenderer.invoke("create-trailer", trailer);
+  },
+  fetchTrailers: (trailers: ITrailer[]) => {
+    ipcRenderer.invoke("fetch-trailers", trailers);
+  },
+  sendTrailers: (callback: CallbackType) => {
+    ipcRenderer.on("send-trailers", callback);
+  },
+  fetchTrailer: (trailers: ITrailer[]) => {
+    ipcRenderer.invoke("fetch-trailer", trailers);
+  },
+  sendTrailer: (callback: CallbackType) => {
+    ipcRenderer.on("send-trailer", callback);
+  },
+  editTrailer: (trailer: ITrailer) => {
+    ipcRenderer.invoke("edit-trailer", trailer);
+  },
+  deleteTrailer: (trailerId: string) => {
+    ipcRenderer.invoke("delete-trailer", trailerId);
+  },
+
   turnOffApp: (logOut: void) => {
     ipcRenderer.send("turn-off-app", logOut);
   },
-  resetStates: (logOut: void) => {
-    ipcRenderer.send("logOut-state", logOut);
+  resetStates: (callback: CallbackType) => {
+    ipcRenderer.on("reset-state", callback);
   },
 });

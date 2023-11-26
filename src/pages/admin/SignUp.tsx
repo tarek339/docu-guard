@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useData } from "../../hooks/context/AppContext";
+import { useAdminData } from "../../hooks/context/admin/AdminContext";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const SignUp = () => {
     setPassword,
     confirmPassword,
     setConfirmPassword,
-  } = useData();
+  } = useAdminData();
 
   return (
     <div>

@@ -1,24 +1,6 @@
-import { IAdmin, IDriver } from "./components";
+import { IDriver } from "./properties";
 
-export interface IAppContext {
-  adminId: string;
-  setAdminId: React.Dispatch<React.SetStateAction<string>>;
-  admin: IAdmin;
-  setAdmin: React.Dispatch<React.SetStateAction<IAdmin>>;
-  companyName: string;
-  setCompanyName: React.Dispatch<React.SetStateAction<string>>;
-  adminName: string;
-  setAdminName: React.Dispatch<React.SetStateAction<string>>;
-  email: string;
-  setEmail: React.Dispatch<React.SetStateAction<string>>;
-  password: string;
-  setPassword: React.Dispatch<React.SetStateAction<string>>;
-  confirmPassword: string;
-  setConfirmPassword: React.Dispatch<React.SetStateAction<string>>;
-
-  resMessage: string | null;
-  setResMessage: React.Dispatch<React.SetStateAction<string | null>>;
-
+export interface IDriverContext {
   driver: IDriver;
   setDriver: React.Dispatch<React.SetStateAction<IDriver>>;
   drivers: IDriver[];
@@ -49,19 +31,10 @@ export interface IAppContext {
   driverCardValidity: string;
   setDriverCardValidity: React.Dispatch<React.SetStateAction<string>>;
 
-  createAdmin: () => void;
-  getAdminProfile: () => void;
-  regetAdminProfile: () => void;
-  editAmin: () => void;
-
   createNewDriver: () => void;
   fetchDrivers: () => void;
   fetchDriver: () => void;
   editDriver: () => void;
   deleteDriver: () => void;
-
-  navigateBack: () => void;
-  reset: () => void;
-  logOut: () => void;
-  turnOffApp: () => void;
+  resetDriver: () => void;
 }

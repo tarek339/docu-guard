@@ -1,3 +1,19 @@
+export interface IAdmin {
+  id: string;
+  companyName: string;
+  adminName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+export interface IParsedUser {
+  parsedId: string;
+  parsedName: string;
+  parsedCompanyName: string;
+  parsedEmail: string;
+}
+
 export interface IDriver {
   id: string;
   firstName: string;
@@ -10,23 +26,6 @@ export interface IDriver {
   codeNumValidity: string;
   driverCardNum: string;
   driverCardValidity: string;
-}
-
-export interface IAdmin {
-  adminId?: string;
-  id: string;
-  adminName: string;
-  companyName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
-
-export interface IParsedUser {
-  parsedId: string;
-  parsedName: string;
-  parsedCompanyName: string;
-  parsedEmail: string;
 }
 
 export interface ITruck {

@@ -9,13 +9,25 @@ import {
   editDriver,
   fetchDriver,
   fetchDrivers,
-} from "./core/driver/driver";
+} from "./core/drivers/drivers";
 import { createFiles } from "./createFiles";
 import { signUp } from "./core/admin/signUp";
 import { signIn } from "./core/admin/signIn";
 import { connectToDatabase } from "../backend/database";
 import { editAdmin } from "./core/admin/edit";
-import { resetStates, trunOff } from "./core/appInteractions";
+import { trunOff } from "./core/appInteractions";
+import {
+  createTruck,
+  editTruck,
+  fetchTruck,
+  fetchTrucks,
+} from "./core/trucks/trucks";
+import {
+  createTrailer,
+  editTrailer,
+  fetchTrailer,
+  fetchTrailers,
+} from "./core/trailers/trailers";
 
 // The built directory structure
 //
@@ -75,7 +87,6 @@ app.on("window-all-closed", () => {
 
 app
   .whenReady()
-  .then(resetStates)
   .then(createWindow)
   .then(() => {
     createFiles();
@@ -92,5 +103,15 @@ fetchDrivers();
 editDriver();
 deleteDriver();
 backUpDriver();
+
+createTruck();
+fetchTrucks();
+fetchTruck();
+editTruck();
+
+createTrailer();
+fetchTrailers();
+fetchTrailer();
+editTrailer();
 
 trunOff();

@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
-import { useData } from "../../hooks/context/AppContext";
+import { useDriversData } from "../../hooks/context/drivers/DriversContext";
+import { useFunctionsData } from "../../hooks/context/functions/FunctionsContext";
 
 const Edit = () => {
   const {
+    driverId,
     firstName,
     lastName,
     phoneNumber,
@@ -24,11 +26,10 @@ const Edit = () => {
     setDriverCardNum,
     setDriverCardValidity,
     fetchDriver,
-    navigateBack,
-    driverId,
     editDriver,
     deleteDriver,
-  } = useData();
+  } = useDriversData();
+  const { navigateBack, resMessage } = useFunctionsData();
 
   useEffect(() => {
     fetchDriver();
@@ -117,6 +118,9 @@ const Edit = () => {
       </form>
       <button onClick={deleteDriver}>Delete profile</button>
       <button onClick={navigateBack}>Back</button>
+      <div>
+        <h3>{resMessage}</h3>
+      </div>
     </div>
   );
 };
