@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { IDriver } from "../../../types/interfaces/components";
+import { IDriver } from "../../../types/interfaces/properties";
 import { IDriverContext } from "../../../types/interfaces/driverContext";
 import { useFunctionsData } from "../functions/FunctionsContext";
 
@@ -61,7 +61,9 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
     resetDriver();
     window.api.sendMessage((_event: Electron.IpcRendererEvent, message) => {
       setResMessage(message);
-      message = resMessage;
+      setTimeout(() => {
+        setResMessage("");
+      }, 2000);
     });
   }, [
     resMessage,
@@ -141,10 +143,12 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
       driverCardValidity: driverCardValidity,
     };
     setDriver(newData);
-    console.log(newData);
     window.api.editDriver(newData);
     window.api.sendMessage((_event, message) => {
       setResMessage(message);
+      setTimeout(() => {
+        setResMessage("");
+      }, 2000);
     });
   }, [
     driverId,

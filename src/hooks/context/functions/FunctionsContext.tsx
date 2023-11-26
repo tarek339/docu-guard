@@ -46,7 +46,9 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
   };
 
   useEffect(() => {
-    window.api.resetStates(logOut());
+    window.api.resetStates(() => {
+      logOut();
+    });
   }, []);
 
   const contextValue = useMemo(

@@ -14,6 +14,7 @@ const Profile = () => {
     setPassword,
     setConfirmPassword,
     editAmin,
+    message,
   } = useAdminData();
 
   return (
@@ -70,6 +71,9 @@ const Profile = () => {
         />
         <button type="submit">Submit</button>
       </form>
+      <div>
+        <h3>{message}</h3>
+      </div>
     </div>
   );
 };

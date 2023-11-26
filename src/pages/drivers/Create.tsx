@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { useDriversData } from "../../hooks/context/drivers/DriversContext";
 import { useFunctionsData } from "../../hooks/context/functions/FunctionsContext";
 
@@ -26,15 +25,9 @@ const Create = () => {
     driverCardValidity,
     setDriverCardValidity,
     createNewDriver,
-    resetDriver,
   } = useDriversData();
   const { resMessage } = useFunctionsData();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    resetDriver();
-    localStorage.removeItem("driverId");
-  }, []);
 
   return (
     <div>

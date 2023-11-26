@@ -1,10 +1,10 @@
-import { ITruck } from "./properties";
+import { ITrailer } from "./properties";
 
-export interface ITruckContext {
-  truckId: string;
-  setTruckId: React.Dispatch<React.SetStateAction<string>>;
-  truck: ITruck;
-  setTruck: React.Dispatch<React.SetStateAction<ITruck>>;
+export interface ITrailerContext {
+  trailerId: string;
+  setTrailerId: React.Dispatch<React.SetStateAction<string>>;
+  trailer: ITrailer;
+  setTrailer: React.Dispatch<React.SetStateAction<ITrailer>>;
   id: string;
   setId: React.Dispatch<React.SetStateAction<string>>;
   indicator: string;
@@ -19,11 +19,11 @@ export interface ITruckContext {
   setNextHU: React.Dispatch<React.SetStateAction<string>>;
   nextSP: string;
   setNextSP: React.Dispatch<React.SetStateAction<string>>;
-  trucks: ITruck[];
-  setTrucks: React.Dispatch<React.SetStateAction<ITruck[]>>;
+  trailers: ITrailer[];
+  setTrailers: React.Dispatch<React.SetStateAction<ITrailer[]>>;
 
-  createNewTruck: () => void;
-  fetchTrucks: () => void;
-  fetchTruck: () => void;
-  editTruck: () => void;
+  createNewTrailer: () => void;
+  fetchTrailers: () => void;
+  fetchTrailer: () => void;
+  editTrailer: () => void;
 }

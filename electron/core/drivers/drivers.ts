@@ -7,7 +7,7 @@ import { browserWindow } from "../../main";
 const file = "backend/json/drivers.json";
 
 // create driver
-const logDrivers = (driver: IDriver): void => {
+const logDriver = (driver: IDriver): void => {
   let newPerson = {
     drivers: [
       {
@@ -52,10 +52,10 @@ const logDrivers = (driver: IDriver): void => {
 };
 
 export function createDriver() {
-  ipcMain.handle("create-new-driver", (event, driver: IDriver) => {
+  ipcMain.handle("create-new-driver", (_event, driver: IDriver) => {
     try {
-      logDrivers(driver);
-      event.sender.send("send-message", "Driver created");
+      logDriver(driver);
+      browserWindow?.webContents.send("send-message", "Driver created");
     } catch (error) {
       console.log(error);
     }
@@ -120,7 +120,6 @@ export function fetchDrivers() {
 // edit driver
 const readEdit = (comingData: IDriver) => {
   try {
-    const file = "database/drivers.json";
     const data = fs.readFileSync(file, "utf-8");
     const jsonData = JSON.parse(data);
     const drivers = jsonData.drivers;
@@ -147,10 +146,13 @@ const readEdit = (comingData: IDriver) => {
 };
 
 export function editDriver() {
-  ipcMain.handle("edit-driver", (event, driver: IDriver) => {
+  ipcMain.handle("edit-driver", (_event, driver: IDriver) => {
     try {
       readEdit(driver);
-      event.sender.send("send-message", "Driver data successfully changed");
+      browserWindow?.webContents.send(
+        "send-message",
+        "Driver data successfully changed"
+      );
     } catch (error) {
       console.log(error);
     }
@@ -180,10 +182,10 @@ const readDelete = (reqId: string) => {
 };
 
 export function deleteDriver() {
-  ipcMain.handle("delete-driver", (event, driverId: string) => {
+  ipcMain.handle("delete-driver", (_event, driverId: string) => {
     try {
       readDelete(driverId);
-      event.sender.send("send-message", "Driver deleted");
+      browserWindow?.webContents.send("send-message", "Driver deleted");
     } catch (error) {
       console.log(error);
     }

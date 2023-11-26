@@ -1,4 +1,4 @@
-import { IAdmin } from "./components";
+import { IAdmin } from "./properties";
 
 export interface IAdminContext {
   adminId: string;
@@ -15,6 +15,9 @@ export interface IAdminContext {
   setPassword: React.Dispatch<React.SetStateAction<string>>;
   confirmPassword: string;
   setConfirmPassword: React.Dispatch<React.SetStateAction<string>>;
+
+  message: string;
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
 
   createAdmin: () => void;
   getAdminProfile: () => void;

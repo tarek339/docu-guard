@@ -23,7 +23,7 @@ export function editAdmin() {
     try {
       await readDataBase(admin);
       browserWindow?.webContents.send(
-        "send-message",
+        "send-response",
         "Data sccessfully changed"
       );
     } catch (error) {

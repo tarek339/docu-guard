@@ -6,15 +6,14 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { IParsedUser } from "../../../types/interfaces/components";
+import { IParsedUser } from "../../../types/interfaces/properties";
 import { IAdminContext } from "../../../types/interfaces/adminContext";
-import { useFunctionsData } from "../functions/FunctionsContext";
 
 export const AdminContext = createContext({});
 
 export function AdminContextProvider(props: { children: JSX.Element }) {
   const navigate = useNavigate();
-  const { setResMessage } = useFunctionsData();
+  const [message, setMessage] = useState("");
 
   const [admin, setAdmin] = useState({
     id: "",
@@ -96,11 +95,16 @@ export function AdminContextProvider(props: { children: JSX.Element }) {
     };
     setAdmin(newData);
     window.api.editProfile(newData);
-    window.api.sendMessage((_event, message) => {
-      setResMessage(message);
+    window.api.sendResponse((_event, message) => {
+      setPassword("");
+      setConfirmPassword("");
+      setMessage(message);
+      setTimeout(() => {
+        setMessage("");
+      }, 2000);
     });
-    console.log(newData);
   }, [
+    message,
     admin,
     adminName,
     companyName,
@@ -132,6 +136,9 @@ export function AdminContextProvider(props: { children: JSX.Element }) {
       createAdmin,
       getAdminProfile,
       regetAdminProfile,
+
+      message,
+      setMessage,
     }),
     [
       admin,
@@ -154,6 +161,9 @@ export function AdminContextProvider(props: { children: JSX.Element }) {
       createAdmin,
       getAdminProfile,
       regetAdminProfile,
+
+      message,
+      setMessage,
     ]
   );
 

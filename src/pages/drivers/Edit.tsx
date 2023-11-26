@@ -29,7 +29,7 @@ const Edit = () => {
     editDriver,
     deleteDriver,
   } = useDriversData();
-  const { navigateBack } = useFunctionsData();
+  const { navigateBack, resMessage } = useFunctionsData();
 
   useEffect(() => {
     fetchDriver();
@@ -118,6 +118,9 @@ const Edit = () => {
       </form>
       <button onClick={deleteDriver}>Delete profile</button>
       <button onClick={navigateBack}>Back</button>
+      <div>
+        <h3>{resMessage}</h3>
+      </div>
     </div>
   );
 };
