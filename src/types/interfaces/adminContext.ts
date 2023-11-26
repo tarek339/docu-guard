@@ -21,6 +21,5 @@ export interface IAdminContext {
 
   createAdmin: () => void;
   getAdminProfile: () => void;
-  regetAdminProfile: () => void;
   editAmin: () => void;
 }

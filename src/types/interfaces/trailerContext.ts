@@ -26,4 +26,5 @@ export interface ITrailerContext {
   fetchTrailers: () => void;
   fetchTrailer: () => void;
   editTrailer: () => void;
+  deleteTrailer: () => void;
 }

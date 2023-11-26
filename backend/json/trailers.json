@@ -1,13 +1,3 @@
 {
-  "trailers": [
-    {
-      "id": "896ed8ba-6855-4440-9031-2029df1b09e6",
-      "indicator": "sdasdsd",
-      "producer": "MAN",
-      "type": "ads",
-      "weight": "asd",
-      "nextHU": "asd",
-      "nextSP": "ads"
-    }
-  ]
+  "trailers": []
 }

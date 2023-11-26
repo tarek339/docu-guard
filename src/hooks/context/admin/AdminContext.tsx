@@ -51,20 +51,9 @@ export function AdminContextProvider(props: { children: JSX.Element }) {
     window.api.fetchAdmin((_event, parsedUser: IParsedUser) => {
       localStorage.setItem("adminId", parsedUser.parsedId);
       localStorage.setItem("admin", JSON.stringify(parsedUser));
-      setAdmin({
-        id: parsedUser.parsedId,
-        companyName: parsedUser.parsedCompanyName,
-        adminName: parsedUser.parsedName,
-        email: parsedUser.parsedEmail,
-        password: "",
-        confirmPassword: "",
-      });
       setAdminId(parsedUser.parsedId);
-      navigate("/drivers");
+      navigate("/admin-profile");
     });
-  }, [admin, adminId]);
-
-  const regetAdminProfile = useCallback(() => {
     const storedUser = localStorage.getItem("admin");
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser as string);
@@ -82,7 +71,11 @@ export function AdminContextProvider(props: { children: JSX.Element }) {
       setPassword("");
       setConfirmPassword("");
     } else return;
-  }, [admin]);
+    if (!adminId) {
+      localStorage.getItem("adminId");
+      setAdminId(localStorage.getItem("adminId") as string);
+    }
+  }, [adminId]);
 
   const editAmin = useCallback(() => {
     const newData = {
@@ -135,7 +128,6 @@ export function AdminContextProvider(props: { children: JSX.Element }) {
 
       createAdmin,
       getAdminProfile,
-      regetAdminProfile,
 
       message,
       setMessage,
@@ -160,7 +152,6 @@ export function AdminContextProvider(props: { children: JSX.Element }) {
 
       createAdmin,
       getAdminProfile,
-      regetAdminProfile,
 
       message,
       setMessage,

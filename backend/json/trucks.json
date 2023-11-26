@@ -1,13 +1,3 @@
 {
-  "trucks": [
-    {
-      "id": "bf2f42cf-7669-496f-adf4-5e34ffe8e3af",
-      "indicator": "MAN",
-      "producer": "MAN",
-      "type": "MAN",
-      "weight": "MAN",
-      "nextHU": "MAN",
-      "nextSP": "MAN"
-    }
-  ]
+  "trucks": []
 }

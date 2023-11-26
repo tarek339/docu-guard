@@ -30,6 +30,7 @@ declare global {
       fetchTruck: (id: string) => void;
       sendTruck: (callback: CallbackType) => void;
       editTruck: (truck: ITruck) => void;
+      deleteTruck: (truckId: string) => void;
 
       createTrailer: (trailer: ITrailer) => void;
       fetchTrailers: (trailers: ITruck[]) => void;
@@ -37,6 +38,7 @@ declare global {
       fetchTrailer: (id: string) => void;
       sendTrailer: (callback: CallbackType) => void;
       editTrailer: (trailer: ITrailer) => void;
+      deleteTrailer: (trailerId: string) => void;
 
       turnOffApp: (logOut: void) => void;
       resetStates: (callback: CallbackType) => void;

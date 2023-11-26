@@ -162,7 +162,6 @@ export function editDriver() {
 // delete driver
 const readDelete = (reqId: string) => {
   try {
-    const file = "database/drivers.json";
     const data = fs.readFileSync(file, "utf-8");
     const jsonData = JSON.parse(data);
     const drivers = jsonData.drivers;

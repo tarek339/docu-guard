@@ -8,7 +8,7 @@ const TrucksListing = () => {
 
   useEffect(() => {
     fetchTrucks();
-    // localStorage.removeItem("driverId");
+    localStorage.removeItem("truckId");
   }, []);
 
   return (
