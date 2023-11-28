@@ -19,7 +19,7 @@ import TrucksProfile from "./pages/trucks/TrucksProfile";
 import TrailersProfile from "./pages/trailers/TrailersProfile";
 import EditTruck from "./pages/trucks/EditTruck";
 import EditTrailer from "./pages/trailers/EditTrailer";
-
+import colors from "./assets/theme/colors";
 function App() {
   const navigate = useNavigate();
   const { adminId, getAdminProfile } = useAdminData();
@@ -67,8 +67,8 @@ function App() {
             <button onClick={turnOffApp}>trun off</button>
           </div>
           <Routes>
-            <Route path="/" element={<SignUp />} />
-            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/" element={<SignIn />} />
+            <Route path="/sign-up" element={<SignUp />} />
             <Route path="/admin-profile" element={<Profile />} />
 
             <Route path="/create-driver" element={<Create />} />
@@ -89,10 +89,10 @@ function App() {
         </>
       ) : (
         <>
-          <button onClick={turnOffApp}>trun off</button>
+          {/* <button onClick={turnOffApp}>trun off</button> */}
           <Routes>
-            <Route path="/" element={<SignUp />} />
-            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/" element={<SignIn />} />
+            <Route path="/sign-up" element={<SignUp />} />
           </Routes>
         </>
       )}

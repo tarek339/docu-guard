@@ -41,7 +41,7 @@ declare global {
       deleteTrailer: (trailerId: string) => void;
 
       turnOffApp: (logOut: void) => void;
-      resetStates: (callback: CallbackType) => void;
+      clearAdmin: (callback: CallbackType) => void;
     };
   }
 }

@@ -1,7 +1,7 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
 import isDev from "electron-is-dev";
 import path from "node:path";
-// import { screen } from "electron";
+import { screen } from "electron";
 import {
   backUpDriver,
   createDriver,
@@ -50,12 +50,13 @@ export let browserWindow: BrowserWindow | null;
 const VITE_DEV_SERVER_URL = process.env["VITE_DEV_SERVER_URL"];
 
 function createWindow() {
-  // const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   browserWindow = new BrowserWindow({
     icon: path.join(process.env.PUBLIC, "electron-vite.svg"),
-    width: 1400,
-    height: 1000,
+    width: width,
+    height: height,
     resizable: true,
+    backgroundColor: "transparent",
     webPreferences: {
       nodeIntegration: false,
       webSecurity: true,
@@ -83,6 +84,9 @@ function createWindow() {
   }
 }
 
+app.on("before-quit", () => {
+  browserWindow?.webContents.send("clear-state-locale-storage");
+});
 app.on("window-all-closed", () => {
   app.quit();
 });

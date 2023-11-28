@@ -1,4 +1,4 @@
-import { IDriver } from "./properties";
+import { IDriver } from "../properties";
 
 export interface IDriverContext {
   driver: IDriver;

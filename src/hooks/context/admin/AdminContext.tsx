@@ -7,7 +7,7 @@ import {
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { IParsedUser } from "../../../types/interfaces/properties";
-import { IAdminContext } from "../../../types/interfaces/adminContext";
+import { IAdminContext } from "../../../types/interfaces/pages/adminContext";
 
 export const AdminContext = createContext({});
 

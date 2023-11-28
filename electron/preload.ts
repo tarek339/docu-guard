@@ -99,7 +99,7 @@ contextBridge.exposeInMainWorld("api", {
   turnOffApp: (logOut: void) => {
     ipcRenderer.send("turn-off-app", logOut);
   },
-  resetStates: (callback: CallbackType) => {
-    ipcRenderer.on("reset-state", callback);
+  clearAdmin: (callback: CallbackType) => {
+    ipcRenderer.on("clear-state-locale-storage", callback);
   },
 });

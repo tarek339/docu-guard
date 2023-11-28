@@ -46,7 +46,7 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
   };
 
   useEffect(() => {
-    window.api.resetStates(() => {
+    window.api.clearAdmin(() => {
       logOut();
     });
   }, []);

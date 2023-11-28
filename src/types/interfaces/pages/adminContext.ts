@@ -1,4 +1,4 @@
-import { IAdmin } from "./properties";
+import { IAdmin } from "../properties";
 
 export interface IAdminContext {
   adminId: string;
