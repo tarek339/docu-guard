@@ -7,8 +7,8 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { IFunctionsContext } from "../../../types/interfaces/functionsContext";
-import { useAdminData } from "../admin/AdminContext";
+import { IFunctionsContext } from "../../types/interfaces/functionsContext";
+import { useAdminData } from "./AdminContext";
 
 export const FunctionsContext = createContext({});
 
@@ -18,6 +18,8 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
     useAdminData();
 
   const [resMessage, setResMessage] = useState(null);
+  const [topLabel, setTopLabel] = useState(false);
+  const [page, setPage] = useState(0);
 
   const navigateBack = () => {
     navigate("/drivers");
@@ -46,7 +48,7 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
   };
 
   useEffect(() => {
-    window.api.resetStates(() => {
+    window.api.clearAdmin(() => {
       logOut();
     });
   }, []);
@@ -55,13 +57,29 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
     () => ({
       resMessage,
       setResMessage,
+      topLabel,
+      setTopLabel,
+      page,
+      setPage,
 
       navigateBack,
       logOut,
       navigate,
       turnOffApp,
     }),
-    [resMessage, setResMessage, navigateBack, logOut, navigate, turnOffApp]
+    [
+      resMessage,
+      setResMessage,
+      topLabel,
+      setTopLabel,
+      page,
+      setPage,
+
+      navigateBack,
+      logOut,
+      navigate,
+      turnOffApp,
+    ]
   );
 
   return (

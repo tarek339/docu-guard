@@ -1,6 +1,20 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+html {
+  scroll-behavior: "smooth";
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+.error-border {
+  outline: 2px solid #f04438;
+  border: 1px solid transparent;
+}
+
+.main-border {
+  border: 1px solid #d3d3d3cc;
+  outline: none;
 }

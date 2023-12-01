@@ -1,5 +1,5 @@
-import { useFunctionsData } from "../../hooks/context/functions/FunctionsContext";
-import { useTrucksData } from "../../hooks/context/trucks/TrucksContext";
+import { useFunctionsData } from "../../hooks/context/FunctionsContext";
+import { useTrucksData } from "../../hooks/context/TrucksContext";
 
 const CreateTruck = () => {
   const { resMessage } = useFunctionsData();

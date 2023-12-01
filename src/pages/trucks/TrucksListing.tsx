@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTrucksData } from "../../hooks/context/trucks/TrucksContext";
+import { useTrucksData } from "../../hooks/context/TrucksContext";
 
 const TrucksListing = () => {
   const { setTruckId, fetchTrucks, trucks } = useTrucksData();

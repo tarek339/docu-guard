@@ -6,9 +6,9 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFunctionsData } from "../functions/FunctionsContext";
-import { ITrailerContext } from "../../../types/interfaces/trailerContext";
-import { ITrailer } from "../../../types/interfaces/properties";
+import { useFunctionsData } from "./FunctionsContext";
+import { ITrailerContext } from "../../types/interfaces/trailerContext";
+import { ITrailer } from "../../types/interfaces/properties";
 
 export const TrailersContext = createContext({});
 

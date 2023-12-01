@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useFunctionsData } from "../../hooks/context/functions/FunctionsContext";
-import { useTrucksData } from "../../hooks/context/trucks/TrucksContext";
+import { useFunctionsData } from "../../hooks/context/FunctionsContext";
+import { useTrucksData } from "../../hooks/context/TrucksContext";
 
 const EditTruck = () => {
   const {
