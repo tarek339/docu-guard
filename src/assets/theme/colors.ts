@@ -8,6 +8,7 @@ interface IColors {
     black: string;
     white: string;
     purple: string;
+    error: string;
   };
   button: {
     contained: string;
@@ -24,6 +25,7 @@ const colors: IColors = {
     black: "#111927",
     white: "#FFF",
     purple: "rgb(99, 102, 241)",
+    error: "#F04438",
   },
   button: {
     contained: "rgb(99, 102, 241)",

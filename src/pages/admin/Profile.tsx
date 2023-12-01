@@ -1,4 +1,4 @@
-import { useAdminData } from "../../hooks/context/admin/AdminContext";
+import { useAdminData } from "../../hooks/context/AdminContext";
 
 const Profile = () => {
   const {

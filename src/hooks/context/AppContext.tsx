@@ -1,8 +1,8 @@
-import { AdminContextProvider } from "./admin/AdminContext";
-import { DriverContextProvider } from "./drivers/DriversContext";
-import { FunctionsContextProvider } from "./functions/FunctionsContext";
-import { TrailersContextProvider } from "./trailers/TrailerContext";
-import { TrucksContextProvider } from "./trucks/TrucksContext";
+import { AdminContextProvider } from "./AdminContext";
+import { DriverContextProvider } from "./DriversContext";
+import { FunctionsContextProvider } from "./FunctionsContext";
+import { TrailersContextProvider } from "./TrailerContext";
+import { TrucksContextProvider } from "./TrucksContext";
 
 const AppContext = (props: { children: JSX.Element }) => {
   return (

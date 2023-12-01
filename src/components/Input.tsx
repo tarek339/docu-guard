@@ -1,76 +1,75 @@
-import { useState } from "react";
-import colors from "../assets/theme/colors";
+import { withStyles } from "@material-ui/styles";
+import { TextField } from "@mui/material";
+import Block from "./Block";
 
 type InputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => void;
 
+const CustomTextField = withStyles({
+  root: {
+    "& .MuiFilledInput-root": {
+      border: "1px solid #d3d3d3cc",
+      backgroundColor: "#fff",
+      borderRadius: "10px",
+      height: "53px",
+    },
+    "&:hover .MuiFilledInput-root": {
+      border: "1px solid lightgrey",
+      backgroundColor: "#fff",
+    },
+    "& .MuiFilledInput-root.Mui-focused": {
+      border: "2px solid rgb(99, 102, 241)",
+      backgroundColor: "#fff",
+    },
+    "& .MuiInputLabel-root.Mui-focused": {
+      backgroundColor: "#fff",
+      color: "rgb(99, 102, 241)",
+    },
+    "& .MuiFilledInput-root.Mui-error": {
+      border: "2px solid #f04438",
+    },
+    "& .MuiInputLabel-root.Mui-error": {
+      color: "#f04438",
+    },
+  },
+})(TextField);
+
+const error: React.CSSProperties = {
+  color: "#f04438",
+  fontFamily: "Inter, sans-serif",
+  fontSize: "12px",
+  paddingLeft: "15px",
+  position: "absolute",
+  bottom: -10,
+};
+
+const field: React.CSSProperties = {
+  marginTop: "20px",
+};
+
 const Input = (props: {
+  name: string;
+  label: string;
   value: string;
   onChange: InputChangeHandler;
-  labelChildren: React.ReactNode;
+  error: boolean;
+  children: React.ReactNode;
 }) => {
-  const [onHover, setOnHover] = useState(false);
-  const [onFocus, setOnFocus] = useState(false);
-
-  const main = {
-    height: "53px",
-    width: "99.5%",
-    outline: "none",
-    marginBottom: "30px",
-    borderRadius: "10px",
-    border: `1px solid #d3d3d3cc`,
-    transition: "0.1s",
-    fontSize: "14px",
-    fontWeight: 500,
-    textIndent: "15px",
-    color: colors.text.black,
-    boxSizing: "border-box" as any,
-    paddingTop: "19px",
-  };
-  const hover = {
-    border: "1px solid lightgrey",
-    outline: "none",
-  };
-  const focus = {
-    border: "1px solid transparent",
-    outline: `3px solid ${colors.button.contained}`,
-  };
   return (
-    <div style={{ position: "relative" }}>
-      <label
-        style={{
-          color: onFocus ? colors.text.purple : colors.text.grey,
-          fontSize: "14px",
-          fontFamily: "Inter, sans-serif",
-          position: "absolute",
-          top: 10,
-          left: 15,
-        }}
-      >
-        {props.labelChildren}
-      </label>
-      <input
-        style={
-          onHover
-            ? { ...main, ...hover }
-            : onFocus
-            ? { ...main, ...focus }
-            : main
-        }
-        onMouseEnter={() => {
-          onFocus ? setOnHover(false) : setOnHover(true);
-        }}
-        onMouseLeave={() => setOnHover(false)}
-        onChangeCapture={() => setOnFocus(false)}
-        onClick={() => {
-          setOnHover(false);
-          setOnFocus(true);
-        }}
-        onBlur={() => setOnFocus(false)}
-        tabIndex={0}
+    <Block style={{ position: "relative" }}>
+      <CustomTextField
+        name={props.name}
+        InputProps={{ disableUnderline: true }}
+        label={props.label}
+        variant="filled"
+        fullWidth
         value={props.value}
         onChange={props.onChange}
+        error={props.error}
+        margin="normal"
+        style={field}
       />
-    </div>
+      <Block style={error}>{props.children}</Block>
+    </Block>
   );
 };
 

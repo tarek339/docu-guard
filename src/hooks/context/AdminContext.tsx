@@ -6,8 +6,8 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { IParsedUser } from "../../../types/interfaces/properties";
-import { IAdminContext } from "../../../types/interfaces/pages/adminContext";
+import { IParsedUser } from "../../types/interfaces/properties";
+import { IAdminContext } from "../../types/interfaces/adminContext";
 
 export const AdminContext = createContext({});
 
@@ -126,11 +126,11 @@ export function AdminContextProvider(props: { children: JSX.Element }) {
       setAdminId,
       editAmin,
 
-      createAdmin,
-      getAdminProfile,
-
       message,
       setMessage,
+
+      createAdmin,
+      getAdminProfile,
     }),
     [
       admin,
@@ -150,11 +150,11 @@ export function AdminContextProvider(props: { children: JSX.Element }) {
       setAdminId,
       editAmin,
 
-      createAdmin,
-      getAdminProfile,
-
       message,
       setMessage,
+
+      createAdmin,
+      getAdminProfile,
     ]
   );
 

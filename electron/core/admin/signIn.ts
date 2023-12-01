@@ -1,16 +1,16 @@
 import { ipcMain } from "electron";
 import { adminModel as AdminUser } from "../../../backend/models/adminModel";
-import { IAdmin, IParsedUser } from "../../types/interfaces";
+import { IAdmin, IParsedUser, IValues } from "../../types/interfaces";
 import { browserWindow } from "../../main";
 
 let authorized: boolean = false;
 let adminUser: IAdmin;
 let parsedUser: IParsedUser;
-const checkRequest = async (reqAdminName: string, reqPassword: string) => {
+const checkRequest = async (values: IValues) => {
   try {
     const admin = await AdminUser.findOne({
-      adminName: reqAdminName,
-      password: reqPassword,
+      adminName: values.adminName,
+      password: values.password,
     });
     if (admin) {
       adminUser = admin;
@@ -35,24 +35,21 @@ const checkRequest = async (reqAdminName: string, reqPassword: string) => {
 };
 
 export function signIn() {
-  ipcMain.handle(
-    "sign-in",
-    async (event, reqAdminName: string, reqPassword: string) => {
-      try {
-        await checkRequest(reqAdminName, reqPassword);
-        if (authorized) {
-          event.sender.send("send-admin", parsedUser);
-        } else
-          browserWindow?.webContents.send(
-            "send-message",
-            "Wrong name or password"
-          );
-        setTimeout(() => {
-          authorized = false;
-        }, 1000);
-      } catch (error) {
-        console.log(`ipcMain: ${error}`);
-      }
+  ipcMain.handle("sign-in", async (event, values: IValues) => {
+    try {
+      await checkRequest(values);
+      if (authorized) {
+        event.sender.send("send-admin", parsedUser);
+      } else
+        browserWindow?.webContents.send(
+          "send-message",
+          "Wrong name or password"
+        );
+      setTimeout(() => {
+        authorized = false;
+      }, 1000);
+    } catch (error) {
+      console.log(`ipcMain: ${error}`);
     }
-  );
+  });
 }

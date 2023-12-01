@@ -1,5 +1,5 @@
 import { IpcRendererEvent, contextBridge, ipcRenderer } from "electron";
-import { IAdmin, IDriver, ITrailer, ITruck } from "./types/interfaces";
+import { IAdmin, IDriver, ITrailer, ITruck, IValues } from "./types/interfaces";
 
 type CallbackType = (event: IpcRendererEvent, ...args: any[]) => void;
 
@@ -7,8 +7,8 @@ contextBridge.exposeInMainWorld("api", {
   signUp: (admin: IAdmin) => {
     ipcRenderer.invoke("create-new-admin", admin);
   },
-  signIn: (reqAdminName: string, reqPassword: string) => {
-    ipcRenderer.invoke("sign-in", reqAdminName, reqPassword);
+  signIn: (values: IValues) => {
+    ipcRenderer.invoke("sign-in", values);
   },
   fetchAdmin: (callback: CallbackType) => {
     ipcRenderer.on("send-admin", callback);

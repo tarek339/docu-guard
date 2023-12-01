@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTrailersData } from "../../hooks/context/trailers/TrailerContext";
+import { useTrailersData } from "../../hooks/context/TrailerContext";
 
 const TrailersListing = () => {
   const { setTrailerId, fetchTrailers, trailers } = useTrailersData();

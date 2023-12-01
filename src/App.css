@@ -8,3 +8,13 @@ html {
   margin: 0;
   padding: 0;
 }
+
+.error-border {
+  outline: 2px solid #f04438;
+  border: 1px solid transparent;
+}
+
+.main-border {
+  border: 1px solid #d3d3d3cc;
+  outline: none;
+}

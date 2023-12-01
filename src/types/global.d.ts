@@ -1,5 +1,11 @@
 import { IpcRendererEvent } from "electron";
-import { IAdmin, IDriver, ITrailer, ITruck } from "./interfaces/properties";
+import {
+  IAdmin,
+  IDriver,
+  ITrailer,
+  ITruck,
+  IValues,
+} from "./interfaces/properties";
 
 type CallbackType = (event: IpcRendererEvent, ...args: any[]) => void;
 
@@ -7,7 +13,7 @@ declare global {
   interface Window {
     api: {
       signUp: (admin: IAdmin) => void;
-      signIn: (reqAdminName: string, reqPassword: string) => void;
+      signIn: (values: IValues) => void;
       fetchAdmin: (callback: CallbackType) => void;
       fetchAdminId: (callback: CallbackType) => void;
       editProfile: (admin: IAdmin) => void;

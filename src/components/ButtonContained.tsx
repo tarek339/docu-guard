@@ -14,9 +14,12 @@ const ButtonContained = (props: {
   padding?: string | number;
   style: React.CSSProperties;
   disableRipple?: boolean;
+  type?: "button" | "submit" | "reset";
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   return (
     <Button
+      type={props.type}
       disableRipple={props.disableRipple}
       variant={props.variant}
       fullWidth
@@ -26,6 +29,7 @@ const ButtonContained = (props: {
         fontFamily: "Inter, sans-serif",
         ...props.style,
       }}
+      onClick={props.onClick}
     >
       {props.children}
     </Button>

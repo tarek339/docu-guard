@@ -22,6 +22,11 @@ export interface IAdmin {
   confirmPassword: string;
 }
 
+export interface IValues {
+  adminName: string;
+  password: string;
+}
+
 export interface IParsedUser {
   parsedId: string;
   parsedName: string;

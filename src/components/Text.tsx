@@ -22,10 +22,15 @@ const Text = (props: {
         TypographyPropsVariantOverrides
       >
     | undefined;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   return (
     <ThemeProvider theme={theme}>
-      <Typography variant={props.variant} style={props.style}>
+      <Typography
+        onClick={props.onClick}
+        variant={props.variant}
+        style={props.style}
+      >
         {props.children}
       </Typography>
     </ThemeProvider>
