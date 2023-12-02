@@ -1,5 +1,4 @@
-import { useFunctionsData } from "../../context/FunctionsContext";
-import { useTrailersData } from "../../context/TrailerContext";
+import { useFunctionsData, useTrailersData } from "../../context";
 
 const CreateTrailer = () => {
   const { resMessage } = useFunctionsData();

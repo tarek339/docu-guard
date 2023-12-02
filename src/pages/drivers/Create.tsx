@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useDriversData } from "../../context/DriversContext";
-import { useFunctionsData } from "../../context/FunctionsContext";
+import { useDriversData, useFunctionsData } from "../../context";
 
 const Create = () => {
   const {

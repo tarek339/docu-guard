@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDriversData } from "../../context/DriversContext";
-import { useFunctionsData } from "../../context/FunctionsContext";
-import { IDriver } from "../../types/interfaces/properties";
+import { IDriver } from "../../types/interfaces";
+import { useDriversData, useFunctionsData } from "../../context";
 
 const Listing = () => {
   const { setDriverId, fetchDrivers, drivers } = useDriversData();

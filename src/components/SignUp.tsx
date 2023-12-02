@@ -1,17 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { useAdminData } from "../context/AdminContext";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Block from "./parents/container/Block";
-import Form from "./parents/forms/Form";
-import Input from "./parents/forms/Input";
-import FormButton from "./parents/buttons/FormButton";
 import { motion } from "framer-motion";
-import { useFunctionsData } from "../context/FunctionsContext";
-import TextHeader from "./parents/text/TextHeader";
-import TextSmall from "./parents/text/TextSmall";
-import TextButton from "./parents/buttons/TextButton";
-import { useTranslationsData } from "../context/TranslationContext";
+import { TextButton, FormButton } from "./parents/buttons";
+import { Block } from "./parents/container";
+import { TextHeader, TextSmall } from "./parents/text";
+import { Input } from "./parents/forms";
+import { useFunctionsData, useTranslationsData } from "../context";
 
 const validationSchema = Yup.object({
   companyName: Yup.string().required("Admin name is required"),

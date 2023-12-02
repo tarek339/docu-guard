@@ -1,6 +1,6 @@
 import colors from "./colors";
 
-const style = {
+const styles = {
   icons: {
     height: "22px",
     width: "22p",
@@ -14,6 +14,7 @@ const style = {
     paddingTop: "1px",
   },
   shadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+  border: `1px solid ${colors.borderGrey}`,
 };
 
-export default style;
+export default styles;

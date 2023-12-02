@@ -1,16 +1,18 @@
 import { AppBar, Avatar, IconButton, Toolbar, Tooltip } from "@mui/material";
-import Block from "./parents/container/Block";
-import style from "../assets/theme/styles";
+import { Block } from "./parents/container";
 import { CiSearch } from "react-icons/ci";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { IoMdNotifications } from "react-icons/io";
 import tarek from "../assets/imgs/tarek.jpg";
 import colors from "../assets/theme/colors";
-import { useFunctionsData } from "../context/FunctionsContext";
-import Menu from "./Menu";
+import styles from "../assets/theme/styles";
+import { useFunctionsData, useTranslationsData } from "../context";
+import { Menu } from ".";
 
 const NavBar = () => {
   const { handleToggle, anchorRef } = useFunctionsData();
+  const { t } = useTranslationsData();
+
   return (
     <AppBar
       position="fixed"
@@ -33,9 +35,9 @@ const NavBar = () => {
           }}
         >
           <Block>
-            <Tooltip title="Search">
+            <Tooltip title={t("main.search")}>
               <IconButton size="medium" edge="start" color="inherit">
-                <CiSearch style={style.icons} />
+                <CiSearch style={styles.icons} />
               </IconButton>
             </Tooltip>
           </Block>
@@ -47,22 +49,22 @@ const NavBar = () => {
               height: "100hv",
             }}
           >
-            <Tooltip title="Contacts">
+            <Tooltip title={t("main.contacts")}>
               <IconButton
                 style={{ marginRight: "8px" }}
                 size="medium"
                 color="inherit"
               >
-                <BsFillPeopleFill style={style.icons} />
+                <BsFillPeopleFill style={styles.icons} />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Notifications">
+            <Tooltip title={t("main.notifications")}>
               <IconButton
                 style={{ marginRight: "8px" }}
                 size="medium"
                 color="inherit"
               >
-                <IoMdNotifications style={style.icons} />
+                <IoMdNotifications style={styles.icons} />
               </IconButton>
             </Tooltip>
             <IconButton

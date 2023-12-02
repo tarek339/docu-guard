@@ -16,7 +16,7 @@ const TextSmall = (props: {
       <Typography
         style={{
           fontSize: "14px",
-          color: colors.grey,
+          color: colors.smoothGrey,
           ...props.style,
         }}
       >

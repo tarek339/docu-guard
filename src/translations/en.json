@@ -6,6 +6,9 @@
       "shutDown": "Shut down",
       "register": "Register",
       "account": "Account",
+      "search": "Search",
+      "contacts": "Contacts",
+      "notifications": "Notifications",
       "noAccount": "Don't have an account?",
       "haveAccount": "Allready have an account?",
       "forgotPassword": "Forgot your password?",
@@ -20,6 +23,20 @@
       "reset": "Reset",
       "backTo": "Back to",
       "resetPassword": "reset password"
+    },
+    "siderBar": {
+      "o": "o",
+      "verview": "verview",
+      "d": "d",
+      "rivers": "rivers",
+      "t": "t",
+      "rucks": "rucks",
+      "tr": "t",
+      "ailers": "railer",
+      "a": "a",
+      "ccount": "ccount",
+      "s": "s",
+      "ettings": "ettings"
     }
   }
 }

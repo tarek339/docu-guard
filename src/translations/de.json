@@ -6,6 +6,9 @@
       "shutDown": "Ausschalten",
       "register": "Registrieren",
       "account": "Konto",
+      "search": "Suche",
+      "contacts": "Kontatke",
+      "notifications": "Meldungen",
       "noAccount": "Sie haben noch kein Konto?",
       "haveAccount": "Haben Sie bereits ein Konto?",
       "forgotPassword": "Haben Sie Ihr Passwort vergessen?",
@@ -20,6 +23,20 @@
       "reset": "Zurücksetzen",
       "backTo": "Zurück zu",
       "resetPassword": "passwort zurücksetzen"
+    },
+    "siderBar": {
+      "o": "ü",
+      "verview": "bersicht",
+      "d": "f",
+      "rivers": "ahrer",
+      "t": "l",
+      "rucks": "kw",
+      "tr": "a",
+      "ailers": "hänger",
+      "a": "k",
+      "ccount": "onto",
+      "s": "e",
+      "ettings": "instellungen"
     }
   }
 }
