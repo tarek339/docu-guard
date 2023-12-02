@@ -1,16 +1,17 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useAdminData } from "../hooks/context/AdminContext";
+import { useAdminData } from "../context/AdminContext";
 import { useCallback } from "react";
-import Block from "./Block";
-import Form from "./Form";
-import Input from "./Input";
-import colors from "../assets/theme/colors";
-import ButtonContained from "./ButtonContained";
+import Block from "./parents/container/Block";
+import Form from "./parents/forms/Form";
+import Input from "./parents/forms/Input";
+import FormButton from "./parents/buttons/FormButton";
 import { motion } from "framer-motion";
-import Text from "./Text";
-import { Link } from "@mui/material";
-import { useFunctionsData } from "../hooks/context/FunctionsContext";
+import { useFunctionsData } from "../context/FunctionsContext";
+import TextHeader from "./parents/text/TextHeader";
+import TextSmall from "./parents/text/TextSmall";
+import TextButton from "./parents/buttons/TextButton";
+import { useTranslationsData } from "../context/TranslationContext";
 
 const validationSchema = Yup.object({
   email: Yup.string().required("Your email is required"),
@@ -20,6 +21,7 @@ const ResetPassword = () => {
   const { email } = useAdminData();
   const sendRequest = useCallback(() => {}, [email]);
   const { page, setPage } = useFunctionsData();
+  const { t } = useTranslationsData();
 
   const formik = useFormik({
     initialValues: {
@@ -27,7 +29,7 @@ const ResetPassword = () => {
     },
     validationSchema,
 
-    onSubmit: (values) => {
+    onSubmit: (_values) => {
       sendRequest();
     },
   });
@@ -39,37 +41,16 @@ const ResetPassword = () => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <Text
-          style={{
-            color: colors.text.black,
-            fontWeight: 600,
-            fontSize: "32px",
-          }}
-        >
-          Reset
-        </Text>
+        <TextHeader>{t("main.reset")} </TextHeader>
         <Block style={{ display: "flex", flexDirection: "row" }}>
-          <Text style={{ color: colors.text.grey, fontSize: "14px" }}>
-            Back to&nbsp;
-          </Text>
-          <Link
-            href="#"
-            underline="hover"
-            style={{ color: colors.text.purple }}
-          >
-            <Text
-              onClick={() => setPage(page - 2)}
-              style={{ fontSize: "14px" }}
-            >
-              Login
-            </Text>
-          </Link>
+          <TextSmall>{t("main.backTo")}&nbsp;</TextSmall>
+          <TextButton onClick={() => setPage(page - 2)} children="Login" />
         </Block>
         <Block style={{ paddingTop: "10px" }}>
           <Form onSubmit={formik.handleSubmit}>
             <Input
               name="email"
-              label={"E-Mail"}
+              label={t("main.email")}
               value={formik.values.email}
               onChange={formik.handleChange}
               error={
@@ -79,22 +60,7 @@ const ResetPassword = () => {
                 formik.touched.email ? <> {formik.errors.email}</> : null
               }
             />
-            <ButtonContained
-              type="submit"
-              variant={"contained"}
-              backgroundColor={colors.button.contained}
-              color={colors.text.white}
-              style={{
-                padding: "11px 24px",
-                borderRadius: "12px",
-                marginTop: "18px",
-                width: "100%",
-                height: "48px",
-                border: `1px solid ${colors.text.purple}`,
-              }}
-            >
-              Reset password
-            </ButtonContained>
+            <FormButton children={t("main.resetPassword")} />
           </Form>
         </Block>
       </motion.div>

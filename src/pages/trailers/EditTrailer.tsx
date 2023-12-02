@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useFunctionsData } from "../../hooks/context/FunctionsContext";
-import { useTrailersData } from "../../hooks/context/TrailerContext";
+import { useFunctionsData } from "../../context/FunctionsContext";
+import { useTrailersData } from "../../context/TrailerContext";
 
 const EditTrailer = () => {
   const {

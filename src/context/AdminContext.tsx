@@ -6,15 +6,14 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { IParsedUser } from "../../types/interfaces/properties";
-import { IAdminContext } from "../../types/interfaces/adminContext";
+import { IParsedUser } from "../types/interfaces/properties";
+import { IAdminContext } from "../types/interfaces/adminContext";
 
 export const AdminContext = createContext({});
 
 export function AdminContextProvider(props: { children: JSX.Element }) {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
-
   const [admin, setAdmin] = useState({
     id: "",
     companyName: "",
@@ -52,7 +51,7 @@ export function AdminContextProvider(props: { children: JSX.Element }) {
       localStorage.setItem("adminId", parsedUser.parsedId);
       localStorage.setItem("admin", JSON.stringify(parsedUser));
       setAdminId(parsedUser.parsedId);
-      navigate("/admin-profile");
+      navigate("/dashboard");
     });
     const storedUser = localStorage.getItem("admin");
     if (storedUser) {

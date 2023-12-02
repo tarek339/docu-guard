@@ -2,19 +2,13 @@ html {
   scroll-behavior: "smooth";
 }
 
+body {
+  background-color: #f8f8f8;
+}
+
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
-}
-
-.error-border {
-  outline: 2px solid #f04438;
-  border: 1px solid transparent;
-}
-
-.main-border {
-  border: 1px solid #d3d3d3cc;
-  outline: none;
 }

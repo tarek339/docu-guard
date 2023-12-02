@@ -4,43 +4,67 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { IFunctionsContext } from "../../types/interfaces/functionsContext";
 import { useAdminData } from "./AdminContext";
+import { IFunctionsContext } from "../types/interfaces/functionsContext";
 
 export const FunctionsContext = createContext({});
 
 export function FunctionsContextProvider(props: { children: JSX.Element }) {
   const navigate = useNavigate();
-  const { setAdminId, setAdmin, setAdminName, setPassword, admin, adminId } =
-    useAdminData();
+  const {
+    setAdminId,
+    setAdminName,
+    setCompanyName,
+    setEmail,
+    setConfirmPassword,
+    setPassword,
+    admin,
+    adminId,
+  } = useAdminData();
 
   const [resMessage, setResMessage] = useState(null);
   const [topLabel, setTopLabel] = useState(false);
   const [page, setPage] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [openAlert, setOpenAlert] = useState(false);
+
+  // handle menu
+  const anchorRef = useRef<HTMLButtonElement>(null);
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+  const handleClose = (event: Event | React.SyntheticEvent) => {
+    if (
+      anchorRef.current &&
+      anchorRef.current.contains(event.target as HTMLElement)
+    ) {
+      return;
+    }
+    setOpen(false);
+  };
 
   const navigateBack = () => {
     navigate("/drivers");
   };
 
   const logOut = useCallback(() => {
+    setOpen(false);
     localStorage.removeItem("adminId");
     localStorage.removeItem("driverId");
+    localStorage.removeItem("truckId");
+    localStorage.removeItem("trailerId");
     localStorage.removeItem("admin");
     setAdminId("");
-    setAdmin({
-      id: "",
-      companyName: "",
-      adminName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
+    setCompanyName("");
     setAdminName("");
+    setEmail("");
     setPassword("");
-    navigate("sign-in");
+    setConfirmPassword("");
+    navigate("/");
   }, [admin, adminId]);
 
   const turnOffApp = () => {
@@ -61,11 +85,18 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
       setTopLabel,
       page,
       setPage,
+      open,
+      setOpen,
+      anchorRef,
+      openAlert,
+      setOpenAlert,
 
       navigateBack,
       logOut,
       navigate,
       turnOffApp,
+      handleToggle,
+      handleClose,
     }),
     [
       resMessage,
@@ -74,11 +105,18 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
       setTopLabel,
       page,
       setPage,
+      open,
+      setOpen,
+      anchorRef,
+      openAlert,
+      setOpenAlert,
 
       navigateBack,
       logOut,
       navigate,
       turnOffApp,
+      handleToggle,
+      handleClose,
     ]
   );
 
