@@ -7,8 +7,8 @@ import {
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFunctionsData } from "./FunctionsContext";
-import { ITruckContext } from "../../types/interfaces/trucksContext";
-import { ITruck } from "../../types/interfaces/properties";
+import { ITruck } from "../types/interfaces/properties";
+import { ITruckContext } from "../types/interfaces/trucksContext";
 
 export const TrucksContext = createContext({});
 

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDriversData } from "../../hooks/context/DriversContext";
-import { useFunctionsData } from "../../hooks/context/FunctionsContext";
+import { useDriversData } from "../../context/DriversContext";
+import { useFunctionsData } from "../../context/FunctionsContext";
+import { IDriver } from "../../types/interfaces/properties";
 
 const Listing = () => {
   const { setDriverId, fetchDrivers, drivers } = useDriversData();
@@ -23,7 +24,7 @@ const Listing = () => {
   return (
     <div>
       <h3>Drivers</h3>
-      {drivers.map((driver, _index) => {
+      {drivers.map((driver: IDriver, _index: number) => {
         return (
           <div key={driver.id}>
             <h3>{driver.firstName}</h3>

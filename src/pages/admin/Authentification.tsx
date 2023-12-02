@@ -1,27 +1,18 @@
-import Block from "../../components/Block";
-import SignInFormHolder from "../../components/SignInFormHolder";
+import Block from "../../components/parents/container/Block";
+import FormHolder from "../../components/FormHolder";
+import Flex from "../../components/parents/container/Flex";
 
 const Authentification = () => {
   return (
-    <Block
-      style={{
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <Flex>
       <Block
         style={{
-          backgroundColor: "#FFF",
           width: "50%",
           display: "flex",
           justifyContent: "center",
         }}
       >
-        <SignInFormHolder />
+        <FormHolder />
       </Block>
       <Block
         style={{
@@ -31,7 +22,7 @@ const Authentification = () => {
           height: "100%",
         }}
       />
-    </Block>
+    </Flex>
   );
 };
 

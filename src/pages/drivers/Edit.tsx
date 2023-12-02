@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useDriversData } from "../../hooks/context/DriversContext";
-import { useFunctionsData } from "../../hooks/context/FunctionsContext";
+import { useDriversData } from "../../context/DriversContext";
+import { useFunctionsData } from "../../context/FunctionsContext";
 
 const Edit = () => {
   const {

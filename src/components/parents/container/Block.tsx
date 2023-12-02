@@ -1,10 +1,8 @@
-import { Box } from "@mui/material";
-
 const Block = (props: {
   children?: React.ReactNode;
   style?: React.CSSProperties;
 }) => {
-  return <Box style={props.style}>{props.children}</Box>;
+  return <div style={props.style}>{props.children}</div>;
 };
 
 export default Block;

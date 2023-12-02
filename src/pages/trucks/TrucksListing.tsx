@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTrucksData } from "../../hooks/context/TrucksContext";
+import { useTrucksData } from "../../context/TrucksContext";
+import { ITruck } from "../../types/interfaces/properties";
 
 const TrucksListing = () => {
   const { setTruckId, fetchTrucks, trucks } = useTrucksData();
@@ -14,7 +15,7 @@ const TrucksListing = () => {
   return (
     <div>
       <h3>Trucks</h3>
-      {trucks.map((truck, _index) => {
+      {trucks.map((truck: ITruck, _index: number) => {
         return (
           <div key={truck.id}>
             <h3>{truck.indicator}</h3>

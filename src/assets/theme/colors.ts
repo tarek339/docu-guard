@@ -1,36 +1,14 @@
-interface IColors {
-  background: {
-    white: string;
-    black: string;
-  };
-  text: {
-    grey: string;
-    black: string;
-    white: string;
-    purple: string;
-    error: string;
-  };
-  button: {
-    contained: string;
-    text: string;
-  };
-}
-const colors: IColors = {
-  background: {
-    white: "#FFF",
-    black: "000",
-  },
-  text: {
-    grey: "#6C737F",
-    black: "#111927",
-    white: "#FFF",
-    purple: "rgb(99, 102, 241)",
-    error: "#F04438",
-  },
-  button: {
-    contained: "rgb(99, 102, 241)",
-    text: "#FFF",
-  },
+const colors = {
+  transparent: "transparent",
+  background: "#f8f8f8",
+  white: "#FFF",
+  greyWhite: "#f8f8f8",
+  black: "#000",
+  greyLight: "#d3d3d3cc",
+  grey: "#6C737F",
+  fontBlack: "#111927",
+  purple: "#6366f1",
+  error: "#F04438",
 };
 
 export default colors;

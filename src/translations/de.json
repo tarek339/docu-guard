@@ -1,0 +1,25 @@
+{
+  "translation": {
+    "main": {
+      "login": "Login",
+      "logOut": "Ausloggen",
+      "shutDown": "Ausschalten",
+      "register": "Registrieren",
+      "account": "Konto",
+      "noAccount": "Sie haben noch kein Konto?",
+      "haveAccount": "Haben Sie bereits ein Konto?",
+      "forgotPassword": "Haben Sie Ihr Passwort vergessen?",
+
+      "compName": "Firma",
+      "adminName": "Ihr Name",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "confirmPassword": "Passwort bestätigen",
+
+      "continue": "weiter",
+      "reset": "Zurücksetzen",
+      "backTo": "Zurück zu",
+      "resetPassword": "passwort zurücksetzen"
+    }
+  }
+}

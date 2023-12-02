@@ -1,17 +1,18 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useAdminData } from "../hooks/context/AdminContext";
-import { useCallback } from "react";
-import Block from "./Block";
-import Form from "./Form";
-import Input from "./Input";
-import colors from "../assets/theme/colors";
-import ButtonContained from "./ButtonContained";
+import { useAdminData } from "../context/AdminContext";
+import Block from "./parents/container/Block";
+import Form from "./parents/forms/Form";
+import Input from "./parents/forms/Input";
+import FormButton from "./parents/buttons/FormButton";
 import { motion } from "framer-motion";
-import Text from "./Text";
-import { Link } from "@mui/material";
-import { useFunctionsData } from "../hooks/context/FunctionsContext";
+import { useFunctionsData } from "../context/FunctionsContext";
 import { IValues } from "../types/interfaces/properties";
+import TextHeader from "./parents/text/TextHeader";
+import TextSmall from "./parents/text/TextSmall";
+import TextButton from "./parents/buttons/TextButton";
+import Alerts from "./parents/Alerts";
+import { useTranslationsData } from "../context/TranslationContext";
 
 const validationSchema = Yup.object({
   adminName: Yup.string().required("Admin name is required"),
@@ -19,10 +20,10 @@ const validationSchema = Yup.object({
 });
 
 const SignIn = () => {
-  const { adminName, password } = useAdminData();
-  const { setResMessage } = useFunctionsData();
+  const { adminName, password, message, setMessage } = useAdminData();
+  const { t } = useTranslationsData();
 
-  const { page, setPage } = useFunctionsData();
+  const { page, setPage, setOpenAlert } = useFunctionsData();
 
   const formik = useFormik({
     initialValues: {
@@ -35,10 +36,8 @@ const SignIn = () => {
       window.api.signIn(values);
       window.api.sendMessage(
         (_event: Electron.IpcRendererEvent, message: string) => {
-          setResMessage(message);
-          setTimeout(() => {
-            setResMessage("");
-          }, 2000);
+          setMessage(message);
+          setOpenAlert(true);
         }
       );
     },
@@ -52,39 +51,20 @@ const SignIn = () => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <Text
-          style={{
-            color: colors.text.black,
-            fontWeight: 600,
-            fontSize: "32px",
-          }}
-        >
-          Login
-        </Text>
+        <Alerts severity="error" message={message} />
+        <TextHeader>{t("main.login")}</TextHeader>
         <Block style={{ display: "flex", flexDirection: "row" }}>
-          <Text style={{ color: colors.text.grey, fontSize: "14px" }}>
-            Don't have an account? &nbsp;
-          </Text>
-          <Link
-            href="#"
-            underline="hover"
-            style={{ color: colors.text.purple }}
-          >
-            <Text
-              onClick={() => {
-                page === 0 ? setPage(page + 1) : setPage(page - 1);
-              }}
-              style={{ fontSize: "14px" }}
-            >
-              {page === 0 ? "Register" : "Login"}
-            </Text>
-          </Link>
+          <TextSmall> {t("main.noAccount")} &nbsp;</TextSmall>
+          <TextButton
+            onClick={() => (page == 0 ? setPage(page + 1) : setPage(page - 1))}
+            children={page == 0 ? t("main.register") : t("main.login")}
+          />
         </Block>
         <Block style={{ paddingTop: "10px" }}>
           <Form onSubmit={formik.handleSubmit}>
             <Input
               name="adminName"
-              label={"E-Mail"}
+              label={t("main.email")}
               value={formik.values.adminName}
               onChange={formik.handleChange}
               error={
@@ -100,7 +80,7 @@ const SignIn = () => {
 
             <Input
               name="password"
-              label={"Password"}
+              label={t("main.password")}
               value={formik.values.password}
               onChange={formik.handleChange}
               error={
@@ -111,22 +91,7 @@ const SignIn = () => {
                 formik.touched.password ? <>{formik.errors.password} </> : null
               }
             />
-            <ButtonContained
-              type="submit"
-              variant={"contained"}
-              backgroundColor={colors.button.contained}
-              color={colors.text.white}
-              style={{
-                padding: "11px 24px",
-                borderRadius: "12px",
-                marginTop: "18px",
-                width: "100%",
-                height: "48px",
-                border: `1px solid ${colors.text.purple}`,
-              }}
-            >
-              Continue
-            </ButtonContained>
+            <FormButton children={t("main.continue")} />
           </Form>
         </Block>
       </motion.div>

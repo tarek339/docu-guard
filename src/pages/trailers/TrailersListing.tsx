@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTrailersData } from "../../hooks/context/TrailerContext";
+import { useTrailersData } from "../../context/TrailerContext";
+import { ITrailer } from "../../types/interfaces/properties";
 
 const TrailersListing = () => {
   const { setTrailerId, fetchTrailers, trailers } = useTrailersData();
@@ -14,7 +15,7 @@ const TrailersListing = () => {
   return (
     <div>
       <h3>Trailers</h3>
-      {trailers.map((trailer, _index) => {
+      {trailers.map((trailer: ITrailer, _index: number) => {
         return (
           <div key={trailer.id}>
             <h3>{trailer.indicator}</h3>

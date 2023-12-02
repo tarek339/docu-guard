@@ -1,16 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import { useAdminData } from "../hooks/context/AdminContext";
+import { useAdminData } from "../context/AdminContext";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Block from "./Block";
-import Form from "./Form";
-import Input from "./Input";
-import colors from "../assets/theme/colors";
-import ButtonContained from "./ButtonContained";
+import Block from "./parents/container/Block";
+import Form from "./parents/forms/Form";
+import Input from "./parents/forms/Input";
+import FormButton from "./parents/buttons/FormButton";
 import { motion } from "framer-motion";
-import Text from "./Text";
-import { Link } from "@mui/material";
-import { useFunctionsData } from "../hooks/context/FunctionsContext";
+import { useFunctionsData } from "../context/FunctionsContext";
+import TextHeader from "./parents/text/TextHeader";
+import TextSmall from "./parents/text/TextSmall";
+import TextButton from "./parents/buttons/TextButton";
+import { useTranslationsData } from "../context/TranslationContext";
 
 const validationSchema = Yup.object({
   companyName: Yup.string().required("Admin name is required"),
@@ -25,6 +26,7 @@ const validationSchema = Yup.object({
 const SignUp = () => {
   const navigate = useNavigate();
   const { page, setPage } = useFunctionsData();
+  const { t } = useTranslationsData();
   const {
     createAdmin,
     companyName,
@@ -44,7 +46,7 @@ const SignUp = () => {
     },
     validationSchema,
 
-    onSubmit: (values) => {},
+    onSubmit: (_values) => {},
   });
 
   return (
@@ -55,39 +57,19 @@ const SignUp = () => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <Text
-          style={{
-            color: colors.text.black,
-            fontWeight: 600,
-            fontSize: "32px",
-          }}
-        >
-          Register
-        </Text>
+        <TextHeader>{t("main.register")}</TextHeader>
         <Block style={{ display: "flex", flexDirection: "row" }}>
-          <Text style={{ color: colors.text.grey, fontSize: "14px" }}>
-            Allready have an account? &nbsp;
-          </Text>
-          <Link
-            href="#"
-            underline="hover"
-            style={{ color: colors.text.purple }}
-          >
-            <Text
-              onClick={() => {
-                page === 0 ? setPage(page + 1) : setPage(page - 1);
-              }}
-              style={{ fontSize: "14px" }}
-            >
-              {page === 0 ? "Register" : "Login"}
-            </Text>
-          </Link>
+          <TextSmall>{t("main.haveAccount")} &nbsp;</TextSmall>
+          <TextButton
+            onClick={() => (page == 0 ? setPage(page + 1) : setPage(page - 1))}
+            children={page == 0 ? t("main.register") : t("main.login")}
+          />
         </Block>
         <Block style={{ paddingTop: "10px" }}>
           <Form onSubmit={formik.handleSubmit}>
             <Input
               name="companyName"
-              label={"Company"}
+              label={t("main.compName")}
               value={formik.values.companyName}
               onChange={formik.handleChange}
               error={
@@ -102,7 +84,7 @@ const SignUp = () => {
             />
             <Input
               name="adminName"
-              label={"Admin name"}
+              label={t("main.adminName")}
               value={formik.values.adminName}
               onChange={formik.handleChange}
               error={
@@ -117,7 +99,7 @@ const SignUp = () => {
             />
             <Input
               name="email"
-              label={"E-Mail"}
+              label={t("main.email")}
               value={formik.values.email}
               onChange={formik.handleChange}
               error={
@@ -129,7 +111,7 @@ const SignUp = () => {
             />
             <Input
               name="password"
-              label={"Password"}
+              label={t("main.password")}
               value={formik.values.password}
               onChange={formik.handleChange}
               error={
@@ -142,7 +124,7 @@ const SignUp = () => {
             />
             <Input
               name="confirmPassword"
-              label={"Confirm password"}
+              label={t("main.confirmPassword")}
               value={formik.values.confirmPassword}
               onChange={formik.handleChange}
               error={
@@ -155,22 +137,7 @@ const SignUp = () => {
                 ) : null
               }
             />
-            <ButtonContained
-              type="submit"
-              variant={"contained"}
-              backgroundColor={colors.button.contained}
-              color={colors.text.white}
-              style={{
-                padding: "11px 24px",
-                borderRadius: "12px",
-                marginTop: "18px",
-                width: "100%",
-                height: "48px",
-                border: `1px solid ${colors.text.purple}`,
-              }}
-            >
-              Register
-            </ButtonContained>
+            <FormButton children={t("main.register")} />
           </Form>
         </Block>
       </motion.div>

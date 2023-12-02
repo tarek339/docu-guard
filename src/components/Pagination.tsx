@@ -1,4 +1,4 @@
-import { useFunctionsData } from "../hooks/context/FunctionsContext";
+import { useFunctionsData } from "../context/FunctionsContext";
 import ResetPassword from "./ResetPassword";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
