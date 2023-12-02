@@ -1,8 +1,13 @@
 const Block = (props: {
   children?: React.ReactNode;
   style?: React.CSSProperties;
+  className?: string;
 }) => {
-  return <div style={props.style}>{props.children}</div>;
+  return (
+    <div className={props.className} style={props.style}>
+      {props.children}
+    </div>
+  );
 };
 
 export default Block;

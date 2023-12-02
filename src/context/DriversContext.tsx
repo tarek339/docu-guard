@@ -6,9 +6,8 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFunctionsData } from "./FunctionsContext";
-import { IDriver } from "../types/interfaces/properties";
-import { IDriverContext } from "../types/interfaces/driverContext";
+import { useFunctionsData } from ".";
+import { IDriver, IDriverContext } from "../types/interfaces";
 
 export const DriverContext = createContext({});
 

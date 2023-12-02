@@ -6,8 +6,8 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { IParsedUser } from "../types/interfaces/properties";
-import { IAdminContext } from "../types/interfaces/adminContext";
+import { IParsedUser } from "../../electron/types/interfaces";
+import { IAdminContext } from "../types/interfaces";
 
 export const AdminContext = createContext({});
 

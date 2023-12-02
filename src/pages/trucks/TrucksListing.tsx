@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTrucksData } from "../../context/TrucksContext";
+import { useTrucksData } from "../../context";
 import { ITruck } from "../../types/interfaces/properties";
 
 const TrucksListing = () => {

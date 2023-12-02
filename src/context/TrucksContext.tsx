@@ -6,9 +6,8 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFunctionsData } from "./FunctionsContext";
-import { ITruck } from "../types/interfaces/properties";
-import { ITruckContext } from "../types/interfaces/trucksContext";
+import { useFunctionsData } from ".";
+import { ITruck, ITruckContext } from "../types/interfaces";
 
 export const TrucksContext = createContext({});
 

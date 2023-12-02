@@ -1,7 +1,5 @@
+import { ResetPassword, SignIn, SignUp } from ".";
 import { useFunctionsData } from "../context/FunctionsContext";
-import ResetPassword from "./ResetPassword";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
 
 const Pagination = () => {
   const { page } = useFunctionsData();

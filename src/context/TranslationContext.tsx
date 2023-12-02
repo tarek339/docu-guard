@@ -7,7 +7,7 @@ import {
 } from "react";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import { IUseTranslation } from "../types/interfaces/useTranslations";
+import { IUseTranslation } from "../types/interfaces";
 import translations from "../translations";
 
 export const TranslationsContext = createContext({});

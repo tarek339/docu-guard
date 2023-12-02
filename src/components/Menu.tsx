@@ -1,6 +1,7 @@
 import {
   ClickAwayListener,
   Divider,
+  Grid,
   Grow,
   ListItemIcon,
   MenuItem,
@@ -9,15 +10,13 @@ import {
   Popper,
 } from "@mui/material";
 import { useEffect, useRef } from "react";
-import { useFunctionsData } from "../context/FunctionsContext";
-import style from "../assets/theme/styles";
-import Block from "./parents/container/Block";
+import { useFunctionsData, useTranslationsData } from "../context";
 import { IoMdLogOut } from "react-icons/io";
 import { IoPowerSharp } from "react-icons/io5";
-import TextMain from "./parents/text/TextMain";
 import colors from "../assets/theme/colors";
-import Grid from "./parents/container/Grid";
-import { useTranslationsData } from "../context/TranslationContext";
+import styles from "../assets/theme/styles";
+import { Block } from "./parents/container";
+import { TextMain } from "./parents/text";
 
 export default function Menu() {
   const { open, handleClose, anchorRef, turnOffApp, logOut } =
@@ -55,7 +54,7 @@ export default function Menu() {
               marginRight: "20px",
               width: "250px",
               borderRadius: "12px",
-              boxShadow: style.shadow,
+              boxShadow: styles.shadow,
             }}
           >
             <ClickAwayListener onClickAway={handleClose}>
@@ -75,14 +74,14 @@ export default function Menu() {
                   <Grid>
                     <MenuItem onClick={logOut}>
                       <ListItemIcon>
-                        <IoMdLogOut style={style.menuIcons} />
+                        <IoMdLogOut style={styles.menuIcons} />
                         <TextMain>{t("main.logOut")}</TextMain>
                       </ListItemIcon>
                     </MenuItem>
 
                     <MenuItem onClick={turnOffApp}>
                       <ListItemIcon>
-                        <IoPowerSharp style={style.menuIcons} />
+                        <IoPowerSharp style={styles.menuIcons} />
                         <TextMain>{t("main.shutDown")}</TextMain>
                       </ListItemIcon>
                     </MenuItem>

@@ -1,17 +1,16 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useAdminData } from "../context/AdminContext";
 import { useCallback } from "react";
-import Block from "./parents/container/Block";
-import Form from "./parents/forms/Form";
-import Input from "./parents/forms/Input";
-import FormButton from "./parents/buttons/FormButton";
 import { motion } from "framer-motion";
-import { useFunctionsData } from "../context/FunctionsContext";
-import TextHeader from "./parents/text/TextHeader";
-import TextSmall from "./parents/text/TextSmall";
-import TextButton from "./parents/buttons/TextButton";
-import { useTranslationsData } from "../context/TranslationContext";
+import {
+  useAdminData,
+  useFunctionsData,
+  useTranslationsData,
+} from "../context";
+import { Block } from "./parents/container";
+import { TextHeader, TextSmall } from "./parents/text";
+import { TextButton, FormButton } from "./parents/buttons";
+import { Form, Input } from "./parents/forms";
 
 const validationSchema = Yup.object({
   email: Yup.string().required("Your email is required"),

@@ -12,3 +12,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.icon-focus:focus {
+  color: #6366f1;
+}

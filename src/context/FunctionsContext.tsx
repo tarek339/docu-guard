@@ -8,8 +8,8 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAdminData } from "./AdminContext";
-import { IFunctionsContext } from "../types/interfaces/functionsContext";
+import { useAdminData } from ".";
+import { IFunctionsContext } from "../types/interfaces";
 
 export const FunctionsContext = createContext({});
 

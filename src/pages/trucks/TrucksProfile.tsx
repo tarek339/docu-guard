@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFunctionsData } from "../../context/FunctionsContext";
-import { useTrucksData } from "../../context/TrucksContext";
+import { useFunctionsData, useTrucksData } from "../../context";
 
 const TrucksProfile = () => {
   const { truck, truckId, fetchTruck } = useTrucksData();

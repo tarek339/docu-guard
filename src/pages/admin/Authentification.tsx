@@ -1,6 +1,5 @@
-import Block from "../../components/parents/container/Block";
-import FormHolder from "../../components/FormHolder";
-import Flex from "../../components/parents/container/Flex";
+import { FormHolder } from "../../components";
+import { Flex, Block } from "../../components/parents/container";
 
 const Authentification = () => {
   return (
