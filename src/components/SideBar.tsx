@@ -6,6 +6,7 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import RvHookupIcon from "@mui/icons-material/RvHookup";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PersonIcon from "@mui/icons-material/Person";
+import ControlPointDuplicateIcon from "@mui/icons-material/ControlPointDuplicate";
 import { useTranslationsData } from "../context/TranslationContext";
 import { useNavigate } from "react-router-dom";
 import { SideBarButton } from "./parents/buttons";
@@ -21,7 +22,7 @@ const SideBar = () => {
   return (
     <Block
       style={{
-        width: "16%",
+        width: "280px",
         height: "100vh",
         backgroundColor: colors.bgSideBar,
         top: 0,
@@ -66,6 +67,12 @@ const SideBar = () => {
           icon={<RvHookupIcon style={iconStyle} />}
           firstLetter={t("siderBar.tr")}
           rest={t("siderBar.ailers")}
+        />
+        <SideBarButton
+          onClick={() => {}}
+          icon={<ControlPointDuplicateIcon style={iconStyle} />}
+          firstLetter={t("siderBar.da")}
+          rest={t("siderBar.ta")}
         />
         <SideBarButton
           onClick={() => navigate("/account")}

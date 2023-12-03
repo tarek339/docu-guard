@@ -35,8 +35,17 @@
       "ailers": "railer",
       "a": "a",
       "ccount": "ccount",
+      "da": "a",
+      "ta": "dd data",
       "s": "s",
       "ettings": "ettings"
+    },
+    "dashboard": {
+      "totalDrivers": "Total drivers",
+      "totalTrucks": "Total trucks",
+      "totalTrailers": "Total trailer",
+      "totalActive": "Total aktiv",
+      "Utilization": "Utilization"
     }
   }
 }
