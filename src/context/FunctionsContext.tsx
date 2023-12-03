@@ -31,6 +31,7 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
   const [page, setPage] = useState(0);
   const [open, setOpen] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
+  const [appState, setAppState] = useState();
 
   // handle menu
   const anchorRef = useRef<HTMLButtonElement>(null);
@@ -90,6 +91,8 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
       anchorRef,
       openAlert,
       setOpenAlert,
+      appState,
+      setAppState,
 
       navigateBack,
       logOut,
@@ -110,6 +113,8 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
       anchorRef,
       openAlert,
       setOpenAlert,
+      appState,
+      setAppState,
 
       navigateBack,
       logOut,

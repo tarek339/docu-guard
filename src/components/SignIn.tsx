@@ -1,4 +1,4 @@
-import { Form, useFormik } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useAdminData } from "../context/AdminContext";
 import { motion } from "framer-motion";
@@ -7,7 +7,7 @@ import Alerts from "./parents/Alerts";
 import { TextButton, FormButton } from "./parents/buttons";
 import { Block } from "./parents/container";
 import { TextHeader, TextSmall } from "./parents/text";
-import { Input } from "./parents/forms";
+import { Input, Form } from "./parents/forms";
 import { useTranslationsData, useFunctionsData } from "../context";
 
 const validationSchema = Yup.object({

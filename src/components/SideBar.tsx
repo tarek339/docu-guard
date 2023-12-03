@@ -23,9 +23,10 @@ const SideBar = () => {
       style={{
         width: "16%",
         height: "100vh",
+        backgroundColor: colors.bgSideBar,
         top: 0,
         left: 0,
-        backgroundColor: colors.bgSideBar,
+        position: "fixed",
       }}
     >
       <Block
@@ -43,7 +44,7 @@ const SideBar = () => {
         }}
       >
         <SideBarButton
-          onClick={() => {}}
+          onClick={() => navigate("/dashboard")}
           icon={<SignalCellularAltIcon style={iconStyle} />}
           firstLetter={t("siderBar.o")}
           rest={t("siderBar.verview")}
@@ -73,7 +74,7 @@ const SideBar = () => {
           rest={t("siderBar.ccount")}
         />
         <SideBarButton
-          onClick={() => {}}
+          onClick={() => navigate("settings")}
           icon={<SettingsIcon style={iconStyle} />}
           firstLetter={t("siderBar.s")}
           rest={t("siderBar.ettings")}

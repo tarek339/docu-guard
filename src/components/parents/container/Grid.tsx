@@ -10,6 +10,7 @@ const Grid = (props: {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
+        width: "100%",
         ...props.style,
       }}
     >

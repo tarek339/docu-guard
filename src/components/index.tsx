@@ -6,6 +6,7 @@ import ResetPassword from "./ResetPassword";
 import SideBar from "./SideBar";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import Cards from "./Cards";
 
 export {
   FormHolder,
@@ -16,4 +17,5 @@ export {
   SideBar,
   SignUp,
   SignIn,
+  Cards,
 };
