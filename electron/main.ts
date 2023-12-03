@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow } from "electron";
 import isDev from "electron-is-dev";
 import path from "node:path";
 import { screen } from "electron";
@@ -15,7 +15,7 @@ import { signUp } from "./core/admin/signUp";
 import { signIn } from "./core/admin/signIn";
 import { connectToDatabase } from "../backend/database";
 import { editAdmin } from "./core/admin/edit";
-import { trunOff } from "./core/appInteractions";
+import { getConfig, handleConfig, trunOff } from "./core/appInteractions";
 import {
   createTruck,
   deleteTruck,
@@ -123,3 +123,5 @@ editTrailer();
 deleteTrailer();
 
 trunOff();
+handleConfig();
+getConfig();

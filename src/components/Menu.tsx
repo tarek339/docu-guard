@@ -1,7 +1,6 @@
 import {
   ClickAwayListener,
   Divider,
-  Grid,
   Grow,
   ListItemIcon,
   MenuItem,
@@ -71,21 +70,19 @@ export default function Menu() {
                     padding: "8px 8px 0px 8px",
                   }}
                 >
-                  <Grid>
-                    <MenuItem onClick={logOut}>
-                      <ListItemIcon>
-                        <IoMdLogOut style={styles.menuIcons} />
-                        <TextMain>{t("main.logOut")}</TextMain>
-                      </ListItemIcon>
-                    </MenuItem>
+                  <MenuItem onClick={logOut}>
+                    <ListItemIcon>
+                      <IoMdLogOut style={styles.menuIcons} />
+                      <TextMain>{t("main.logOut")}</TextMain>
+                    </ListItemIcon>
+                  </MenuItem>
 
-                    <MenuItem onClick={turnOffApp}>
-                      <ListItemIcon>
-                        <IoPowerSharp style={styles.menuIcons} />
-                        <TextMain>{t("main.shutDown")}</TextMain>
-                      </ListItemIcon>
-                    </MenuItem>
-                  </Grid>
+                  <MenuItem onClick={turnOffApp}>
+                    <ListItemIcon>
+                      <IoPowerSharp style={styles.menuIcons} />
+                      <TextMain>{t("main.shutDown")}</TextMain>
+                    </ListItemIcon>
+                  </MenuItem>
                 </Block>
               </MenuList>
             </ClickAwayListener>

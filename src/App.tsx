@@ -17,14 +17,16 @@ import {
   TrucksProfile,
   EditTruck,
 } from "./pages/trucks";
-import { Block, GridNoSpace } from "./components/parents/container";
+import { Block } from "./components/parents/container";
 import { NavBar, SideBar } from "./components";
+import Settings from "./pages/Settings";
 
 function App() {
   const { adminId, getAdminProfile } = useAdminData();
 
   useEffect(() => {
     getAdminProfile();
+    window.api.getConfig();
   }, [adminId]);
 
   return (
@@ -32,34 +34,34 @@ function App() {
       {adminId ? (
         <>
           <NavBar />
-          <GridNoSpace style={{ columnGap: "25px" }}>
-            <SideBar />
-            <Block style={{ marginTop: "128px" }}>
-              <Routes>
-                <Route path="/dashboard" element={<Dashboard />} />
+          <SideBar />
 
-                <Route path="/account" element={<Profile />} />
+          <Block style={{ marginTop: "100px", marginLeft: "16%" }}>
+            <Routes>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/settings" element={<Settings />} />
 
-                <Route path="/create-driver" element={<Create />} />
-                <Route path="/driver-profile/:id" element={<DriverProfile />} />
-                <Route path="/drivers" element={<Listing />} />
-                <Route path="/edit-driver/:id" element={<Edit />} />
+              <Route path="/account" element={<Profile />} />
 
-                <Route path="/create-truck" element={<CreateTruck />} />
-                <Route path="/trucks" element={<TrucksListing />} />
-                <Route path="/truck-profile/:id" element={<TrucksProfile />} />
-                <Route path="/edit-truck/:id" element={<EditTruck />} />
+              <Route path="/create-driver" element={<Create />} />
+              <Route path="/driver-profile/:id" element={<DriverProfile />} />
+              <Route path="/drivers" element={<Listing />} />
+              <Route path="/edit-driver/:id" element={<Edit />} />
 
-                <Route path="/create-trailer" element={<CreateTrailer />} />
-                <Route path="/trailers" element={<TrailersListing />} />
-                <Route
-                  path="/trailer-profile/:id"
-                  element={<TrailersProfile />}
-                />
-                <Route path="/edit-trailer/:id" element={<EditTrailer />} />
-              </Routes>
-            </Block>
-          </GridNoSpace>
+              <Route path="/create-truck" element={<CreateTruck />} />
+              <Route path="/trucks" element={<TrucksListing />} />
+              <Route path="/truck-profile/:id" element={<TrucksProfile />} />
+              <Route path="/edit-truck/:id" element={<EditTruck />} />
+
+              <Route path="/create-trailer" element={<CreateTrailer />} />
+              <Route path="/trailers" element={<TrailersListing />} />
+              <Route
+                path="/trailer-profile/:id"
+                element={<TrailersProfile />}
+              />
+              <Route path="/edit-trailer/:id" element={<EditTrailer />} />
+            </Routes>
+          </Block>
         </>
       ) : (
         <>

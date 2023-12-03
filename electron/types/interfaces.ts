@@ -53,3 +53,11 @@ export interface ITrailer {
   nextHU: string;
   nextSP: string;
 }
+
+export interface IConfig {
+  settings: ISettings;
+}
+
+export interface ISettings {
+  locale: string;
+}

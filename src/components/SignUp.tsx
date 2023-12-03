@@ -1,4 +1,4 @@
-import { Form, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAdminData } from "../context/AdminContext";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { TextButton, FormButton } from "./parents/buttons";
 import { Block } from "./parents/container";
 import { TextHeader, TextSmall } from "./parents/text";
-import { Input } from "./parents/forms";
+import { Input, Form } from "./parents/forms";
 import { useFunctionsData, useTranslationsData } from "../context";
 
 const validationSchema = Yup.object({

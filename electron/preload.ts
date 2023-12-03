@@ -102,4 +102,10 @@ contextBridge.exposeInMainWorld("api", {
   clearAdmin: (callback: CallbackType) => {
     ipcRenderer.on("clear-state-locale-storage", callback);
   },
+  sendConfig: (locale: string) => {
+    ipcRenderer.invoke("send-config", locale);
+  },
+  getConfig: () => {
+    ipcRenderer.invoke("get-config");
+  },
 });

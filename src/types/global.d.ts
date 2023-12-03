@@ -48,6 +48,9 @@ declare global {
 
       turnOffApp: (logOut: void) => void;
       clearAdmin: (callback: CallbackType) => void;
+
+      sendConfig: (locale: string) => void;
+      getConfig: () => void;
     };
   }
 }
