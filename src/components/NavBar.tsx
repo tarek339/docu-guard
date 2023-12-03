@@ -15,12 +15,12 @@ const NavBar = () => {
 
   return (
     <AppBar
-      position="fixed"
+      position="sticky"
       elevation={0}
       sx={{
         backgroundColor: colors.transparent,
         backdropFilter: "blur(2px)",
-        width: "84%",
+        marginBottom: "50px",
       }}
     >
       <Toolbar>

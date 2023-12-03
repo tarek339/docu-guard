@@ -35,8 +35,17 @@
       "ailers": "hänger",
       "a": "k",
       "ccount": "onto",
+      "da": "d",
+      "ta": "aten hinzufügen",
       "s": "e",
       "ettings": "instellungen"
+    },
+    "dashboard": {
+      "totalDrivers": "Fahrer gesamt",
+      "totalTrucks": "LKW gesamt",
+      "totalTrailers": "Anhänger gesamt",
+      "totalActive": "Gesamt aktiv",
+      "Utilization": "Auslastung"
     }
   }
 }

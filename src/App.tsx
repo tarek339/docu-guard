@@ -33,10 +33,10 @@ function App() {
     <AnimatePresence mode="wait">
       {adminId ? (
         <>
-          <NavBar />
           <SideBar />
 
-          <Block style={{ marginTop: "100px", marginLeft: "16%" }}>
+          <Block style={{ marginLeft: "280px" }}>
+            <NavBar />
             <Routes>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/settings" element={<Settings />} />

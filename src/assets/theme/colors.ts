@@ -13,6 +13,7 @@ const colors = {
   bgSideBar: "#1C2536",
   purple: "#6366f1",
   error: "#F04438",
+  green: "#10B981",
 };
 
 export default colors;
