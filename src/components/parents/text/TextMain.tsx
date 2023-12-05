@@ -3,7 +3,8 @@ import colors from "../../../assets/theme/colors";
 
 const theme = createTheme({
   typography: {
-    fontFamily: "Inter, sans-serif",
+    fontFamily:
+      "Inter, -apple-system,BlinkMacSystemFont, Segoe UI ,Helvetica,Arial,sans-serif, Apple Color Emoji , Segoe UI Emoji",
   },
 });
 

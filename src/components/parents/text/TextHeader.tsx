@@ -15,8 +15,8 @@ const TextHeader = (props: {
     <ThemeProvider theme={theme}>
       <Typography
         style={{
-          fontSize: "32px",
-          fontWeight: 600,
+          fontSize: "2rem",
+          fontWeight: 700,
           color: colors.fontBlack,
           ...props.style,
         }}

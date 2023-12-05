@@ -13,7 +13,7 @@ import translations from "../config/translations";
 export const TranslationsContext = createContext({});
 
 export function TranslationsContextProvider(props: { children: JSX.Element }) {
-  const [locale, setLocale] = useState("");
+  const [locale, setLocale] = useState("de");
 
   const resources = translations;
 
@@ -29,6 +29,9 @@ export function TranslationsContextProvider(props: { children: JSX.Element }) {
     (scope: string, option: Object) => {
       const translation = i18n.t(scope, { ...option, locale });
       if (translation === scope) {
+        console.error(
+          `No translation found for key: "${scope}" in locale: "${locale}"`
+        );
         return "No translation available";
       }
       return translation;

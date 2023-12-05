@@ -1,8 +1,8 @@
-import colors from "../assets/theme/colors";
-import { Block, Grid, GridColumn, GridNoSpace } from "./parents/container";
-import { TextHeader, TextSmall } from "./parents/text";
+import colors from "../../../assets/theme/colors";
+import { Block, Grid, GridColumn, GridNoSpace } from "../container";
+import { TextHeader, TextSmall } from "../text";
 
-const Cards = (props: {
+const OverviewCards = (props: {
   header: React.ReactNode;
   main: React.ReactNode;
   sectionOne: React.ReactNode;
@@ -15,8 +15,8 @@ const Cards = (props: {
       style={{
         borderRadius: "20px",
         boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.08)",
-        height: "111px",
-        width: "282px",
+        height: "110px",
+        width: "280px",
         backgroundColor: colors.white,
         padding: "32px 24px 32px 24px",
       }}
@@ -26,7 +26,7 @@ const Cards = (props: {
           <TextSmall style={{ textTransform: "uppercase" }}>
             {props.header}
           </TextSmall>
-          <TextHeader>{props.main} </TextHeader>
+          <TextHeader>{props.main}</TextHeader>
           <GridNoSpace style={{ columnGap: "20px" }}>
             <TextSmall style={{ color: colors.green }}>
               {props.sectionOne}{" "}
@@ -56,4 +56,4 @@ const Cards = (props: {
   );
 };
 
-export default Cards;
+export default OverviewCards;

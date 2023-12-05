@@ -1,13 +1,15 @@
 import { AppBar, Avatar, IconButton, Toolbar, Tooltip } from "@mui/material";
 import { Block } from "./parents/container";
-import { CiSearch } from "react-icons/ci";
-import { BsFillPeopleFill } from "react-icons/bs";
-import { IoMdNotifications } from "react-icons/io";
 import tarek from "../assets/imgs/tarek.jpg";
 import colors from "../assets/theme/colors";
 import styles from "../assets/theme/styles";
 import { useFunctionsData, useTranslationsData } from "../context";
 import { Menu } from ".";
+import {
+  NotificationsNoneIcon,
+  PeopleOutlineIcon,
+  SearchIcon,
+} from "./icons/index.tsx";
 
 const NavBar = () => {
   const { handleToggle, anchorRef } = useFunctionsData();
@@ -37,7 +39,7 @@ const NavBar = () => {
           <Block>
             <Tooltip title={t("main.search")}>
               <IconButton size="medium" edge="start" color="inherit">
-                <CiSearch style={styles.icons} />
+                <SearchIcon style={styles.icons} />
               </IconButton>
             </Tooltip>
           </Block>
@@ -55,7 +57,7 @@ const NavBar = () => {
                 size="medium"
                 color="inherit"
               >
-                <BsFillPeopleFill style={styles.icons} />
+                <PeopleOutlineIcon style={styles.icons} />
               </IconButton>
             </Tooltip>
             <Tooltip title={t("main.notifications")}>
@@ -64,7 +66,7 @@ const NavBar = () => {
                 size="medium"
                 color="inherit"
               >
-                <IoMdNotifications style={styles.icons} />
+                <NotificationsNoneIcon style={styles.icons} />
               </IconButton>
             </Tooltip>
             <IconButton

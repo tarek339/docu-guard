@@ -12,6 +12,7 @@ const CustomTextField = withStyles({
       backgroundColor: colors.white,
       borderRadius: "10px",
       height: "53px",
+      fontSize: "14px",
     },
     "&:hover .MuiFilledInput-root": {
       border: "1px solid lightgrey",
@@ -20,6 +21,9 @@ const CustomTextField = withStyles({
     "& .MuiFilledInput-root.Mui-focused": {
       border: `2px solid ${colors.purple}`,
       backgroundColor: colors.white,
+    },
+    "& .MuiInputLabel-root": {
+      fontSize: "14px",
     },
     "& .MuiInputLabel-root.Mui-focused": {
       backgroundColor: colors.white,

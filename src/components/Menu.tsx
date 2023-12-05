@@ -51,7 +51,7 @@ export default function Menu() {
             elevation={0}
             style={{
               marginRight: "20px",
-              width: "250px",
+              width: "200px",
               borderRadius: "12px",
               boxShadow: styles.shadow,
             }}
@@ -59,8 +59,16 @@ export default function Menu() {
             <ClickAwayListener onClickAway={handleClose}>
               <MenuList autoFocusItem={open}>
                 <Block style={{ padding: "10px 20px 10px 20px" }}>
-                  <TextMain>{t("main.account")}</TextMain>
-                  <TextMain style={{ color: colors.grey }}>
+                  <TextMain style={{ fontSize: "12px", fontWeight: 600 }}>
+                    {t("main.account").toUpperCase()}
+                  </TextMain>
+                  <TextMain
+                    style={{
+                      color: colors.grey,
+                      fontSize: "14px",
+                      paddingTop: "5px",
+                    }}
+                  >
                     Tarek Jassine
                   </TextMain>
                 </Block>
@@ -73,14 +81,18 @@ export default function Menu() {
                   <MenuItem onClick={logOut}>
                     <ListItemIcon>
                       <IoMdLogOut style={styles.menuIcons} />
-                      <TextMain>{t("main.logOut")}</TextMain>
+                      <TextMain style={{ fontSize: "14px", paddingTop: "1px" }}>
+                        {t("main.logOut")}
+                      </TextMain>
                     </ListItemIcon>
                   </MenuItem>
 
                   <MenuItem onClick={turnOffApp}>
                     <ListItemIcon>
                       <IoPowerSharp style={styles.menuIcons} />
-                      <TextMain>{t("main.shutDown")}</TextMain>
+                      <TextMain style={{ fontSize: "14px", paddingTop: "1px" }}>
+                        {t("main.shutDown")}
+                      </TextMain>
                     </ListItemIcon>
                   </MenuItem>
                 </Block>
