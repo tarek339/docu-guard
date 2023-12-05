@@ -1,15 +1,20 @@
 import colors from "../assets/theme/colors";
-import { Block } from "./parents/container";
-import SignalCellularAltIcon from "@mui/icons-material/SignalCellularAlt";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import RvHookupIcon from "@mui/icons-material/RvHookup";
-import SettingsIcon from "@mui/icons-material/Settings";
-import PersonIcon from "@mui/icons-material/Person";
-import ControlPointDuplicateIcon from "@mui/icons-material/ControlPointDuplicate";
+import { Block, GridColumn } from "./parents/container";
 import { useTranslationsData } from "../context/TranslationContext";
 import { useNavigate } from "react-router-dom";
 import { SideBarButton } from "./parents/buttons";
+import { useAdminData } from "../context";
+import { TextMain, TextSmall } from "./parents/text";
+import {
+  AppleIcon,
+  SignalCellularAltIcon,
+  PeopleAltIcon,
+  LocalShippingIcon,
+  RvHookupIcon,
+  ControlPointDuplicateIcon,
+  PersonIcon,
+  SettingsIcon,
+} from "./icons";
 
 const iconStyle = {
   fontSize: "24px",
@@ -19,6 +24,7 @@ const iconStyle = {
 const SideBar = () => {
   const navigate = useNavigate();
   const { t } = useTranslationsData();
+  const { companyName } = useAdminData();
   return (
     <Block
       style={{
@@ -36,7 +42,25 @@ const SideBar = () => {
           padding: "24px",
           borderBottom: `0.5px solid ${colors.grey}`,
         }}
-      ></Block>
+      >
+        <GridColumn style={{ justifyContent: "center", rowGap: "20px" }}>
+          <Block>
+            <AppleIcon style={{ color: "#fff" }} fontSize="large" />
+          </Block>
+          <Block
+            style={{
+              backgroundColor: colors.bgSideBarBtn,
+              borderRadius: "10px",
+              padding: "12px",
+            }}
+          >
+            <TextMain style={{ color: colors.white }}>
+              {companyName.toUpperCase()}
+            </TextMain>
+            <TextSmall>ID: 123456</TextSmall>
+          </Block>
+        </GridColumn>
+      </Block>
       <Block
         style={{
           height: "365px",

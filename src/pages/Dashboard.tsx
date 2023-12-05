@@ -1,16 +1,17 @@
 import colors from "../assets/theme/colors";
-import { Cards } from "../components";
-import { Grid } from "../components/parents/container";
+import { Block, Grid } from "../components/parents/container";
 import {
   useDriversData,
   useTrailersData,
   useTranslationsData,
   useTrucksData,
 } from "../context";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import RvHookupIcon from "@mui/icons-material/RvHookup";
-import GppGoodIcon from "@mui/icons-material/GppGood";
+import { OverviewCards, ResultsCard } from "../components/parents/cards";
+import {
+  PeopleAltIcon,
+  LocalShippingIcon,
+  RvHookupIcon,
+} from "../components/icons";
 
 const Dashboard = () => {
   const { t } = useTranslationsData();
@@ -18,9 +19,9 @@ const Dashboard = () => {
   const { trucks } = useTrucksData();
   const { trailers } = useTrailersData();
   return (
-    <>
-      <Grid style={{ justifyContent: "center", columnGap: "30px" }}>
-        <Cards
+    <Block style={{ maxWidth: "1400px", margin: "0 auto" }}>
+      <Grid>
+        <OverviewCards
           header={t("dashboard.totalDrivers")}
           main={drivers.length}
           sectionOne={"24"}
@@ -28,7 +29,7 @@ const Dashboard = () => {
           icon={<PeopleAltIcon />}
           color={colors.purple}
         />
-        <Cards
+        <OverviewCards
           header={t("dashboard.totalTrucks")}
           main={trucks.length}
           sectionOne={"25"}
@@ -36,7 +37,7 @@ const Dashboard = () => {
           icon={<LocalShippingIcon />}
           color={colors.purple}
         />
-        <Cards
+        <OverviewCards
           header={t("dashboard.totalTrailers")}
           main={trailers.length}
           sectionOne={"20"}
@@ -44,16 +45,9 @@ const Dashboard = () => {
           icon={<RvHookupIcon />}
           color={colors.purple}
         />
-        <Cards
-          header={t("dashboard.Utilization")}
-          main={`${"75"}%`}
-          sectionOne={""}
-          sectionTwo={""}
-          icon={<GppGoodIcon />}
-          color={colors.green}
-        />
+        <ResultsCard />
       </Grid>
-    </>
+    </Block>
   );
 };
 
