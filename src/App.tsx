@@ -4,7 +4,6 @@ import { useAdminData } from "./context/AdminContext";
 import { AnimatePresence } from "framer-motion";
 import Dashboard from "./pages/Dashboard";
 import { Authentification, Profile } from "./pages/admin";
-import { Create, DriverProfile, Edit, Listing } from "./pages/drivers";
 import {
   CreateTrailer,
   TrailersListing,
@@ -20,6 +19,7 @@ import {
 import { Block } from "./components/parents/container";
 import { NavBar, SideBar } from "./components";
 import Settings from "./pages/Settings";
+import { DriversListing } from "./pages/drivers";
 
 function App() {
   const { adminId, getAdminProfile } = useAdminData();
@@ -43,10 +43,7 @@ function App() {
 
               <Route path="/account" element={<Profile />} />
 
-              <Route path="/create-driver" element={<Create />} />
-              <Route path="/driver-profile/:id" element={<DriverProfile />} />
-              <Route path="/drivers" element={<Listing />} />
-              <Route path="/edit-driver/:id" element={<Edit />} />
+              <Route path="/drivers" element={<DriversListing />} />
 
               <Route path="/create-truck" element={<CreateTruck />} />
               <Route path="/trucks" element={<TrucksListing />} />

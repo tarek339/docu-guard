@@ -29,21 +29,6 @@ export function AdminContextProvider(props: { children: JSX.Element }) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [adminId, setAdminId] = useState("");
 
-  const createAdmin = useCallback(() => {
-    const newAdmin = {
-      ...admin,
-      id: crypto.randomUUID(),
-      companyName: companyName,
-      adminName: adminName,
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword,
-    };
-    setAdmin(newAdmin);
-    window.api.signUp(newAdmin);
-    navigate("/sign-in");
-  }, [admin, adminName, companyName, email, password, confirmPassword]);
-
   const getAdminProfile = useCallback(() => {
     localStorage.getItem("adminId");
     localStorage.getItem("admin");
@@ -128,7 +113,6 @@ export function AdminContextProvider(props: { children: JSX.Element }) {
       message,
       setMessage,
 
-      createAdmin,
       getAdminProfile,
     }),
     [
@@ -152,7 +136,6 @@ export function AdminContextProvider(props: { children: JSX.Element }) {
       message,
       setMessage,
 
-      createAdmin,
       getAdminProfile,
     ]
   );

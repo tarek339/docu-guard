@@ -1,32 +1,38 @@
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 import { useDriversData, useFunctionsData } from "../../context";
 
-const Create = () => {
+const EditDriver = () => {
   const {
+    driverId,
     firstName,
-    setFirstName,
     lastName,
-    setLastName,
     phoneNumber,
-    setPhoneNumber,
     licenseNumber,
-    setLicenseNumber,
     licenseValidity,
-    setLicenseValidity,
     licenseType,
-    setLicenseType,
     typeValidity,
-    setTypeValidity,
     codeNumValidity,
-    setCodeNumValidity,
     driverCardNum,
-    setDriverCardNum,
     driverCardValidity,
+    setFirstName,
+    setLastName,
+    setPhoneNumber,
+    setLicenseNumber,
+    setLicenseValidity,
+    setLicenseType,
+    setTypeValidity,
+    setCodeNumValidity,
+    setDriverCardNum,
     setDriverCardValidity,
-    createNewDriver,
+    fetchDriver,
+    editDriver,
+    deleteDriver,
   } = useDriversData();
-  const { resMessage } = useFunctionsData();
-  const navigate = useNavigate();
+  const { navigateBack, resMessage } = useFunctionsData();
+
+  useEffect(() => {
+    fetchDriver();
+  }, [driverId]);
 
   return (
     <div>
@@ -34,19 +40,17 @@ const Create = () => {
       <form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
-          createNewDriver();
+          editDriver();
         }}
       >
         <input
-          required
           type="text"
           value={firstName}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setFirstName(e.target.value)
-          }
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setFirstName(e.target.value);
+          }}
         />
         <input
-          required
           type="text"
           value={lastName}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -54,7 +58,6 @@ const Create = () => {
           }
         />
         <input
-          required
           type="text"
           value={phoneNumber}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -62,7 +65,6 @@ const Create = () => {
           }
         />
         <input
-          required
           type="text"
           value={licenseNumber}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -70,7 +72,6 @@ const Create = () => {
           }
         />
         <input
-          required
           type="text"
           value={licenseValidity}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -78,7 +79,6 @@ const Create = () => {
           }
         />
         <input
-          required
           type="text"
           value={licenseType}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -86,7 +86,6 @@ const Create = () => {
           }
         />
         <input
-          required
           type="text"
           value={typeValidity}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -94,7 +93,6 @@ const Create = () => {
           }
         />
         <input
-          required
           type="text"
           value={codeNumValidity}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -102,7 +100,6 @@ const Create = () => {
           }
         />
         <input
-          required
           type="text"
           value={driverCardNum}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -110,24 +107,16 @@ const Create = () => {
           }
         />
         <input
-          required
           type="text"
           value={driverCardValidity}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setDriverCardValidity(e.target.value)
           }
         />
-        <button type="submit">submit</button>
+        <button type="submit">Submit</button>
       </form>
-
-      <button onClick={() => navigate("/")}>sign up</button>
-      <button
-        onClick={() => {
-          navigate("/drivers");
-        }}
-      >
-        drivers
-      </button>
+      <button onClick={deleteDriver}>Delete profile</button>
+      <button onClick={navigateBack}>Back</button>
       <div>
         <h3>{resMessage}</h3>
       </div>
@@ -135,4 +124,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default EditDriver;

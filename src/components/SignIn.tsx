@@ -47,7 +47,10 @@ const SignIn = () => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <Alerts severity="error" message={message} />
+        <Alerts
+          severity={message === "Sign up succeed" ? "success" : "error"}
+          message={message}
+        />
         <TextHeader>{t("main.login")}</TextHeader>
         <Block style={{ display: "flex", flexDirection: "row" }}>
           <TextSmall> {t("main.noAccount")} &nbsp;</TextSmall>

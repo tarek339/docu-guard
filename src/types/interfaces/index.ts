@@ -5,6 +5,11 @@ import { ITrailerContext } from "./trailerContext";
 import { ITruckContext } from "./trucksContext";
 import { IUseTranslation } from "./useTranslations";
 import { IAdmin, IValues, IDriver, ITruck, ITrailer } from "./properties";
+import {
+  ITablePaginationActionsProps,
+  ITables,
+  IStyledTableParts,
+} from "./components";
 
 export type {
   IAdminContext,
@@ -18,4 +23,7 @@ export type {
   IDriver,
   ITruck,
   ITrailer,
+  ITablePaginationActionsProps,
+  ITables,
+  IStyledTableParts,
 };

@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useAdminData } from "../context/AdminContext";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -8,6 +7,7 @@ import { Block } from "./parents/container";
 import { TextHeader, TextSmall } from "./parents/text";
 import { Input, Form } from "./parents/forms";
 import { useFunctionsData, useTranslationsData } from "../context";
+import Alerts from "./parents/Alerts";
 
 const validationSchema = Yup.object({
   companyName: Yup.string().required("Admin name is required"),
@@ -20,20 +20,22 @@ const validationSchema = Yup.object({
 });
 
 const SignUp = () => {
-  const navigate = useNavigate();
-  const { page, setPage } = useFunctionsData();
+  const { page, setPage, setOpenAlert } = useFunctionsData();
   const { t } = useTranslationsData();
   const {
-    createAdmin,
     companyName,
     adminName,
     email,
     password,
     confirmPassword,
+    setAdmin,
+    message,
+    setMessage,
   } = useAdminData();
 
   const formik = useFormik({
     initialValues: {
+      id: crypto.randomUUID(),
       companyName: companyName,
       adminName: adminName,
       email: email,
@@ -42,7 +44,15 @@ const SignUp = () => {
     },
     validationSchema,
 
-    onSubmit: (_values) => {},
+    onSubmit: (values) => {
+      setAdmin(values);
+      window.api.signUp(values);
+      window.api.sendMessage((_event, message: string) => {
+        setMessage(message);
+        setOpenAlert(true);
+        setPage(page - 1);
+      });
+    },
   });
 
   return (
@@ -53,6 +63,7 @@ const SignUp = () => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
       >
+        <Alerts severity="success" message={message} />
         <TextHeader>{t("main.register")}</TextHeader>
         <Block style={{ display: "flex", flexDirection: "row" }}>
           <TextSmall>{t("main.haveAccount")} &nbsp;</TextSmall>

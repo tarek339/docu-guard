@@ -10,6 +10,10 @@ export interface IFunctionsContext {
   anchorRef: React.RefObject<HTMLButtonElement>;
   openAlert: boolean;
   setOpenAlert: React.Dispatch<React.SetStateAction<boolean>>;
+  rowsPerPage: number;
+  setRowsPerPage: React.Dispatch<React.SetStateAction<number>>;
+  totalRows: number;
+  setTotalRows: React.Dispatch<React.SetStateAction<number>>;
 
   navigateBack: () => void;
   reset: () => void;

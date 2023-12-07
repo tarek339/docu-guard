@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDriversData, useFunctionsData } from "../../context";
 
-const DriverProfile = () => {
+const DriversProfile = () => {
   const { driver, fetchDriver, driverId } = useDriversData();
   const { navigateBack } = useFunctionsData();
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const DriverProfile = () => {
 
   return (
     <div>
-      <h3>DriverProfile</h3>
+      <h3>DriversProfile</h3>
       <h3>{driver.firstName}</h3>
       <h3>{driver.lastName}</h3>
       <button onClick={navigateBack}>back</button>
@@ -22,4 +22,4 @@ const DriverProfile = () => {
   );
 };
 
-export default DriverProfile;
+export default DriversProfile;

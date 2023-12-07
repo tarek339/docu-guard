@@ -32,6 +32,8 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
   const [open, setOpen] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
   const [appState, setAppState] = useState();
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [totalRows, setTotalRows] = useState(0);
 
   // handle menu
   const anchorRef = useRef<HTMLButtonElement>(null);
@@ -93,6 +95,10 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
       setOpenAlert,
       appState,
       setAppState,
+      rowsPerPage,
+      setRowsPerPage,
+      totalRows,
+      setTotalRows,
 
       navigateBack,
       logOut,
@@ -115,6 +121,10 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
       setOpenAlert,
       appState,
       setAppState,
+      rowsPerPage,
+      setRowsPerPage,
+      totalRows,
+      setTotalRows,
 
       navigateBack,
       logOut,

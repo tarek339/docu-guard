@@ -75,7 +75,9 @@ const SideBar = () => {
           rest={t("siderBar.verview")}
         />
         <SideBarButton
-          onClick={() => {}}
+          onClick={() => {
+            navigate("/drivers");
+          }}
           icon={<PeopleAltIcon style={iconStyle} />}
           firstLetter={t("siderBar.d")}
           rest={t("siderBar.rivers")}

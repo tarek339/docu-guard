@@ -11,6 +11,12 @@ import ErrorIcon from "@mui/icons-material/Error";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SearchIcon from "@mui/icons-material/Search";
+import LastPageIcon from "@mui/icons-material/LastPage";
+import FirstPageIcon from "@mui/icons-material/FirstPage";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import AddIcon from "@mui/icons-material/Add";
+import { TbDownload, TbUpload } from "react-icons/tb";
 
 export {
   SignalCellularAltIcon,
@@ -26,4 +32,11 @@ export {
   PeopleOutlineIcon,
   NotificationsNoneIcon,
   SearchIcon,
+  LastPageIcon,
+  FirstPageIcon,
+  KeyboardArrowLeft,
+  KeyboardArrowRight,
+  AddIcon,
+  TbDownload,
+  TbUpload,
 };
