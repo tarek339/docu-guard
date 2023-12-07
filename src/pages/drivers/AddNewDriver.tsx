@@ -1,38 +1,32 @@
-import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDriversData, useFunctionsData } from "../../context";
 
-const Edit = () => {
+const AddNewDriver = () => {
   const {
-    driverId,
     firstName,
-    lastName,
-    phoneNumber,
-    licenseNumber,
-    licenseValidity,
-    licenseType,
-    typeValidity,
-    codeNumValidity,
-    driverCardNum,
-    driverCardValidity,
     setFirstName,
+    lastName,
     setLastName,
+    phoneNumber,
     setPhoneNumber,
+    licenseNumber,
     setLicenseNumber,
+    licenseValidity,
     setLicenseValidity,
+    licenseType,
     setLicenseType,
+    typeValidity,
     setTypeValidity,
+    codeNumValidity,
     setCodeNumValidity,
+    driverCardNum,
     setDriverCardNum,
+    driverCardValidity,
     setDriverCardValidity,
-    fetchDriver,
-    editDriver,
-    deleteDriver,
+    createNewDriver,
   } = useDriversData();
-  const { navigateBack, resMessage } = useFunctionsData();
-
-  useEffect(() => {
-    fetchDriver();
-  }, [driverId]);
+  const { resMessage } = useFunctionsData();
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -40,17 +34,19 @@ const Edit = () => {
       <form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
-          editDriver();
+          createNewDriver();
         }}
       >
         <input
+          required
           type="text"
           value={firstName}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setFirstName(e.target.value);
-          }}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setFirstName(e.target.value)
+          }
         />
         <input
+          required
           type="text"
           value={lastName}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -58,6 +54,7 @@ const Edit = () => {
           }
         />
         <input
+          required
           type="text"
           value={phoneNumber}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -65,6 +62,7 @@ const Edit = () => {
           }
         />
         <input
+          required
           type="text"
           value={licenseNumber}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -72,6 +70,7 @@ const Edit = () => {
           }
         />
         <input
+          required
           type="text"
           value={licenseValidity}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -79,6 +78,7 @@ const Edit = () => {
           }
         />
         <input
+          required
           type="text"
           value={licenseType}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -86,6 +86,7 @@ const Edit = () => {
           }
         />
         <input
+          required
           type="text"
           value={typeValidity}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -93,6 +94,7 @@ const Edit = () => {
           }
         />
         <input
+          required
           type="text"
           value={codeNumValidity}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -100,6 +102,7 @@ const Edit = () => {
           }
         />
         <input
+          required
           type="text"
           value={driverCardNum}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -107,16 +110,24 @@ const Edit = () => {
           }
         />
         <input
+          required
           type="text"
           value={driverCardValidity}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setDriverCardValidity(e.target.value)
           }
         />
-        <button type="submit">Submit</button>
+        <button type="submit">submit</button>
       </form>
-      <button onClick={deleteDriver}>Delete profile</button>
-      <button onClick={navigateBack}>Back</button>
+
+      <button onClick={() => navigate("/")}>sign up</button>
+      <button
+        onClick={() => {
+          navigate("/drivers");
+        }}
+      >
+        drivers
+      </button>
       <div>
         <h3>{resMessage}</h3>
       </div>
@@ -124,4 +135,4 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+export default AddNewDriver;

@@ -22,7 +22,9 @@
       "continue": "continue",
       "reset": "Reset",
       "backTo": "Back to",
-      "resetPassword": "reset password"
+      "resetPassword": "reset password",
+      "drivers": "Drivers",
+      "add": "Add"
     },
     "siderBar": {
       "o": "o",
@@ -46,6 +48,9 @@
       "totalTrailers": "Total trailer",
       "totalActive": "Total aktiv",
       "Utilization": "Utilization"
+    },
+    "table": {
+      "rowsPerPage": "Rows per page"
     }
   }
 }

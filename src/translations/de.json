@@ -12,6 +12,8 @@
       "noAccount": "Sie haben noch kein Konto?",
       "haveAccount": "Haben Sie bereits ein Konto?",
       "forgotPassword": "Haben Sie Ihr Passwort vergessen?",
+      "drivers": "Fahrer",
+      "add": "Hinzufügen",
 
       "compName": "Firma",
       "adminName": "Ihr Name",
@@ -46,6 +48,9 @@
       "totalTrailers": "Anhänger gesamt",
       "totalActive": "Gesamt aktiv",
       "Utilization": "Auslastung"
+    },
+    "table": {
+      "rowsPerPage": "Zeilen pro Seite"
     }
   }
 }

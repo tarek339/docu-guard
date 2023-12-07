@@ -7,7 +7,7 @@ import { TextHeader, TextSmall } from "../text";
 const ResultsCard = () => {
   const { t } = useTranslationsData();
   const allTrucks = 20;
-  const activeTrucks = 2;
+  const activeTrucks = 20;
   const procent = (activeTrucks * 100) / allTrucks;
 
   return (
@@ -55,6 +55,7 @@ const ResultsCard = () => {
             style={{
               height: "4px",
               width: `${procent}%`,
+              maxWidth: "100%",
               backgroundColor: procent < 50 ? colors.error : colors.green,
               position: "absolute",
               top: 0,
