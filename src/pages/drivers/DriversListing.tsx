@@ -40,7 +40,10 @@ const DriversListing = () => {
   return (
     <Block style={{ maxWidth: "1500px", margin: "0 auto", padding: "30px" }}>
       <Block style={{ marginBottom: 40 }}>
-        <Header children={t("main.drivers")} />
+        <Header
+          children={t("main.drivers")}
+          onClick={() => navigate("/add-driver")}
+        />
       </Block>
       <Tables
         page={page}

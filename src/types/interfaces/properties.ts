@@ -28,6 +28,7 @@ export interface IDriver {
   licenseValidity: string;
   licenseType: string;
   typeValidity: string;
+  codeNum: string;
   codeNumValidity: string;
   driverCardNum: string;
   driverCardValidity: string;

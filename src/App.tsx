@@ -19,7 +19,7 @@ import {
 import { Block } from "./components/parents/container";
 import { NavBar, SideBar } from "./components";
 import Settings from "./pages/Settings";
-import { DriversListing } from "./pages/drivers";
+import { AddNewDriver, DriversListing } from "./pages/drivers";
 
 function App() {
   const { adminId, getAdminProfile } = useAdminData();
@@ -44,6 +44,7 @@ function App() {
               <Route path="/account" element={<Profile />} />
 
               <Route path="/drivers" element={<DriversListing />} />
+              <Route path="/add-driver" element={<AddNewDriver />} />
 
               <Route path="/create-truck" element={<CreateTruck />} />
               <Route path="/trucks" element={<TrucksListing />} />

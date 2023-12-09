@@ -47,10 +47,6 @@ const error: React.CSSProperties = {
   bottom: -10,
 };
 
-const field: React.CSSProperties = {
-  marginTop: "20px",
-};
-
 const Input = (props: {
   name: string;
   label: string;
@@ -58,7 +54,11 @@ const Input = (props: {
   onChange: InputChangeHandler;
   error: boolean;
   children: React.ReactNode;
+  style?: React.CSSProperties;
 }) => {
+  const field: React.CSSProperties = {
+    marginTop: "20px",
+  };
   return (
     <Block style={{ position: "relative" }}>
       <CustomTextField

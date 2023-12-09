@@ -6,7 +6,10 @@ import { Block, Grid, GridNoSpace } from "../container";
 import { SearchInput } from "../forms";
 import { TextHeader } from "../text";
 
-const Header = (props: { children: React.ReactNode }) => {
+const Header = (props: {
+  children: React.ReactNode;
+  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+}) => {
   const { t } = useTranslationsData();
   return (
     <Grid style={{ height: "100%", alignItems: "center" }}>
@@ -21,6 +24,7 @@ const Header = (props: { children: React.ReactNode }) => {
             color={colors.fontBlack}
             disableElevation
             icon={<TbUpload style={{ marginBottom: "2px" }} />}
+            onClick={() => {}}
           />
           <AddButton
             children={"Export"}
@@ -28,6 +32,7 @@ const Header = (props: { children: React.ReactNode }) => {
             color={colors.fontBlack}
             disableElevation
             icon={<TbDownload style={{ marginBottom: "2px" }} />}
+            onClick={() => {}}
           />
         </GridNoSpace>
         <Block style={{ marginTop: 10 }}>
@@ -41,6 +46,7 @@ const Header = (props: { children: React.ReactNode }) => {
           bgColor={colors.purple}
           color={colors.white}
           icon={<AddIcon />}
+          onClick={props.onClick}
         />
       </Block>
     </Grid>

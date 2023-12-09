@@ -24,6 +24,8 @@ export interface IDriverContext {
   setLicenseType: React.Dispatch<React.SetStateAction<string>>;
   typeValidity: string;
   setTypeValidity: React.Dispatch<React.SetStateAction<string>>;
+  codeNum: string;
+  setCodeNum: React.Dispatch<React.SetStateAction<string>>;
   codeNumValidity: string;
   setCodeNumValidity: React.Dispatch<React.SetStateAction<string>>;
   driverCardNum: string;
@@ -31,10 +33,10 @@ export interface IDriverContext {
   driverCardValidity: string;
   setDriverCardValidity: React.Dispatch<React.SetStateAction<string>>;
 
-  createNewDriver: () => void;
   fetchDrivers: () => void;
   fetchDriver: () => void;
   editDriver: () => void;
   deleteDriver: () => void;
   resetDriver: () => void;
+  formik: any;
 }

@@ -1,4 +1,5 @@
 import colors from "../../../assets/theme/colors";
+import styles from "../../../assets/theme/styles";
 import { Block, Grid, GridColumn, GridNoSpace } from "../container";
 import { TextHeader, TextSmall } from "../text";
 
@@ -14,7 +15,7 @@ const OverviewCards = (props: {
     <Block
       style={{
         borderRadius: "20px",
-        boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.08)",
+        boxShadow: styles.shadow,
         height: "110px",
         width: "280px",
         backgroundColor: colors.white,
