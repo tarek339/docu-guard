@@ -24,7 +24,9 @@
       "backTo": "Back to",
       "resetPassword": "reset password",
       "drivers": "Drivers",
-      "add": "Add"
+      "add": "Add",
+      "addDriver": "Register Driver",
+      "cancel": "Cancel"
     },
     "siderBar": {
       "o": "o",
@@ -51,6 +53,19 @@
     },
     "table": {
       "rowsPerPage": "Rows per page"
+    },
+    "form": {
+      "field": "This field is required"
+    },
+    "driver": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "phoneNumber": "Phone",
+      "licenseNumber": "Licensenumber",
+      "validity": "Validity",
+      "licenseType": "License class",
+      "codeNum": "Codenumber available?",
+      "driverCardNum": "Cardnumber"
     }
   }
 }

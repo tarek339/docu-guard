@@ -27,7 +27,8 @@
     "backend/database/dbConfig.ts",
     "backend/models/database.js",
     "backend/models/adminModel.ts",
-    "src/components/Holder.tsx"
+    "src/components/Holder.tsx",
+    "src/components/.tsx"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

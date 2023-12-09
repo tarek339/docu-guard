@@ -26,7 +26,7 @@ export function FunctionsContextProvider(props: { children: JSX.Element }) {
     adminId,
   } = useAdminData();
 
-  const [resMessage, setResMessage] = useState(null);
+  const [resMessage, setResMessage] = useState("");
   const [topLabel, setTopLabel] = useState(false);
   const [page, setPage] = useState(0);
   const [open, setOpen] = useState(false);

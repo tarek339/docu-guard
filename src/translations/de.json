@@ -14,6 +14,8 @@
       "forgotPassword": "Haben Sie Ihr Passwort vergessen?",
       "drivers": "Fahrer",
       "add": "Hinzufügen",
+      "addDriver": "Fahrer registrieren",
+      "cancel": "Abbrechen",
 
       "compName": "Firma",
       "adminName": "Ihr Name",
@@ -51,6 +53,21 @@
     },
     "table": {
       "rowsPerPage": "Zeilen pro Seite"
+    },
+
+    "form": {
+      "field": "Dies ist ein Pflichtfeld"
+    },
+
+    "driver": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "phoneNumber": "Telefon",
+      "licenseNumber": "Führerschein-Nr.",
+      "validity": "Gültig bis",
+      "licenseType": "Klasse",
+      "codeNum": "Kennziffer vorhanden?",
+      "driverCardNum": "Fahrerkarte-Nr."
     }
   }
 }

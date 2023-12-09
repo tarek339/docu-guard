@@ -6,14 +6,17 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFunctionsData } from ".";
+import { useFunctionsData, useTranslationsData } from ".";
 import { IDriver, IDriverContext } from "../types/interfaces";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 export const DriverContext = createContext({});
 
 export function DriverContextProvider(props: { children: JSX.Element }) {
   const navigate = useNavigate();
-  const { setResMessage, resMessage } = useFunctionsData();
+  const { setResMessage, setOpenAlert } = useFunctionsData();
+  const { t } = useTranslationsData();
 
   const [driver, setDriver] = useState({
     id: "",
@@ -24,6 +27,7 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
     licenseValidity: "",
     licenseType: "",
     typeValidity: "",
+    codeNum: "",
     codeNumValidity: "",
     driverCardNum: "",
     driverCardValidity: "",
@@ -36,13 +40,28 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
   const [licenseValidity, setLicenseValidity] = useState("");
   const [licenseType, setLicenseType] = useState("");
   const [typeValidity, setTypeValidity] = useState("");
+  const [codeNum, setCodeNum] = useState("");
   const [codeNumValidity, setCodeNumValidity] = useState("");
   const [driverCardNum, setDriverCardNum] = useState("");
   const [driverCardValidity, setDriverCardValidity] = useState("");
   const [drivers, setDrivers] = useState([]);
 
-  const createNewDriver = useCallback(() => {
-    const newDriver = {
+  const validationSchema = Yup.object({
+    firstName: Yup.string().required(t("form.field")),
+    lastName: Yup.string().required(t("form.field")),
+    phoneNumber: Yup.string().required(t("form.field")),
+    licenseNumber: Yup.string().required(t("form.field")),
+    licenseValidity: Yup.string().required(t("form.field")),
+    licenseType: Yup.string().required(t("form.field")),
+    typeValidity: Yup.string().required(t("form.field")),
+    codeNumValidity: Yup.string().required(t("form.field")),
+    codeNum: Yup.string().required(t("form.field")),
+    driverCardNum: Yup.string().required(t("form.field")),
+    driverCardValidity: Yup.string().required(t("form.field")),
+  });
+
+  const formik = useFormik({
+    initialValues: {
       id: crypto.randomUUID(),
       firstName: firstName,
       lastName: lastName,
@@ -51,33 +70,23 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
       licenseValidity: licenseValidity,
       licenseType: licenseType,
       typeValidity: typeValidity,
+      codeNum: codeNum,
       codeNumValidity: codeNumValidity,
       driverCardNum: driverCardNum,
       driverCardValidity: driverCardValidity,
-    };
-    setDriver(newDriver);
-    window.api.createDriver(newDriver);
-    resetDriver();
-    window.api.sendMessage((_event: Electron.IpcRendererEvent, message) => {
-      setResMessage(message);
-      setTimeout(() => {
-        setResMessage("");
-      }, 2000);
-    });
-  }, [
-    resMessage,
-    driver,
-    firstName,
-    lastName,
-    phoneNumber,
-    licenseNumber,
-    licenseValidity,
-    licenseType,
-    typeValidity,
-    codeNumValidity,
-    driverCardNum,
-    driverCardValidity,
-  ]);
+    },
+    validationSchema,
+
+    onSubmit: (values: IDriver) => {
+      window.api.createDriver(values);
+      window.api.sendResponse(
+        (_event: Electron.IpcRendererEvent, message: string) => {
+          setResMessage(message);
+          setOpenAlert(true);
+        }
+      );
+    },
+  });
 
   const fetchDrivers = useCallback(() => {
     window.api.fetchDrivers(drivers);
@@ -107,6 +116,7 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
         setLicenseValidity(driver.licenseValidity);
         setLicenseType(driver.licenseType);
         setTypeValidity(driver.typeValidity);
+        setCodeNum(driver.codeNum);
         setCodeNumValidity(driver.codeNumValidity);
         setDriverCardNum(driver.driverCardNum);
         setDriverCardValidity(driver.driverCardValidity);
@@ -121,6 +131,7 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
     driver.licenseValidity,
     driver.licenseType,
     driver.typeValidity,
+    driver.codeNum,
     driver.codeNumValidity,
     driver.driverCardNum,
     driver.driverCardValidity,
@@ -137,6 +148,7 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
       licenseValidity: licenseValidity,
       licenseType: licenseType,
       typeValidity: typeValidity,
+      codeNum: codeNum,
       codeNumValidity: codeNumValidity,
       driverCardNum: driverCardNum,
       driverCardValidity: driverCardValidity,
@@ -158,6 +170,7 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
     licenseValidity,
     licenseType,
     typeValidity,
+    codeNum,
     codeNumValidity,
     driverCardNum,
     driverCardValidity,
@@ -181,6 +194,7 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
       licenseValidity: "",
       licenseType: "",
       typeValidity: "",
+      codeNum: "",
       codeNumValidity: "",
       driverCardNum: "",
       driverCardValidity: "",
@@ -192,6 +206,7 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
       setLicenseValidity(""),
       setLicenseType(""),
       setTypeValidity(""),
+      setCodeNum(""),
       setCodeNumValidity(""),
       setDriverCardNum(""),
       setDriverCardValidity("");
@@ -220,6 +235,8 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
       setLicenseType,
       typeValidity,
       setTypeValidity,
+      codeNum,
+      setCodeNum,
       codeNumValidity,
       setCodeNumValidity,
       driverCardNum,
@@ -227,12 +244,12 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
       driverCardValidity,
       setDriverCardValidity,
 
-      createNewDriver,
       fetchDrivers,
       fetchDriver,
       editDriver,
       deleteDriver,
       resetDriver,
+      formik,
     }),
     [
       driver,
@@ -256,6 +273,8 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
       setLicenseType,
       typeValidity,
       setTypeValidity,
+      codeNum,
+      setCodeNum,
       codeNumValidity,
       setCodeNumValidity,
       driverCardNum,
@@ -263,12 +282,12 @@ export function DriverContextProvider(props: { children: JSX.Element }) {
       driverCardValidity,
       setDriverCardValidity,
 
-      createNewDriver,
       fetchDrivers,
       fetchDriver,
       editDriver,
       deleteDriver,
       resetDriver,
+      formik,
     ]
   );
 

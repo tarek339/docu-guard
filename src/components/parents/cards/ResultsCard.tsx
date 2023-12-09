@@ -1,4 +1,5 @@
 import colors from "../../../assets/theme/colors";
+import styles from "../../../assets/theme/styles";
 import { useTranslationsData } from "../../../context";
 import { ErrorIcon, GppGoodIcon } from "../../icons";
 import { Block, Grid, GridColumn, GridNoSpace } from "../container";
@@ -14,7 +15,7 @@ const ResultsCard = () => {
     <Block
       style={{
         borderRadius: "20px",
-        boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.08)",
+        boxShadow: styles.shadow,
         height: "110px",
         width: "280px",
         backgroundColor: colors.white,

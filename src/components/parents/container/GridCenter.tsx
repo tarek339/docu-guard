@@ -1,6 +1,6 @@
 import React from "react";
 
-const Grid = (props: {
+const GridCenter = (props: {
   children: JSX.Element | React.ReactNode;
   style?: React.CSSProperties;
 }) => {
@@ -9,7 +9,8 @@ const Grid = (props: {
       style={{
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "center",
+        width: "100%",
         ...props.style,
       }}
     >
@@ -18,4 +19,4 @@ const Grid = (props: {
   );
 };
 
-export default Grid;
+export default GridCenter;

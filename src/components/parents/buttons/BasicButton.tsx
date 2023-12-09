@@ -1,13 +1,13 @@
 import { Button } from "@mui/material";
 import colors from "../../../assets/theme/colors";
 
-const FormButton = (props: {
+const BasicButton = (props: {
   children: React.ReactNode;
   style?: React.CSSProperties;
+  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }) => {
   return (
     <Button
-      type="submit"
       disableRipple
       variant="contained"
       fullWidth
@@ -23,10 +23,11 @@ const FormButton = (props: {
         border: `1px solid ${colors.purple}`,
         ...props.style,
       }}
+      onClick={props.onClick}
     >
       {props.children}
     </Button>
   );
 };
 
-export default FormButton;
+export default BasicButton;

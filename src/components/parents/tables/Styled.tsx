@@ -5,6 +5,7 @@ import colors from "../../../assets/theme/colors";
 export const tableContainer: React.CSSProperties = {
   borderRadius: "20px",
   border: "0.5px solid #d3d3d3cc",
+  boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.08)",
 };
 
 export const StyledTableCell = styled(TableCell)(() => ({

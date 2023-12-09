@@ -7,6 +7,7 @@ const AddButton = (props: {
   bgColor: string;
   color: string;
   disableElevation?: boolean;
+  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }) => {
   return (
     <Button
@@ -17,10 +18,11 @@ const AddButton = (props: {
         backgroundColor: props.bgColor,
         color: props.color,
         fontFamily: "Inter, sans-serif",
-        borderRadius: "12px",
+        borderRadius: "10px",
         height: "40px",
         ...props.style,
       }}
+      onClick={props.onClick}
     >
       {props.children}
     </Button>

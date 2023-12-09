@@ -1,6 +1,6 @@
 export interface IFunctionsContext {
-  resMessage: string | null;
-  setResMessage: React.Dispatch<React.SetStateAction<string | null>>;
+  resMessage: string;
+  setResMessage: React.Dispatch<React.SetStateAction<string>>;
   topLabel: boolean;
   setTopLabel: React.Dispatch<React.SetStateAction<boolean>>;
   page: number;

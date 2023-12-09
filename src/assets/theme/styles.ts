@@ -11,7 +11,7 @@ const styles = {
     width: "22p",
     paddingRight: "5px",
   },
-  shadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+  shadow: "0px 1px 2px rgba(0, 0, 0, 0.08)",
   border: `1px solid ${colors.borderGrey}`,
 };
 
