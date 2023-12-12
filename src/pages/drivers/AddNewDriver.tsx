@@ -6,7 +6,11 @@ import {
   Input,
 } from "../../components/parents/forms";
 import { GridNoSpace } from "../../components/parents/container";
-import { BasicButton, FormButton } from "../../components/parents/buttons";
+import {
+  BasicButton,
+  FormButton,
+  InputFileUpload,
+} from "../../components/parents/buttons";
 import { Grid, MenuItem } from "@mui/material";
 import DateSelecter from "../../components/parents/forms/DateSelecter";
 import dayjs from "dayjs";
@@ -342,13 +346,16 @@ const AddNewDriver = () => {
             />
           </Grid>
         </Grid>
-        <GridNoSpace style={{ width: "30%", columnGap: 25 }}>
-          <FormButton children={t("main.register")} />
-          <BasicButton
-            children={t("main.cancel")}
-            onClick={() => navigate("/drivers")}
-          />
-        </GridNoSpace>
+        <Grid container direction="row" justifyContent="space-between">
+          <GridNoSpace style={{ width: "30%", columnGap: 25 }}>
+            <FormButton children={t("main.register")} />
+            <BasicButton
+              children={t("main.cancel")}
+              onClick={() => navigate("/drivers")}
+            />
+          </GridNoSpace>
+          <InputFileUpload />
+        </Grid>
       </Form>
     </AddFormHolder>
   );

@@ -7,7 +7,7 @@ import {
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { ITruck, ITruckContext } from "../types/interfaces";
-import { useData } from "./AppContext";
+import { useData } from "../context/AppContext";
 
 export const TrucksContext = createContext({});
 

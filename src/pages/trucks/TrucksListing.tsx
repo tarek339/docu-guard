@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ITruck } from "../../types/interfaces/properties";
-import { useTrucksData } from "../../context/TrucksContext";
+import { useTrucksData } from "../../unused/TrucksContext";
+import { useData } from "../../context/AppContext";
 
 const TrucksListing = () => {
-  const { setTruckId, fetchTrucks, trucks } = useTrucksData();
+  const { setTruckId, trucks } = useData();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchTrucks();
-    localStorage.removeItem("truckId");
-  }, []);
+  // useEffect(() => {
+  //   fetchTrucks();
+  //   localStorage.removeItem("truckId");
+  // }, []);
 
   return (
     <div>

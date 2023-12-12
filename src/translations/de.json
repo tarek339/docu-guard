@@ -56,7 +56,9 @@
     },
 
     "form": {
-      "field": "Dies ist ein Pflichtfeld"
+      "field": "Dies ist ein Pflichtfeld",
+      "import": "Importieren",
+      "export": "Exportieren"
     },
 
     "driver": {

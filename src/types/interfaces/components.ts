@@ -73,3 +73,49 @@ export interface IDropDownMenu {
   menuItems: React.ReactNode;
   style?: React.CSSProperties;
 }
+
+export interface IHeader {
+  headerChildren: React.ReactNode;
+  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  onClickImport: React.MouseEventHandler<HTMLButtonElement> | undefined;
+}
+
+export interface IListingHolder {
+  headerChildren: React.ReactNode;
+  children: React.ReactNode;
+  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  onClickImport: React.MouseEventHandler<HTMLButtonElement> | undefined;
+}
+
+export interface IAddButton {
+  style?: React.CSSProperties;
+  children: React.ReactNode;
+  icon?: JSX.Element;
+  bgColor: string;
+  color: string;
+  disableElevation?: boolean;
+  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+}
+
+export interface IBasicButton {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+}
+
+export interface IFormButton {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}
+
+export interface ISideBarButton {
+  firstLetter: React.ReactNode;
+  rest: React.ReactNode;
+  icon: JSX.Element;
+  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+}
+
+export interface ITextButton {
+  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  children: React.ReactNode;
+}

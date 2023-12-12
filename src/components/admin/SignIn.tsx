@@ -1,8 +1,8 @@
-import { FormButton } from "./parents/buttons";
-import { Input, Form } from "./parents/forms";
-import { AdminFormHolder } from ".";
-import { useTranslationsData } from "../context/TranslationContext";
-import { useData } from "../context/AppContext";
+import { FormButton } from "../parents/buttons";
+import { Input, Form } from "../parents/forms";
+import { AdminFormHolder } from "..";
+import { useTranslationsData } from "../../context/TranslationContext";
+import { useData } from "../../context/AppContext";
 
 const SignIn = () => {
   const { formiks } = useData();

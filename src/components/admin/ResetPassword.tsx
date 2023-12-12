@@ -3,12 +3,12 @@ import * as Yup from "yup";
 import { useCallback } from "react";
 import { motion } from "framer-motion";
 
-import { Block } from "./parents/container";
-import { TextHeader, TextSmall } from "./parents/text";
-import { TextButton, FormButton } from "./parents/buttons";
-import { Form, Input } from "./parents/forms";
-import { useTranslationsData } from "../context/TranslationContext";
-import { useData } from "../context/AppContext";
+import { Block } from "../parents/container";
+import { TextHeader, TextSmall } from "../parents/text";
+import { TextButton, FormButton } from "../parents/buttons";
+import { Form, Input } from "../parents/forms";
+import { useTranslationsData } from "../../context/TranslationContext";
+import { useData } from "../../context/AppContext";
 
 const validationSchema = Yup.object({
   email: Yup.string().required("Your email is required"),
