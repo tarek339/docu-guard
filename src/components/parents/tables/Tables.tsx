@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import { ITables } from "../../../types/interfaces";
 import { StyledTableCell, TableMenu, TablePaginationActions } from ".";
 import { tableContainer } from "./Styled";
-import { useTranslationsData } from "../../../context";
+import { useTranslationsData } from "../../../context/TranslationContext";
 
 export default function Tables(props: ITables) {
   const { t } = useTranslationsData();
@@ -60,9 +60,6 @@ export default function Tables(props: ITables) {
               </StyledTableCell>
               <StyledTableCell align="left">
                 {props.tableHeadThree}
-              </StyledTableCell>
-              <StyledTableCell align="left">
-                {props.tableHeadFour}
               </StyledTableCell>
             </TableRow>
           </TableHead>

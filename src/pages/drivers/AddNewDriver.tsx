@@ -1,32 +1,41 @@
 import { useNavigate } from "react-router-dom";
-import { useDriversData, useTranslationsData } from "../../context";
-import { AddFormHolder, Form, Input } from "../../components/parents/forms";
+import {
+  AddFormHolder,
+  DropDownMenu,
+  Form,
+  Input,
+} from "../../components/parents/forms";
 import { GridNoSpace } from "../../components/parents/container";
 import { BasicButton, FormButton } from "../../components/parents/buttons";
-import { Grid } from "@mui/material";
+import { Grid, MenuItem } from "@mui/material";
+import DateSelecter from "../../components/parents/forms/DateSelecter";
+import dayjs from "dayjs";
+import { answers, licenseTypes } from "../../components";
+import { useData } from "../../context/AppContext";
+import { useTranslationsData } from "../../context/TranslationContext";
 
 const AddNewDriver = () => {
-  const { formik } = useDriversData();
   const navigate = useNavigate();
+  const { driverFormik } = useData();
   const { t } = useTranslationsData();
 
   return (
     <AddFormHolder header={t("main.addDriver")}>
-      <Form onSubmit={formik.handleSubmit}>
+      <Form onSubmit={driverFormik.handleSubmit}>
         <Grid container spacing={3}>
           <Grid item xs>
             <Input
               name="firstName"
               label={t("driver.firstName")}
-              value={formik.values.firstName}
-              onChange={formik.handleChange}
+              value={driverFormik.values.firstName}
+              onChange={driverFormik.handleChange}
               error={
-                Boolean(formik.errors.firstName) &&
-                Boolean(formik.touched.firstName)
+                Boolean(driverFormik.errors.firstName) &&
+                Boolean(driverFormik.touched.firstName)
               }
               children={
-                formik.touched.firstName ? (
-                  <> {formik.errors.firstName}</>
+                driverFormik.touched.firstName ? (
+                  <> {driverFormik.errors.firstName}</>
                 ) : null
               }
             />
@@ -35,14 +44,16 @@ const AddNewDriver = () => {
             <Input
               name="lastName"
               label={t("driver.lastName")}
-              value={formik.values.lastName}
-              onChange={formik.handleChange}
+              value={driverFormik.values.lastName}
+              onChange={driverFormik.handleChange}
               error={
-                Boolean(formik.errors.lastName) &&
-                Boolean(formik.touched.lastName)
+                Boolean(driverFormik.errors.lastName) &&
+                Boolean(driverFormik.touched.lastName)
               }
               children={
-                formik.touched.lastName ? <> {formik.errors.lastName}</> : null
+                driverFormik.touched.lastName ? (
+                  <> {driverFormik.errors.lastName}</>
+                ) : null
               }
             />
           </Grid>
@@ -50,15 +61,85 @@ const AddNewDriver = () => {
             <Input
               name="phoneNumber"
               label={t("driver.phoneNumber")}
-              value={formik.values.phoneNumber}
-              onChange={formik.handleChange}
+              value={driverFormik.values.phoneNumber}
+              onChange={driverFormik.handleChange}
               error={
-                Boolean(formik.errors.phoneNumber) &&
-                Boolean(formik.touched.phoneNumber)
+                Boolean(driverFormik.errors.phoneNumber) &&
+                Boolean(driverFormik.touched.phoneNumber)
               }
               children={
-                formik.touched.phoneNumber ? (
-                  <> {formik.errors.phoneNumber}</>
+                driverFormik.touched.phoneNumber ? (
+                  <> {driverFormik.errors.phoneNumber}</>
+                ) : null
+              }
+            />
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs={4}>
+            <Input
+              name="street"
+              label={t("driver.street")}
+              value={driverFormik.values.street}
+              onChange={driverFormik.handleChange}
+              error={
+                Boolean(driverFormik.errors.street) &&
+                Boolean(driverFormik.touched.street)
+              }
+              children={
+                driverFormik.touched.street ? (
+                  <> {driverFormik.errors.street}</>
+                ) : null
+              }
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <Input
+              name="houseNum"
+              label={t("driver.houseNum")}
+              value={driverFormik.values.houseNum}
+              onChange={driverFormik.handleChange}
+              error={
+                Boolean(driverFormik.errors.houseNum) &&
+                Boolean(driverFormik.touched.houseNum)
+              }
+              children={
+                driverFormik.touched.houseNum ? (
+                  <> {driverFormik.errors.houseNum}</>
+                ) : null
+              }
+            />
+          </Grid>
+          <Grid item xs>
+            <Input
+              name="zipCode"
+              label={t("driver.zipCode")}
+              value={driverFormik.values.zipCode}
+              onChange={driverFormik.handleChange}
+              error={
+                Boolean(driverFormik.errors.zipCode) &&
+                Boolean(driverFormik.touched.zipCode)
+              }
+              children={
+                driverFormik.touched.zipCode ? (
+                  <> {driverFormik.errors.zipCode}</>
+                ) : null
+              }
+            />
+          </Grid>
+          <Grid item xs>
+            <Input
+              name="location"
+              label={t("driver.location")}
+              value={driverFormik.values.location}
+              onChange={driverFormik.handleChange}
+              error={
+                Boolean(driverFormik.errors.location) &&
+                Boolean(driverFormik.touched.location)
+              }
+              children={
+                driverFormik.touched.location ? (
+                  <> {driverFormik.errors.location}</>
                 ) : null
               }
             />
@@ -69,32 +150,43 @@ const AddNewDriver = () => {
             <Input
               name="licenseNumber"
               label={t("driver.licenseNumber")}
-              value={formik.values.licenseNumber}
-              onChange={formik.handleChange}
+              value={driverFormik.values.licenseNumber}
+              onChange={driverFormik.handleChange}
               error={
-                Boolean(formik.errors.licenseNumber) &&
-                Boolean(formik.touched.licenseNumber)
+                Boolean(driverFormik.errors.licenseNumber) &&
+                Boolean(driverFormik.touched.licenseNumber)
               }
               children={
-                formik.touched.licenseNumber ? (
-                  <> {formik.errors.licenseNumber}</>
+                driverFormik.touched.licenseNumber ? (
+                  <> {driverFormik.errors.licenseNumber}</>
                 ) : null
               }
             />
           </Grid>
           <Grid item xs>
-            <Input
+            <DateSelecter
               name="licenseValidity"
-              label={t("driver.validity")}
-              value={formik.values.licenseValidity}
-              onChange={formik.handleChange}
-              error={
-                Boolean(formik.errors.licenseValidity) &&
-                Boolean(formik.touched.licenseValidity)
+              views={["year", "month", "day"]}
+              format={"DD.MM.YYYY"}
+              value={
+                driverFormik.values.licenseValidity
+                  ? dayjs(driverFormik.values.licenseValidity).format(
+                      "DD.MM.YYYY"
+                    )
+                  : null
               }
+              onChange={(value) => {
+                const date = dayjs(value);
+                driverFormik.setFieldValue("licenseValidity", date);
+              }}
+              error={
+                Boolean(driverFormik.errors.licenseValidity) &&
+                Boolean(driverFormik.touched.licenseValidity)
+              }
+              label={t("driver.validity")}
               children={
-                formik.touched.licenseValidity ? (
-                  <> {formik.errors.licenseValidity}</>
+                driverFormik.touched.licenseValidity ? (
+                  <> {driverFormik.errors.licenseValidity}</>
                 ) : null
               }
             />
@@ -102,35 +194,50 @@ const AddNewDriver = () => {
         </Grid>
         <Grid container spacing={3}>
           <Grid item xs>
-            <Input
+            <DropDownMenu
               name="licenseType"
               label={t("driver.licenseType")}
-              value={formik.values.licenseType}
-              onChange={formik.handleChange}
+              value={driverFormik.values.licenseType}
+              onChange={driverFormik.handleChange}
               error={
-                Boolean(formik.errors.licenseType) &&
-                Boolean(formik.touched.licenseType)
+                Boolean(driverFormik.errors.licenseType) &&
+                Boolean(driverFormik.touched.licenseType)
               }
               children={
-                formik.touched.licenseType ? (
-                  <> {formik.errors.licenseType}</>
+                driverFormik.touched.licenseType ? (
+                  <> {driverFormik.errors.licenseType}</>
                 ) : null
               }
+              menuItems={licenseTypes.map((type, index) => {
+                return (
+                  <MenuItem key={index} value={type.value}>
+                    {type.value}
+                  </MenuItem>
+                );
+              })}
             />
           </Grid>
           <Grid item xs>
-            <Input
+            <DateSelecter
               name="typeValidity"
-              label={t("driver.validity")}
-              value={formik.values.typeValidity}
-              onChange={formik.handleChange}
-              error={
-                Boolean(formik.errors.typeValidity) &&
-                Boolean(formik.touched.typeValidity)
+              views={["year", "month", "day"]}
+              format={"DD.MM.YYYY"}
+              value={
+                driverFormik.values.typeValidity
+                  ? dayjs(driverFormik.values.typeValidity).format("DD.MM.YYYY")
+                  : null
               }
+              onChange={(value) =>
+                driverFormik.setFieldValue("typeValidity", dayjs(value))
+              }
+              error={
+                Boolean(driverFormik.errors.typeValidity) &&
+                Boolean(driverFormik.touched.typeValidity)
+              }
+              label={t("driver.validity")}
               children={
-                formik.touched.typeValidity ? (
-                  <> {formik.errors.typeValidity}</>
+                driverFormik.touched.typeValidity ? (
+                  <> {driverFormik.errors.typeValidity}</>
                 ) : null
               }
             />
@@ -138,33 +245,52 @@ const AddNewDriver = () => {
         </Grid>
         <Grid container spacing={3}>
           <Grid item xs>
-            <Input
+            <DropDownMenu
               name="codeNum"
               label={t("driver.codeNum")}
-              value={formik.values.codeNum}
-              onChange={formik.handleChange}
+              value={driverFormik.values.codeNum}
+              onChange={driverFormik.handleChange}
               error={
-                Boolean(formik.errors.codeNum) &&
-                Boolean(formik.touched.codeNum)
+                Boolean(driverFormik.errors.codeNum) &&
+                Boolean(driverFormik.touched.codeNum)
               }
               children={
-                formik.touched.codeNum ? <> {formik.errors.codeNum}</> : null
+                driverFormik.touched.codeNum ? (
+                  <> {driverFormik.errors.codeNum}</>
+                ) : null
               }
+              menuItems={answers.map((answer, index) => {
+                return (
+                  <MenuItem key={index} value={answer.value}>
+                    {answer.value}
+                  </MenuItem>
+                );
+              })}
             />
           </Grid>
           <Grid item xs>
-            <Input
+            <DateSelecter
               name="codeNumValidity"
-              label={t("driver.validity")}
-              value={formik.values.codeNumValidity}
-              onChange={formik.handleChange}
-              error={
-                Boolean(formik.errors.codeNumValidity) &&
-                Boolean(formik.touched.codeNumValidity)
+              views={["year", "month", "day"]}
+              format={"DD.MM.YYYY"}
+              value={
+                driverFormik.values.codeNumValidity
+                  ? dayjs(driverFormik.values.codeNumValidity).format(
+                      "DD.MM.YYYY"
+                    )
+                  : null
               }
+              onChange={(value) =>
+                driverFormik.setFieldValue("codeNumValidity", dayjs(value))
+              }
+              error={
+                Boolean(driverFormik.errors.codeNumValidity) &&
+                Boolean(driverFormik.touched.codeNumValidity)
+              }
+              label={t("driver.validity")}
               children={
-                formik.touched.codeNumValidity ? (
-                  <> {formik.errors.codeNumValidity}</>
+                driverFormik.touched.codeNumValidity ? (
+                  <> {driverFormik.errors.codeNumValidity}</>
                 ) : null
               }
             />
@@ -175,32 +301,42 @@ const AddNewDriver = () => {
             <Input
               name="driverCardNum"
               label={t("driver.driverCardNum")}
-              value={formik.values.driverCardNum}
-              onChange={formik.handleChange}
+              value={driverFormik.values.driverCardNum}
+              onChange={driverFormik.handleChange}
               error={
-                Boolean(formik.errors.driverCardNum) &&
-                Boolean(formik.touched.driverCardNum)
+                Boolean(driverFormik.errors.driverCardNum) &&
+                Boolean(driverFormik.touched.driverCardNum)
               }
               children={
-                formik.touched.driverCardNum ? (
-                  <> {formik.errors.driverCardNum}</>
+                driverFormik.touched.driverCardNum ? (
+                  <> {driverFormik.errors.driverCardNum}</>
                 ) : null
               }
             />
           </Grid>
           <Grid item xs>
-            <Input
+            <DateSelecter
               name="driverCardValidity"
-              label={t("driver.validity")}
-              value={formik.values.driverCardValidity}
-              onChange={formik.handleChange}
-              error={
-                Boolean(formik.errors.driverCardValidity) &&
-                Boolean(formik.touched.driverCardValidity)
+              views={["year", "month", "day"]}
+              format={"DD.MM.YYYY"}
+              value={
+                driverFormik.values.driverCardValidity
+                  ? dayjs(driverFormik.values.driverCardValidity).format(
+                      "DD.MM.YYYY"
+                    )
+                  : null
               }
+              onChange={(value) =>
+                driverFormik.setFieldValue("driverCardValidity", dayjs(value))
+              }
+              error={
+                Boolean(driverFormik.errors.driverCardValidity) &&
+                Boolean(driverFormik.touched.driverCardValidity)
+              }
+              label={t("driver.validity")}
               children={
-                formik.touched.driverCardValidity ? (
-                  <> {formik.errors.driverCardValidity}</>
+                driverFormik.touched.driverCardValidity ? (
+                  <> {driverFormik.errors.driverCardValidity}</>
                 ) : null
               }
             />

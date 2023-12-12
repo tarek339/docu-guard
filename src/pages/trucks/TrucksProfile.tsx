@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFunctionsData, useTrucksData } from "../../context";
+import { useTrucksData } from "../../context/TrucksContext";
+import { useData } from "../../context/AppContext";
 
 const TrucksProfile = () => {
   const { truck, truckId, fetchTruck } = useTrucksData();
-  const { navigateBack } = useFunctionsData();
+  const { navigateBack } = useData();
   const navigate = useNavigate();
 
   useEffect(() => {

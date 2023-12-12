@@ -1,4 +1,4 @@
-import { useAdminData } from "../../context";
+import { useData } from "../../context/AppContext";
 
 const Profile = () => {
   const {
@@ -15,7 +15,7 @@ const Profile = () => {
     setConfirmPassword,
     editAmin,
     message,
-  } = useAdminData();
+  } = useData();
 
   return (
     <div>

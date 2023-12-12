@@ -21,6 +21,7 @@ const readFile = (locale: string) => {
     oldLocale = locale;
     const updatedLocale = JSON.stringify({ settings: { locale } }, null, 2);
     fs.promises.writeFile(file, updatedLocale, "utf-8");
+    browserWindow?.webContents.send("send-response", locale);
   } catch (error) {
     console.log(error);
   }

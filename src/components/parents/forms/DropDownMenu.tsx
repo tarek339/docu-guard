@@ -1,24 +1,27 @@
-import Block from "../container/Block";
-import { IInput } from "../../../types/interfaces";
+import { Block } from "../container";
 import { CustomTextField, errorStyle } from ".";
+import { IDropDownMenu } from "../../../types/interfaces/components";
 
-const Input = (props: IInput) => {
+const DropDownMenu = (props: IDropDownMenu) => {
   return (
     <Block style={{ position: "relative" }}>
       <CustomTextField
         name={props.name}
-        InputProps={{ disableUnderline: true }}
         label={props.label}
         variant="filled"
         fullWidth
         value={props.value}
         onChange={props.onChange}
         error={props.error}
+        InputProps={{ disableUnderline: true }}
+        select
         margin="normal"
-      />
+      >
+        {props.menuItems}
+      </CustomTextField>
       <Block style={errorStyle}>{props.children}</Block>
     </Block>
   );
 };
 
-export default Input;
+export default DropDownMenu;

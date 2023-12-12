@@ -1,3 +1,10 @@
+import {
+  DateValidationError,
+  PickerChangeHandlerContext,
+} from "@mui/x-date-pickers";
+
+type InputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => void;
+
 export interface ITablePaginationActionsProps {
   count: number;
   page: number;
@@ -15,7 +22,6 @@ export interface ITables {
   tableHeadOne: string;
   tableHeadTwo: string;
   tableHeadThree: string;
-  tableHeadFour: string;
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
   rowsPerPage: number;
@@ -29,4 +35,41 @@ export interface IStyledTableParts {
   firstChild: string;
   secondChild: string;
   thirdChild: string;
+}
+
+export interface IDateSelecter {
+  name: string;
+  label: string;
+  views: ("year" | "month" | "day")[];
+  format: string;
+  value: string | null;
+  onChange:
+    | ((
+        value: string | null,
+        context: PickerChangeHandlerContext<DateValidationError>
+      ) => void)
+    | undefined;
+  error: boolean;
+  children: React.ReactNode;
+}
+
+export interface IInput {
+  name: string;
+  label: string;
+  value: string;
+  onChange: InputChangeHandler;
+  error: boolean;
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}
+
+export interface IDropDownMenu {
+  name: string;
+  label: string;
+  value: string;
+  onChange: InputChangeHandler;
+  error: boolean;
+  children: React.ReactNode;
+  menuItems: React.ReactNode;
+  style?: React.CSSProperties;
 }

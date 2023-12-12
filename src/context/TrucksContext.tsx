@@ -6,14 +6,14 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFunctionsData } from ".";
 import { ITruck, ITruckContext } from "../types/interfaces";
+import { useData } from "./AppContext";
 
 export const TrucksContext = createContext({});
 
 export function TrucksContextProvider(props: { children: JSX.Element }) {
   const navigate = useNavigate();
-  const { setResMessage, resMessage } = useFunctionsData();
+  const { setResMessage, resMessage } = useData();
 
   const [truck, setTruck] = useState({
     id: "",

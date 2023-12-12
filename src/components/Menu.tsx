@@ -9,17 +9,17 @@ import {
   Popper,
 } from "@mui/material";
 import { useEffect, useRef } from "react";
-import { useFunctionsData, useTranslationsData } from "../context";
 import { IoMdLogOut } from "react-icons/io";
 import { IoPowerSharp } from "react-icons/io5";
 import colors from "../assets/theme/colors";
 import styles from "../assets/theme/styles";
 import { Block } from "./parents/container";
 import { TextMain } from "./parents/text";
+import { useTranslationsData } from "../context/TranslationContext";
+import { useData } from "../context/AppContext";
 
 export default function Menu() {
-  const { open, handleClose, anchorRef, turnOffApp, logOut } =
-    useFunctionsData();
+  const { open, handleClose, anchorRef, turnOffApp, logOut } = useData();
   const { t } = useTranslationsData();
 
   // return focus to the button when we transitioned from !open -> open

@@ -1,8 +1,8 @@
 import { ResetPassword, SignIn, SignUp } from ".";
-import { useFunctionsData } from "../context/FunctionsContext";
+import { useData } from "../context/AppContext";
 
 const Pagination = () => {
-  const { page } = useFunctionsData();
+  const { page } = useData();
 
   return (
     <>{page === 0 ? <SignIn /> : page === 1 ? <SignUp /> : <ResetPassword />}</>

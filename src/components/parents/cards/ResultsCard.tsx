@@ -1,6 +1,6 @@
 import colors from "../../../assets/theme/colors";
 import styles from "../../../assets/theme/styles";
-import { useTranslationsData } from "../../../context";
+import { useTranslationsData } from "../../../context/TranslationContext";
 import { ErrorIcon, GppGoodIcon } from "../../icons";
 import { Block, Grid, GridColumn, GridNoSpace } from "../container";
 import { TextHeader, TextSmall } from "../text";

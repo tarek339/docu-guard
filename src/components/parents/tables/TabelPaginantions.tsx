@@ -1,5 +1,4 @@
 import { Box, IconButton, useTheme } from "@mui/material";
-import { useFunctionsData } from "../../../context";
 import { ITablePaginationActionsProps } from "../../../types/interfaces";
 import {
   FirstPageIcon,
@@ -7,13 +6,14 @@ import {
   KeyboardArrowRight,
   LastPageIcon,
 } from "../../icons";
+import { useData } from "../../../context/AppContext";
 
 export default function TablePaginationActions(
   props: ITablePaginationActionsProps
 ) {
   const theme = useTheme();
   const { count, onPageChange } = props;
-  const { page, rowsPerPage } = useFunctionsData();
+  const { page, rowsPerPage } = useData();
 
   const handleFirstPageButtonClick = (
     event: React.MouseEvent<HTMLButtonElement>

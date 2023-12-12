@@ -1,7 +1,8 @@
-import { useFunctionsData, useTrailersData } from "../../context";
+import { useData } from "../../context/AppContext";
+import { useTrailersData } from "../../context/TrailerContext";
 
 const CreateTrailer = () => {
-  const { resMessage } = useFunctionsData();
+  const { resMessage } = useData();
   const {
     indicator,
     setIndicator,

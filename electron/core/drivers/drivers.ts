@@ -3,49 +3,32 @@ import { IDriver } from "../../types/interfaces";
 import fs from "fs";
 import { driverBackUpModel as DriverBackUpModel } from "../../../backend/models/backUpDriverModal";
 import { browserWindow } from "../../main";
+import { driverModel as Driver } from "../../../backend/models/driverModel";
 
 const file = "backend/json/drivers.json";
 
 // create driver
-const logDriver = (driver: IDriver): void => {
-  let newPerson = {
-    drivers: [
-      {
-        id: driver.id,
-        firstName: driver.firstName,
-        lastName: driver.lastName,
-        phoneNumber: driver.phoneNumber,
-        licenseNumber: driver.licenseNumber,
-        licenseValidity: driver.licenseValidity,
-        licenseType: driver.licenseType,
-        typeValidity: driver.typeValidity,
-        codeNumValidity: driver.codeNumValidity,
-        driverCardNum: driver.driverCardNum,
-        driverCardValidity: driver.driverCardValidity,
-      },
-    ],
-  };
+const logDriver = async (driver: IDriver) => {
+  const newDriver = new Driver({
+    id: driver.id,
+    firstName: driver.firstName,
+    lastName: driver.lastName,
+    phoneNumber: driver.phoneNumber,
+    street: driver.street,
+    houseNum: driver.houseNum,
+    zipCode: driver.zipCode,
+    location: driver.location,
+    licenseNumber: driver.licenseNumber,
+    licenseValidity: driver.licenseValidity,
+    licenseType: driver.licenseType,
+    typeValidity: driver.typeValidity,
+    codeNum: driver.codeNum,
+    codeNumValidity: driver.codeNumValidity,
+    driverCardNum: driver.driverCardNum,
+    driverCardValidity: driver.driverCardValidity,
+  });
   try {
-    fs.readFile(file, "utf-8", (_err, data) => {
-      if (data) {
-        const oldJsonData = JSON.parse(data);
-        const newJsonData = newPerson;
-        const oldDrivers = oldJsonData.drivers;
-        const newDrivers = newJsonData.drivers;
-
-        let oldDriversArr: IDriver[] = [];
-        let newDriversArr: IDriver[] = [];
-
-        for (let i in oldDrivers) oldDriversArr.push(oldDrivers[i]);
-        for (let i in newDrivers) newDriversArr.push(newDrivers[i]);
-        let newArr = oldDriversArr.concat(newDriversArr);
-
-        let jsonData = {
-          drivers: newArr,
-        };
-        fs.promises.writeFile(file, JSON.stringify(jsonData, null, 2));
-      }
-    });
+    await newDriver.save();
   } catch (error) {
     console.log(error);
   }
@@ -128,6 +111,10 @@ const readEdit = (comingData: IDriver) => {
         driver.firstName = comingData.firstName;
         driver.lastName = comingData.lastName;
         driver.phoneNumber = comingData.phoneNumber;
+        driver.street = comingData.street;
+        driver.houseNum = comingData.houseNum;
+        driver.zipCode = comingData.zipCode;
+        driver.location = comingData.location;
         driver.licenseNumber = comingData.licenseNumber;
         driver.licenseValidity = comingData.licenseValidity;
         driver.licenseType = comingData.licenseType;

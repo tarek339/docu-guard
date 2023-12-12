@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { useFunctionsData, useTrucksData } from "../../context";
+import { useTrucksData } from "../../context/TrucksContext";
+import { useData } from "../../context/AppContext";
 
 const EditTruck = () => {
   const {
@@ -20,7 +21,7 @@ const EditTruck = () => {
     editTruck,
     deleteTruck,
   } = useTrucksData();
-  const { navigateBack, resMessage } = useFunctionsData();
+  const { navigateBack, resMessage } = useData();
 
   useEffect(() => {
     fetchTruck();

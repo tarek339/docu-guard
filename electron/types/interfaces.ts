@@ -3,10 +3,15 @@ export interface IDriver {
   firstName: string;
   lastName: string;
   phoneNumber: string;
+  street: string;
+  houseNum: string;
+  zipCode: string;
+  location: string;
   licenseNumber: string;
   licenseValidity: string;
   licenseType: string;
   typeValidity: string;
+  codeNum: string;
   codeNumValidity: string;
   driverCardNum: string;
   driverCardValidity: string;

@@ -3,16 +3,17 @@ import { Block } from "./parents/container";
 import tarek from "../assets/imgs/tarek.jpg";
 import colors from "../assets/theme/colors";
 import styles from "../assets/theme/styles";
-import { useFunctionsData, useTranslationsData } from "../context";
 import { Menu } from ".";
 import {
   NotificationsNoneIcon,
   PeopleOutlineIcon,
   SearchIcon,
 } from "./icons/index.tsx";
+import { useData } from "../context/AppContext.tsx";
+import { useTranslationsData } from "../context/TranslationContext.tsx";
 
 const NavBar = () => {
-  const { handleToggle, anchorRef } = useFunctionsData();
+  const { handleToggle, anchorRef } = useData();
   const { t } = useTranslationsData();
 
   return (

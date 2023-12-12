@@ -2,25 +2,22 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useCallback } from "react";
 import { motion } from "framer-motion";
-import {
-  useAdminData,
-  useFunctionsData,
-  useTranslationsData,
-} from "../context";
+
 import { Block } from "./parents/container";
 import { TextHeader, TextSmall } from "./parents/text";
 import { TextButton, FormButton } from "./parents/buttons";
 import { Form, Input } from "./parents/forms";
+import { useTranslationsData } from "../context/TranslationContext";
+import { useData } from "../context/AppContext";
 
 const validationSchema = Yup.object({
   email: Yup.string().required("Your email is required"),
 });
 
 const ResetPassword = () => {
-  const { email } = useAdminData();
-  const sendRequest = useCallback(() => {}, [email]);
-  const { page, setPage } = useFunctionsData();
+  const { email, page, setPage } = useData();
   const { t } = useTranslationsData();
+  const sendRequest = useCallback(() => {}, [email]);
 
   const formik = useFormik({
     initialValues: {

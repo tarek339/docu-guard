@@ -3,10 +3,11 @@ import colors from "../assets/theme/colors";
 import { Pagination } from ".";
 import { TextSmall } from "./parents/text";
 import { TextButton } from "./parents/buttons";
-import { useFunctionsData, useTranslationsData } from "../context";
+import { useData } from "../context/AppContext";
+import { useTranslationsData } from "../context/TranslationContext";
 
 const FormHolder = () => {
-  const { page, setPage } = useFunctionsData();
+  const { page, setPage } = useData();
   const { t } = useTranslationsData();
   return (
     <Block
