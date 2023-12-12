@@ -1,5 +1,5 @@
 import colors from "../../../assets/theme/colors";
-import { useTranslationsData } from "../../../context";
+import { useTranslationsData } from "../../../context/TranslationContext";
 import { AddIcon, TbDownload, TbUpload } from "../../icons";
 import { AddButton } from "../buttons";
 import { Block, Grid, GridNoSpace } from "../container";
@@ -35,12 +35,12 @@ const Header = (props: {
             onClick={() => {}}
           />
         </GridNoSpace>
-        <Block style={{ marginTop: 10 }}>
+        <Block>
           <SearchInput />
         </Block>
       </Block>
 
-      <Block style={{ marginBottom: 10 }}>
+      <Block>
         <AddButton
           children={t("main.add")}
           bgColor={colors.purple}

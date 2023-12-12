@@ -1,7 +1,8 @@
-import { useFunctionsData, useTrucksData } from "../../context";
+import { useData } from "../../context/AppContext";
+import { useTrucksData } from "../../context/TrucksContext";
 
 const CreateTruck = () => {
-  const { resMessage } = useFunctionsData();
+  const { resMessage } = useData();
   const {
     indicator,
     setIndicator,

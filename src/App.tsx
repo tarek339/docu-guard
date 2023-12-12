@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
-import { useAdminData } from "./context/AdminContext";
 import { AnimatePresence } from "framer-motion";
 import Dashboard from "./pages/Dashboard";
 import { Authentification, Profile } from "./pages/admin";
@@ -20,9 +19,10 @@ import { Block } from "./components/parents/container";
 import { NavBar, SideBar } from "./components";
 import Settings from "./pages/Settings";
 import { AddNewDriver, DriversListing } from "./pages/drivers";
+import { useData } from "./context/AppContext";
 
 function App() {
-  const { adminId, getAdminProfile } = useAdminData();
+  const { adminId, getAdminProfile } = useData();
 
   useEffect(() => {
     getAdminProfile();

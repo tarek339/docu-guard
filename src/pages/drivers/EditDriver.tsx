@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDriversData, useFunctionsData } from "../../context";
+import { useData } from "../../context/AppContext";
 
 const EditDriver = () => {
   const {
@@ -27,8 +27,9 @@ const EditDriver = () => {
     fetchDriver,
     editDriver,
     deleteDriver,
-  } = useDriversData();
-  const { navigateBack, resMessage } = useFunctionsData();
+    navigateBack,
+    resMessage,
+  } = useData();
 
   useEffect(() => {
     fetchDriver();

@@ -1,22 +1,19 @@
 import { motion } from "framer-motion";
-import { TextButton } from "./parents/buttons";
-import { Block } from "./parents/container";
-import { TextHeader, TextSmall } from "./parents/text";
-import Alerts from "./parents/Alerts";
-import {
-  useAdminData,
-  useFunctionsData,
-  useTranslationsData,
-} from "../context";
+import { TextButton } from "../buttons";
+import { Block } from "../container";
+import { TextHeader, TextSmall } from "../text";
+import Alerts from "../Alerts";
+import { useData } from "../../../context/AppContext";
+import { useTranslationsData } from "../../../context/TranslationContext";
 
 const AdminFormHolder = (props: {
   header: React.ReactNode;
   main: React.ReactNode;
   children: JSX.Element;
 }) => {
-  const { page, setPage } = useFunctionsData();
-  const { message } = useAdminData();
+  const { page, setPage, message } = useData();
   const { t } = useTranslationsData();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -24,7 +21,10 @@ const AdminFormHolder = (props: {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Alerts severity="success" message={message} />
+      <Alerts
+        severity={message === "Sign up succeed" ? "success" : "error"}
+        message={message}
+      />
       <TextHeader>{props.header}</TextHeader>
       <Block style={{ display: "flex", flexDirection: "row" }}>
         <TextSmall>{props.main} &nbsp;</TextSmall>

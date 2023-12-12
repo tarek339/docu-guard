@@ -22,4 +22,6 @@ export interface IAdminContext {
   createAdmin: () => void;
   getAdminProfile: () => void;
   editAmin: () => void;
+  formik: any;
+  formiks: any;
 }

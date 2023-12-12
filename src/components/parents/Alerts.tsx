@@ -1,12 +1,12 @@
 import { Snackbar } from "@mui/material";
 import Alert, { AlertColor } from "@mui/material/Alert";
-import { useFunctionsData } from "../../context/FunctionsContext";
+import { useData } from "../../context/AppContext";
 
 const Alerts = (props: {
   severity: AlertColor | undefined;
   message: string;
 }) => {
-  const { openAlert, setOpenAlert } = useFunctionsData();
+  const { openAlert, setOpenAlert } = useData();
 
   const handleClose = (_e?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === "clickaway") {

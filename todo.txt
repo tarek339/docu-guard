@@ -1,0 +1,22 @@
+color: #6366f1
+components/parents/forms/DateSelecter.tsx
+components/parents/forms/DropDownMenu.tsx
+pages/drivers/addNewDriver.tsx 167, 221, 273, 318
+types/interfaces/components   IDateSelecter
+
+select
+select input should not be grey on focus
+menu boxshadow 0px 1px 2px rgba(0, 0, 0, 0.08)
+if possible bg color while hovering over menu items to purple color
+
+date
+bg color of month and year button to purple
+fix formation of date error: value.isBefore is not a function
+
+start server with npm run dev
+
+https://material-kit-pro-react.devias.io/dashboard/customers/:customerId/edit
+
+login 
+tarek
+123

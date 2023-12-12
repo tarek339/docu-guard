@@ -1,119 +1,86 @@
-import { useAdminData } from "../context/AdminContext";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import { FormButton } from "./parents/buttons";
 import { Input, Form } from "./parents/forms";
-import { useFunctionsData, useTranslationsData } from "../context";
 import { AdminFormHolder } from ".";
-
-const validationSchema = Yup.object({
-  companyName: Yup.string().required("Admin name is required"),
-  adminName: Yup.string().required("Admin name is required"),
-  email: Yup.string().required("Admin name is required"),
-  password: Yup.string().required("Password is required"),
-  confirmPassword: Yup.string()
-    .required("Password is required")
-    .oneOf([Yup.ref("password")], "Passwords must match"),
-});
+import { useData } from "../context/AppContext";
+import { useTranslationsData } from "../context/TranslationContext";
 
 const SignUp = () => {
-  const { page, setPage, setOpenAlert } = useFunctionsData();
   const { t } = useTranslationsData();
-  const {
-    companyName,
-    adminName,
-    email,
-    password,
-    confirmPassword,
-    setAdmin,
-    setMessage,
-  } = useAdminData();
-
-  const formik = useFormik({
-    initialValues: {
-      id: crypto.randomUUID(),
-      companyName: companyName,
-      adminName: adminName,
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword,
-    },
-    validationSchema,
-
-    onSubmit: (values) => {
-      setAdmin(values);
-      window.api.signUp(values);
-      window.api.sendMessage((_event, message: string) => {
-        setMessage(message);
-        setOpenAlert(true);
-        setPage(page - 1);
-      });
-    },
-  });
+  const { adminFormik } = useData();
 
   return (
     <AdminFormHolder header={t("main.register")} main={t("main.haveAccount")}>
-      <Form onSubmit={formik.handleSubmit}>
+      <Form onSubmit={adminFormik.handleSubmit}>
         <Input
           name="companyName"
           label={t("main.compName")}
-          value={formik.values.companyName}
-          onChange={formik.handleChange}
+          value={adminFormik.values.companyName}
+          onChange={adminFormik.handleChange}
           error={
-            Boolean(formik.errors.companyName) &&
-            Boolean(formik.touched.companyName)
+            Boolean(adminFormik.errors.companyName) &&
+            Boolean(adminFormik.touched.companyName)
           }
           children={
-            formik.touched.companyName ? (
-              <> {formik.errors.companyName}</>
+            adminFormik.touched.companyName ? (
+              <> {adminFormik.errors.companyName}</>
             ) : null
           }
         />
         <Input
           name="adminName"
           label={t("main.adminName")}
-          value={formik.values.adminName}
-          onChange={formik.handleChange}
+          value={adminFormik.values.adminName}
+          onChange={adminFormik.handleChange}
           error={
-            Boolean(formik.errors.adminName) &&
-            Boolean(formik.touched.adminName)
+            Boolean(adminFormik.errors.adminName) &&
+            Boolean(adminFormik.touched.adminName)
           }
           children={
-            formik.touched.adminName ? <> {formik.errors.adminName}</> : null
+            adminFormik.touched.adminName ? (
+              <> {adminFormik.errors.adminName}</>
+            ) : null
           }
         />
         <Input
           name="email"
           label={t("main.email")}
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          error={Boolean(formik.errors.email) && Boolean(formik.touched.email)}
-          children={formik.touched.email ? <> {formik.errors.email}</> : null}
+          value={adminFormik.values.email}
+          onChange={adminFormik.handleChange}
+          error={
+            Boolean(adminFormik.errors.email) &&
+            Boolean(adminFormik.touched.email)
+          }
+          children={
+            adminFormik.touched.email ? <> {adminFormik.errors.email}</> : null
+          }
         />
         <Input
           name="password"
           label={t("main.password")}
-          value={formik.values.password}
-          onChange={formik.handleChange}
+          value={adminFormik.values.password}
+          onChange={adminFormik.handleChange}
           error={
-            Boolean(formik.errors.password) && Boolean(formik.touched.password)
+            Boolean(adminFormik.errors.password) &&
+            Boolean(adminFormik.touched.password)
           }
           children={
-            formik.touched.password ? <>{formik.errors.password} </> : null
+            adminFormik.touched.password ? (
+              <>{adminFormik.errors.password} </>
+            ) : null
           }
         />
         <Input
           name="confirmPassword"
           label={t("main.confirmPassword")}
-          value={formik.values.confirmPassword}
-          onChange={formik.handleChange}
+          value={adminFormik.values.confirmPassword}
+          onChange={adminFormik.handleChange}
           error={
-            Boolean(formik.errors.confirmPassword) &&
-            Boolean(formik.touched.confirmPassword)
+            Boolean(adminFormik.errors.confirmPassword) &&
+            Boolean(adminFormik.touched.confirmPassword)
           }
           children={
-            formik.touched.confirmPassword ? (
-              <>{formik.errors.confirmPassword} </>
+            adminFormik.touched.confirmPassword ? (
+              <>{adminFormik.errors.confirmPassword} </>
             ) : null
           }
         />

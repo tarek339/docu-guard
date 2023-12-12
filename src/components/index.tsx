@@ -7,7 +7,8 @@ import SideBar from "./SideBar";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Alerts from "./parents/Alerts";
-import AdminFormHolder from "./AdminFormHolder";
+import AdminFormHolder from "./parents/forms/AdminFormHolder";
+import { licenseTypes, answers } from "./MenuItemValue";
 
 export {
   FormHolder,
@@ -20,4 +21,6 @@ export {
   SignIn,
   Alerts,
   AdminFormHolder,
+  licenseTypes,
+  answers,
 };

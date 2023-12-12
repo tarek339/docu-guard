@@ -8,9 +8,9 @@ export const tableContainer: React.CSSProperties = {
   boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.08)",
 };
 
-export const StyledTableCell = styled(TableCell)(() => ({
+export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: colors.tableBg,
+    backgroundColor: theme.palette.action.hover,
     fontSize: "12px",
     textTransform: "uppercase",
     fontWeight: 600,

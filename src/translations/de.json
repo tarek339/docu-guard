@@ -63,10 +63,14 @@
       "firstName": "Vorname",
       "lastName": "Nachname",
       "phoneNumber": "Telefon",
+      "street": "Straße",
+      "houseNum": "Nr.",
+      "zipCode": "PLZ",
+      "location": "Ort",
       "licenseNumber": "Führerschein-Nr.",
       "validity": "Gültig bis",
       "licenseType": "Klasse",
-      "codeNum": "Kennziffer vorhanden?",
+      "codeNum": "Kennziffer 95 vorhanden?",
       "driverCardNum": "Fahrerkarte-Nr."
     }
   }

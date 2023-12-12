@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { useFunctionsData, useTrailersData } from "../../context";
+import { useTrailersData } from "../../context/TrailerContext";
+import { useData } from "../../context/AppContext";
 
 const EditTrailer = () => {
   const {
@@ -20,7 +21,7 @@ const EditTrailer = () => {
     editTrailer,
     deleteTrailer,
   } = useTrailersData();
-  const { navigateBack, resMessage } = useFunctionsData();
+  const { navigateBack, resMessage } = useData();
 
   useEffect(() => {
     fetchTrailer();

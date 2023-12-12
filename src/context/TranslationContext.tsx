@@ -39,13 +39,17 @@ export function TranslationsContextProvider(props: { children: JSX.Element }) {
     [locale]
   );
 
-  useEffect(() => {
+  const setNewLocale = useCallback(() => {
     window.api.sendResponse(
       (_event: Electron.IpcRendererEvent, locale: string) => {
         setLocale(locale);
       }
     );
   }, [locale]);
+
+  useEffect(() => {
+    setNewLocale();
+  }, []);
 
   const contextValue = {
     locale,

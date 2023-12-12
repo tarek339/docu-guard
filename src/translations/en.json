@@ -61,10 +61,14 @@
       "firstName": "First name",
       "lastName": "Last name",
       "phoneNumber": "Phone",
+      "street": "Street",
+      "houseNum": "Nr.",
+      "zipCode": "ZIP Code",
+      "location": "Location",
       "licenseNumber": "Licensenumber",
       "validity": "Validity",
       "licenseType": "License class",
-      "codeNum": "Codenumber available?",
+      "codeNum": "Codenumber 95 available?",
       "driverCardNum": "Cardnumber"
     }
   }

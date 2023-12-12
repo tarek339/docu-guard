@@ -1,23 +1,18 @@
 import colors from "../assets/theme/colors";
 import { Block, Grid } from "../components/parents/container";
-import {
-  useDriversData,
-  useTrailersData,
-  useTranslationsData,
-  useTrucksData,
-} from "../context";
+
 import { OverviewCards, ResultsCard } from "../components/parents/cards";
 import {
   PeopleAltIcon,
   LocalShippingIcon,
   RvHookupIcon,
 } from "../components/icons";
+import { useTranslationsData } from "../context/TranslationContext";
+import { useData } from "../context/AppContext";
 
 const Dashboard = () => {
   const { t } = useTranslationsData();
-  const { drivers } = useDriversData();
-  const { trucks } = useTrucksData();
-  const { trailers } = useTrailersData();
+  const { drivers, trucks, trailers } = useData();
   return (
     <Block style={{ maxWidth: "1400px", margin: "0 auto" }}>
       <Grid>

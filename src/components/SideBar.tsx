@@ -3,7 +3,6 @@ import { Block, GridColumn } from "./parents/container";
 import { useTranslationsData } from "../context/TranslationContext";
 import { useNavigate } from "react-router-dom";
 import { SideBarButton } from "./parents/buttons";
-import { useAdminData } from "../context";
 import { TextMain, TextSmall } from "./parents/text";
 import {
   AppleIcon,
@@ -15,6 +14,7 @@ import {
   PersonIcon,
   SettingsIcon,
 } from "./icons";
+import { useData } from "../context/AppContext";
 
 const iconStyle = {
   fontSize: "24px",
@@ -24,7 +24,7 @@ const iconStyle = {
 const SideBar = () => {
   const navigate = useNavigate();
   const { t } = useTranslationsData();
-  const { companyName } = useAdminData();
+  const { companyName } = useData();
   return (
     <Block
       style={{

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTrailersData } from "../../context";
 import { ITrailer } from "../../types/interfaces";
+import { useTrailersData } from "../../context/TrailerContext";
 
 const TrailersListing = () => {
   const { setTrailerId, fetchTrailers, trailers } = useTrailersData();
