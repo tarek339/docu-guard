@@ -1,10 +1,10 @@
-import { Block } from "./parents/container";
-import colors from "../assets/theme/colors";
-import { Pagination } from ".";
-import { TextSmall } from "./parents/text";
-import { TextButton } from "./parents/buttons";
-import { useData } from "../context/AppContext";
-import { useTranslationsData } from "../context/TranslationContext";
+import { Block } from "../parents/container";
+import colors from "../../assets/theme/colors";
+import { Pagination } from "..";
+import { TextSmall } from "../parents/text";
+import { TextButton } from "../parents/buttons";
+import { useData } from "../../context/AppContext";
+import { useTranslationsData } from "../../context/TranslationContext";
 
 const FormHolder = () => {
   const { page, setPage } = useData();

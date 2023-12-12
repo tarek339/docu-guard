@@ -1,5 +1,5 @@
-import { ResetPassword, SignIn, SignUp } from ".";
-import { useData } from "../context/AppContext";
+import { ResetPassword, SignIn, SignUp } from "..";
+import { useData } from "../../context/AppContext";
 
 const Pagination = () => {
   const { page } = useData();

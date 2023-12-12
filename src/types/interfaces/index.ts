@@ -12,6 +12,13 @@ import {
   IStyledTableParts,
   IDateSelecter,
   IInput,
+  IHeader,
+  IListingHolder,
+  IAddButton,
+  IBasicButton,
+  IFormButton,
+  ISideBarButton,
+  ITextButton,
 } from "./components";
 
 export type {
@@ -32,4 +39,11 @@ export type {
   IStyledTableParts,
   IDateSelecter,
   IInput,
+  IHeader,
+  IListingHolder,
+  IAddButton,
+  IBasicButton,
+  IFormButton,
+  ISideBarButton,
+  ITextButton,
 };

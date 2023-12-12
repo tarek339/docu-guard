@@ -1,14 +1,7 @@
 import { Button } from "@mui/material";
+import { IAddButton } from "../../../types/interfaces";
 
-const AddButton = (props: {
-  style?: React.CSSProperties;
-  children: React.ReactNode;
-  icon?: JSX.Element;
-  bgColor: string;
-  color: string;
-  disableElevation?: boolean;
-  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
-}) => {
+const AddButton = (props: IAddButton) => {
   return (
     <Button
       variant="contained"

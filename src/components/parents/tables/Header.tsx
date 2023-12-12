@@ -1,38 +1,28 @@
 import colors from "../../../assets/theme/colors";
 import { useTranslationsData } from "../../../context/TranslationContext";
-import { AddIcon, TbDownload, TbUpload } from "../../icons";
+import { IHeader } from "../../../types/interfaces";
+import { AddIcon, TbDownload } from "../../icons";
 import { AddButton } from "../buttons";
 import { Block, Grid, GridNoSpace } from "../container";
 import { SearchInput } from "../forms";
 import { TextHeader } from "../text";
 
-const Header = (props: {
-  children: React.ReactNode;
-  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
-}) => {
+const Header = (props: IHeader) => {
   const { t } = useTranslationsData();
   return (
     <Grid style={{ height: "100%", alignItems: "center" }}>
       <Block>
         <Block>
-          <TextHeader>{props.children}</TextHeader>
+          <TextHeader>{props.headerChildren}</TextHeader>
         </Block>
         <GridNoSpace style={{ columnGap: 10 }}>
-          <AddButton
-            children={"Import"}
-            bgColor={"transparent"}
-            color={colors.fontBlack}
-            disableElevation
-            icon={<TbUpload style={{ marginBottom: "2px" }} />}
-            onClick={() => {}}
-          />
           <AddButton
             children={"Export"}
             bgColor={"transparent"}
             color={colors.fontBlack}
             disableElevation
             icon={<TbDownload style={{ marginBottom: "2px" }} />}
-            onClick={() => {}}
+            onClick={props.onClickImport}
           />
         </GridNoSpace>
         <Block>

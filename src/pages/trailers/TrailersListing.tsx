@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ITrailer } from "../../types/interfaces";
-import { useTrailersData } from "../../context/TrailerContext";
+import { useData } from "../../context/AppContext";
 
 const TrailersListing = () => {
-  const { setTrailerId, fetchTrailers, trailers } = useTrailersData();
+  const { setTrailerId, trailers } = useData();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchTrailers();
-    localStorage.removeItem("trailerId");
-  }, []);
+  // useEffect(() => {
+  //   fetchTrailers();
+  //   localStorage.removeItem("trailerId");
+  // }, []);
 
   return (
     <div>

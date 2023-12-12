@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useTrucksData } from "../../context/TrucksContext";
+import { useTrucksData } from "../../unused/TrucksContext";
 import { useData } from "../../context/AppContext";
 
 const EditTruck = () => {

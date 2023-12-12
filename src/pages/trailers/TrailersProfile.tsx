@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTrailersData } from "../../context/TrailerContext";
+import { useTrailersData } from "../../unused/TrailerContext";
 import { useData } from "../../context/AppContext";
 
 const TrailersProfile = () => {
-  const { trailer, trailerId, fetchTrailer } = useTrailersData();
+  const { trailer, trailerId } = useData();
   const { navigateBack } = useData();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchTrailer();
-  }, [trailerId]);
+  // useEffect(() => {
+  //   fetchTrailer();
+  // }, [trailerId]);
 
   return (
     <div>

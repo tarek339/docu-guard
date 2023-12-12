@@ -1,11 +1,8 @@
 import { Button } from "@mui/material";
 import colors from "../../../assets/theme/colors";
+import { IBasicButton } from "../../../types/interfaces";
 
-const BasicButton = (props: {
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
-}) => {
+const BasicButton = (props: IBasicButton) => {
   return (
     <Button
       disableRipple

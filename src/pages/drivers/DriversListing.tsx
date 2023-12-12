@@ -1,16 +1,15 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { IDriver } from "../../types/interfaces";
-import { Block } from "../../components/parents/container";
 import { StyledTableParts, Tables } from "../../components/parents/tables";
-import Header from "../../components/parents/tables/Header";
 import { useData } from "../../context/AppContext";
 import { useTranslationsData } from "../../context/TranslationContext";
+import { ListingHolder } from "../../components";
 
 const DriversListing = () => {
   const { t } = useTranslationsData();
   const {
-    setDriverId,
+    // setDriverId,
     fetchDrivers,
     drivers,
     page,
@@ -28,13 +27,11 @@ const DriversListing = () => {
   }, []);
 
   return (
-    <Block style={{ maxWidth: "1200px", margin: "0 auto", padding: "30px" }}>
-      <Block style={{ marginBottom: 40 }}>
-        <Header
-          children={t("main.drivers")}
-          onClick={() => navigate("/add-driver")}
-        />
-      </Block>
+    <ListingHolder
+      onClick={() => navigate("/add-driver")}
+      onClickImport={() => {}}
+      headerChildren={t("main.drivers")}
+    >
       <Tables
         page={page}
         setPage={setPage}
@@ -62,7 +59,7 @@ const DriversListing = () => {
           />
         ))}
       />
-    </Block>
+    </ListingHolder>
   );
 };
 

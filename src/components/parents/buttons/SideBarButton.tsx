@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import { withStyles } from "@material-ui/styles";
 import colors from "../../../assets/theme/colors";
 import Block from "../container/Block";
+import { ISideBarButton } from "../../../types/interfaces";
 
 const CustomButton = withStyles({
   root: {
@@ -42,12 +43,7 @@ const blockStyle: React.CSSProperties = {
   alignItems: "center",
 };
 
-const SideBarButton = (props: {
-  firstLetter: React.ReactNode;
-  rest: React.ReactNode;
-  icon: JSX.Element;
-  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
-}) => {
+const SideBarButton = (props: ISideBarButton) => {
   return (
     <CustomButton
       disableElevation

@@ -1,10 +1,8 @@
 import { Button } from "@mui/material";
 import colors from "../../../assets/theme/colors";
+import { IFormButton } from "../../../types/interfaces";
 
-const FormButton = (props: {
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-}) => {
+const FormButton = (props: IFormButton) => {
   return (
     <Button
       type="submit"

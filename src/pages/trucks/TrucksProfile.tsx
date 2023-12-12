@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTrucksData } from "../../context/TrucksContext";
+import { useTrucksData } from "../../unused/TrucksContext";
 import { useData } from "../../context/AppContext";
 
 const TrucksProfile = () => {
-  const { truck, truckId, fetchTruck } = useTrucksData();
+  const { truck, truckId } = useData();
   const { navigateBack } = useData();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchTruck();
-  }, [truckId]);
+  // useEffect(() => {
+  //   fetchTruck();
+  // }, [truckId]);
 
   return (
     <div>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useTrailersData } from "../../context/TrailerContext";
+import { useTrailersData } from "../../unused/TrailerContext";
 import { useData } from "../../context/AppContext";
 
 const EditTrailer = () => {

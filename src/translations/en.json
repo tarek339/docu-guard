@@ -55,7 +55,9 @@
       "rowsPerPage": "Rows per page"
     },
     "form": {
-      "field": "This field is required"
+      "field": "This field is required",
+      "import": "Import",
+      "export": "Export"
     },
     "driver": {
       "firstName": "First name",
