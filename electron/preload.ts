@@ -4,6 +4,7 @@ import { IAdmin, IDriver, ITrailer, ITruck, IValues } from "./types/interfaces";
 type CallbackType = (event: IpcRendererEvent, ...args: any[]) => void;
 
 contextBridge.exposeInMainWorld("api", {
+  // ADMIN
   signUp: (admin: IAdmin) => {
     ipcRenderer.invoke("create-new-admin", admin);
   },
@@ -27,6 +28,7 @@ contextBridge.exposeInMainWorld("api", {
     ipcRenderer.on("send-response", callback);
   },
 
+  // DRIVER
   createDriver: (driver: IDriver) => {
     ipcRenderer.invoke("create-new-driver", driver);
   },
@@ -48,10 +50,11 @@ contextBridge.exposeInMainWorld("api", {
   deleteDriver: (driverId: string) => {
     ipcRenderer.invoke("delete-driver", driverId);
   },
-  backUpDriver: () => {
-    ipcRenderer.invoke("back-up-driver");
+  uploadDriverFile: (file: File) => {
+    ipcRenderer.invoke("handle-upload", file);
   },
 
+  // TRUCK
   createTruck: (truck: ITruck) => {
     ipcRenderer.invoke("create-truck", truck);
   },
@@ -74,6 +77,7 @@ contextBridge.exposeInMainWorld("api", {
     ipcRenderer.invoke("delete-truck", truckId);
   },
 
+  // TRAILER
   createTrailer: (trailer: ITruck) => {
     ipcRenderer.invoke("create-trailer", trailer);
   },
@@ -96,6 +100,7 @@ contextBridge.exposeInMainWorld("api", {
     ipcRenderer.invoke("delete-trailer", trailerId);
   },
 
+  // INTERACTIONS
   turnOffApp: (logOut: void) => {
     ipcRenderer.send("turn-off-app", logOut);
   },

@@ -1,12 +1,10 @@
 import { ipcMain } from "electron";
 import { IDriver } from "../../types/interfaces";
 import fs from "fs";
-import { driverBackUpModel as DriverBackUpModel } from "../../../backend/models/backUpDriverModal";
 import { browserWindow } from "../../main";
 import { driverModel as Driver } from "../../../backend/models/driverModel";
 
 const file = "backend/json/drivers.json";
-
 // create driver
 const logDriver = async (driver: IDriver) => {
   const newDriver = new Driver({
@@ -54,12 +52,8 @@ const readProfile = (id: string) => {
     const drivers: IDriver[] = jsonData.drivers;
     const reqId = id;
     const driver = drivers.find((driver: IDriver) => driver.id === reqId);
-    if (driver) {
-      profile = driver;
-    } else {
-      profile = undefined;
-      console.log("Driver not found");
-    }
+    if (!driver) return;
+    profile = driver;
   } catch (error) {
     console.log(error);
   }
@@ -172,37 +166,6 @@ export function deleteDriver() {
     try {
       readDelete(driverId);
       browserWindow?.webContents.send("send-message", "Driver deleted");
-    } catch (error) {
-      console.log(error);
-    }
-  });
-}
-
-// backup driver to db
-let successBackUp: boolean = false;
-async function backUpFunction() {
-  try {
-    const data = fs.readFileSync(file, "utf-8");
-    const jsonData = JSON.parse(data);
-    const drivers: IDriver[] = jsonData.drivers;
-    const driverObject = new DriverBackUpModel({ drivers });
-    await driverObject.save();
-    successBackUp = true;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export function backUpDriver() {
-  ipcMain.handle("back-up-driver", async (_event) => {
-    try {
-      await backUpFunction();
-      if (successBackUp) {
-        browserWindow?.webContents.send(
-          "send-message",
-          "Driver back up succeed"
-        );
-      }
     } catch (error) {
       console.log(error);
     }

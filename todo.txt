@@ -20,3 +20,13 @@ https://material-kit-pro-react.devias.io/dashboard/customers/:customerId/edit
 login 
 tarek
 123
+
+
+upload file check
+read data from file
+send datas to form field
+example: function reads firstName and sends value to input field firstName
+submit values
+
+need api request to backend check
+rend values via response

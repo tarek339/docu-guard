@@ -3,7 +3,6 @@ import isDev from "electron-is-dev";
 import path from "node:path";
 import { screen } from "electron";
 import {
-  backUpDriver,
   createDriver,
   deleteDriver,
   editDriver,
@@ -108,7 +107,6 @@ fetchDriver();
 fetchDrivers();
 editDriver();
 deleteDriver();
-backUpDriver();
 
 createTruck();
 fetchTrucks();

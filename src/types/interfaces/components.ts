@@ -2,8 +2,12 @@ import {
   DateValidationError,
   PickerChangeHandlerContext,
 } from "@mui/x-date-pickers";
+import { Variant } from "@mui/material/styles/createTypography";
+import { OverridableStringUnion } from "@mui/types";
+import { AlertColor, TypographyPropsVariantOverrides } from "@mui/material";
 
 type InputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => void;
+type FormSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => void;
 
 export interface ITablePaginationActionsProps {
   count: number;
@@ -118,4 +122,58 @@ export interface ISideBarButton {
 export interface ITextButton {
   onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
   children: React.ReactNode;
+}
+
+export interface IOverviewCards {
+  header: React.ReactNode;
+  main: React.ReactNode;
+  sectionOne: React.ReactNode;
+  sectionTwo: React.ReactNode;
+  icon: JSX.Element;
+  color: string;
+}
+
+export interface IBlock {
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+}
+
+export interface IAddFormHolder {
+  children: JSX.Element;
+  header: React.ReactNode;
+}
+
+export interface IAdminFormHolder {
+  header: React.ReactNode;
+  main: React.ReactNode;
+  children: JSX.Element;
+}
+
+export interface IForm {
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  onSubmit: FormSubmitHandler;
+}
+
+export interface IText {
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  variant?:
+    | OverridableStringUnion<
+        Variant | "inherit",
+        TypographyPropsVariantOverrides
+      >
+    | undefined;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+export interface ITextProps {
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+}
+
+export interface IAlerts {
+  severity: AlertColor | undefined;
+  message: string;
 }

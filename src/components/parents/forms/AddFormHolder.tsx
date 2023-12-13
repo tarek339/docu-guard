@@ -4,11 +4,9 @@ import { TextHeader } from "../text";
 import styles from "../../../assets/theme/styles";
 import colors from "../../../assets/theme/colors";
 import { useData } from "../../../context/AppContext";
+import { IAddFormHolder } from "../../../types/interfaces";
 
-const AddFormHolder = (props: {
-  children: JSX.Element;
-  header: React.ReactNode;
-}) => {
+const AddFormHolder = (props: IAddFormHolder) => {
   const { resMessage } = useData();
 
   return (

@@ -28,7 +28,7 @@ declare global {
       sendDriver: (callback: CallbackType) => void;
       editDriver: (driver: IDriver) => void;
       deleteDriver: (driverId: string) => void;
-      backUpDriver: () => void;
+      uploadDriverFile: (file: File) => void;
 
       createTruck: (truck: ITruck) => void;
       fetchTrucks: (trucks: ITruck[]) => void;

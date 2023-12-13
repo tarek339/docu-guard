@@ -1,11 +1,9 @@
 import { Snackbar } from "@mui/material";
-import Alert, { AlertColor } from "@mui/material/Alert";
+import Alert from "@mui/material/Alert";
 import { useData } from "../../context/AppContext";
+import { IAlerts } from "../../types/interfaces";
 
-const Alerts = (props: {
-  severity: AlertColor | undefined;
-  message: string;
-}) => {
+const Alerts = (props: IAlerts) => {
   const { openAlert, setOpenAlert } = useData();
 
   const handleClose = (_e?: React.SyntheticEvent | Event, reason?: string) => {

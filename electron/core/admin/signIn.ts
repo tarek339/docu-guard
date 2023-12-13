@@ -38,13 +38,13 @@ export function signIn() {
   ipcMain.handle("sign-in", async (event, values: IValues) => {
     try {
       await checkRequest(values);
-      if (authorized) {
-        event.sender.send("send-admin", parsedUser);
-      } else
+      if (!authorized) {
         browserWindow?.webContents.send(
           "send-message",
           "Wrong name or password"
         );
+      }
+      event.sender.send("send-admin", parsedUser);
       setTimeout(() => {
         authorized = false;
       }, 1000);

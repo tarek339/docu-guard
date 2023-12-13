@@ -1,11 +1,5 @@
-import {
-  ThemeProvider,
-  Typography,
-  TypographyPropsVariantOverrides,
-  createTheme,
-} from "@mui/material";
-import { Variant } from "@mui/material/styles/createTypography";
-import { OverridableStringUnion } from "@mui/types";
+import { ThemeProvider, Typography, createTheme } from "@mui/material";
+import { IText } from "../../../types/interfaces";
 
 const theme = createTheme({
   typography: {
@@ -13,17 +7,7 @@ const theme = createTheme({
   },
 });
 
-const Text = (props: {
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
-  variant?:
-    | OverridableStringUnion<
-        Variant | "inherit",
-        TypographyPropsVariantOverrides
-      >
-    | undefined;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}) => {
+const Text = (props: IText) => {
   return (
     <ThemeProvider theme={theme}>
       <Typography

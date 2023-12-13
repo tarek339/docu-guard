@@ -1,16 +1,10 @@
 import colors from "../../../assets/theme/colors";
 import styles from "../../../assets/theme/styles";
+import { IOverviewCards } from "../../../types/interfaces";
 import { Block, Grid, GridColumn, GridNoSpace } from "../container";
 import { TextHeader, TextSmall } from "../text";
 
-const OverviewCards = (props: {
-  header: React.ReactNode;
-  main: React.ReactNode;
-  sectionOne: React.ReactNode;
-  sectionTwo: React.ReactNode;
-  icon: JSX.Element;
-  color: string;
-}) => {
+const OverviewCards = (props: IOverviewCards) => {
   return (
     <Block
       style={{
