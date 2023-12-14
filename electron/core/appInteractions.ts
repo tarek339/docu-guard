@@ -13,32 +13,32 @@ export function trunOff() {
 }
 
 // read config.json
-const readFile = (locale: string) => {
-  try {
-    const data = fs.readFileSync(file, "utf-8");
-    const jsonData = JSON.parse(data);
-    let oldLocale = jsonData.settings.locale;
-    oldLocale = locale;
-    const updatedLocale = JSON.stringify({ settings: { locale } }, null, 2);
-    fs.promises.writeFile(file, updatedLocale, "utf-8");
-    browserWindow?.webContents.send("send-response", locale);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export function handleConfig() {
   ipcMain.handle("send-config", (_event, locale: string) => {
-    readFile(locale);
+    try {
+      const data = fs.readFileSync(file, "utf-8");
+      const jsonData = JSON.parse(data);
+      let oldLocale = jsonData.settings.locale;
+      oldLocale = locale;
+      const updatedLocale = JSON.stringify({ settings: { locale } }, null, 2);
+      fs.promises.writeFile(file, updatedLocale, "utf-8");
+      browserWindow?.webContents.send("send-response", locale);
+    } catch (error) {
+      console.log(error);
+    }
   });
 }
 
 // get config
 export function getConfig() {
   ipcMain.handle("get-config", (_event) => {
-    const data = fs.readFileSync(file, "utf-8");
-    const jsonData = JSON.parse(data);
-    const oldLocale: ISettings = jsonData.settings;
-    browserWindow?.webContents.send("send-response", oldLocale.locale);
+    try {
+      const data = fs.readFileSync(file, "utf-8");
+      const jsonData = JSON.parse(data);
+      const oldLocale: ISettings = jsonData.settings;
+      browserWindow?.webContents.send("send-response", oldLocale.locale);
+    } catch (error) {
+      console.log(error);
+    }
   });
 }

@@ -50,8 +50,8 @@ contextBridge.exposeInMainWorld("api", {
   deleteDriver: (driverId: string) => {
     ipcRenderer.invoke("delete-driver", driverId);
   },
-  uploadDriverFile: (file: File) => {
-    ipcRenderer.invoke("handle-upload", file);
+  uploadDriverFile: (path: string) => {
+    ipcRenderer.invoke("handle-upload", path);
   },
 
   // TRUCK

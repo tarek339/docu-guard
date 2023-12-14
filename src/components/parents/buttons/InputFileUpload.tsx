@@ -2,7 +2,8 @@ import Button from "@mui/material/Button";
 import colors from "../../../assets/theme/colors";
 import { useTranslationsData } from "../../../context/TranslationContext";
 import { TbUpload } from "../../icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useData } from "../../../context/AppContext";
 
 const inputStyle: React.CSSProperties = {
   clip: "rect(0 0 0 0)",
@@ -25,16 +26,25 @@ const buttonStyle: React.CSSProperties = {
   marginTop: "18px",
 };
 
-export default function InputFileUpload() {
+export default function InputFileUpload(props: {
+  onClick: React.MouseEventHandler<HTMLLabelElement> | undefined;
+}) {
   const { t } = useTranslationsData();
+  const { locatedFile } = useData();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     const file = e.target.files[0];
     setSelectedFile(file);
-    // window.api.uploadDriverFile(file);
   };
+
+  useEffect(() => {
+    if (locatedFile === "drivers") {
+      window.api.uploadDriverFile(selectedFile?.path);
+      console.log(selectedFile?.path);
+    }
+  }, [selectedFile]);
 
   return (
     <Button
@@ -43,6 +53,7 @@ export default function InputFileUpload() {
       startIcon={<TbUpload />}
       disableElevation
       style={buttonStyle}
+      onClick={props.onClick}
     >
       {t("form.import")}
       <input onInput={handleFileChange} style={inputStyle} type="file" />
