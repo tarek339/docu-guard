@@ -115,6 +115,7 @@ export function AppContextProvider(props: { children: JSX.Element }) {
   const [appState, setAppState] = useState();
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [totalRows, setTotalRows] = useState(0);
+  const [locatedFile, setLocatedFile] = useState("");
 
   // ADMIN CONTEXT
   // sign up admin
@@ -605,6 +606,8 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       turnOffApp,
       handleToggle,
       handleClose,
+      locatedFile,
+      setLocatedFile,
     }),
     [
       // admin
@@ -724,6 +727,8 @@ export function AppContextProvider(props: { children: JSX.Element }) {
       turnOffApp,
       handleToggle,
       handleClose,
+      locatedFile,
+      setLocatedFile,
     ]
   );
 

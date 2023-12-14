@@ -20,7 +20,7 @@ import { useTranslationsData } from "../../context/TranslationContext";
 
 const AddNewDriver = () => {
   const navigate = useNavigate();
-  const { driverFormik } = useData();
+  const { driverFormik, setLocatedFile } = useData();
   const { t } = useTranslationsData();
 
   return (
@@ -354,7 +354,7 @@ const AddNewDriver = () => {
               onClick={() => navigate("/drivers")}
             />
           </GridNoSpace>
-          <InputFileUpload />
+          <InputFileUpload onClick={() => setLocatedFile("drivers")} />
         </Grid>
       </Form>
     </AddFormHolder>

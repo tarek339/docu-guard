@@ -5,12 +5,9 @@ import { TextHeader, TextSmall } from "../text";
 import Alerts from "../Alerts";
 import { useData } from "../../../context/AppContext";
 import { useTranslationsData } from "../../../context/TranslationContext";
+import { IAdminFormHolder } from "../../../types/interfaces";
 
-const AdminFormHolder = (props: {
-  header: React.ReactNode;
-  main: React.ReactNode;
-  children: JSX.Element;
-}) => {
+const AdminFormHolder = (props: IAdminFormHolder) => {
   const { page, setPage, message } = useData();
   const { t } = useTranslationsData();
 

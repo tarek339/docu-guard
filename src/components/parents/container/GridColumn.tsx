@@ -1,9 +1,6 @@
-import React from "react";
+import { IBlock } from "../../../types/interfaces";
 
-const GridColumn = (props: {
-  children: JSX.Element | React.ReactNode;
-  style?: React.CSSProperties;
-}) => {
+const GridColumn = (props: IBlock) => {
   return (
     <div
       style={{

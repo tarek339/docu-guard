@@ -110,6 +110,8 @@ export interface IAppContext {
   setRowsPerPage: React.Dispatch<React.SetStateAction<number>>;
   totalRows: number;
   setTotalRows: React.Dispatch<React.SetStateAction<number>>;
+  locatedFile: string;
+  setLocatedFile: React.Dispatch<React.SetStateAction<string>>;
 
   navigateBack: () => void;
   reset: () => void;

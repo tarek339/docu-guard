@@ -1,9 +1,7 @@
 import { app, BrowserWindow } from "electron";
-import isDev from "electron-is-dev";
 import path from "node:path";
 import { screen } from "electron";
 import {
-  backUpDriver,
   createDriver,
   deleteDriver,
   editDriver,
@@ -30,6 +28,7 @@ import {
   fetchTrailer,
   fetchTrailers,
 } from "./core/trailers/trailers";
+import { readDriverFile } from "./readUploadFile";
 
 // The built directory structure
 //
@@ -65,9 +64,6 @@ function createWindow() {
     },
   });
 
-  if (isDev) {
-    browserWindow.webContents.openDevTools({ mode: "detach", activate: true });
-  }
   // Test active push message to Renderer-process.
   browserWindow.webContents.on("did-finish-load", () => {
     browserWindow?.webContents.send(
@@ -108,7 +104,7 @@ fetchDriver();
 fetchDrivers();
 editDriver();
 deleteDriver();
-backUpDriver();
+readDriverFile();
 
 createTruck();
 fetchTrucks();

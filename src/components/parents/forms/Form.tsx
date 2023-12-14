@@ -1,10 +1,6 @@
-type FormSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => void;
+import { IForm } from "../../../types/interfaces";
 
-const Form = (props: {
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
-  onSubmit: FormSubmitHandler;
-}) => {
+const Form = (props: IForm) => {
   return (
     <form style={props.style} onSubmit={props.onSubmit}>
       {props.children}

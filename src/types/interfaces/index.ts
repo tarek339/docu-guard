@@ -19,6 +19,14 @@ import {
   IFormButton,
   ISideBarButton,
   ITextButton,
+  IOverviewCards,
+  IBlock,
+  IAddFormHolder,
+  IAdminFormHolder,
+  IForm,
+  IText,
+  ITextProps,
+  IAlerts,
 } from "./components";
 
 export type {
@@ -46,4 +54,12 @@ export type {
   IFormButton,
   ISideBarButton,
   ITextButton,
+  IOverviewCards,
+  IBlock,
+  IAddFormHolder,
+  IAdminFormHolder,
+  IForm,
+  IText,
+  ITextProps,
+  IAlerts,
 };
