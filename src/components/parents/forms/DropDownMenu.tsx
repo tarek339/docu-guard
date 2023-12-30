@@ -1,6 +1,6 @@
-import { Block } from "../container";
-import { CustomTextField, errorStyle } from ".";
-import { IDropDownMenu } from "../../../types/interfaces/components";
+import { Block } from "../container"
+import { CustomTextField, errorStyle } from "."
+import { IDropDownMenu } from "../../../types/interfaces/components"
 
 const DropDownMenu = (props: IDropDownMenu) => {
   return (
@@ -21,7 +21,7 @@ const DropDownMenu = (props: IDropDownMenu) => {
       </CustomTextField>
       <Block style={errorStyle}>{props.children}</Block>
     </Block>
-  );
-};
+  )
+}
 
-export default DropDownMenu;
+export default DropDownMenu

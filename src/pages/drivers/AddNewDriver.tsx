@@ -1,27 +1,27 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import {
   AddFormHolder,
   DropDownMenu,
   Form,
-  Input,
-} from "../../components/parents/forms";
-import { GridNoSpace } from "../../components/parents/container";
+  Input
+} from "../../components/parents/forms"
+import { GridNoSpace } from "../../components/parents/container"
 import {
   BasicButton,
   FormButton,
-  InputFileUpload,
-} from "../../components/parents/buttons";
-import { Grid, MenuItem } from "@mui/material";
-import DateSelecter from "../../components/parents/forms/DateSelecter";
-import dayjs from "dayjs";
-import { answers, licenseTypes } from "../../components";
-import { useData } from "../../context/AppContext";
-import { useTranslationsData } from "../../context/TranslationContext";
+  InputFileUpload
+} from "../../components/parents/buttons"
+import { Grid, MenuItem } from "@mui/material"
+import DateSelecter from "../../components/parents/forms/DateSelecter"
+import dayjs from "dayjs"
+import { answers, licenseTypes } from "../../components"
+import { useData } from "../../context/AppContext"
+import { useTranslationsData } from "../../context/TranslationContext"
 
 const AddNewDriver = () => {
-  const navigate = useNavigate();
-  const { driverFormik, setLocatedFile } = useData();
-  const { t } = useTranslationsData();
+  const navigate = useNavigate()
+  const { driverFormik, setLocatedFile } = useData()
+  const { t } = useTranslationsData()
 
   return (
     <AddFormHolder header={t("main.addDriver")}>
@@ -171,17 +171,19 @@ const AddNewDriver = () => {
             <DateSelecter
               name="licenseValidity"
               views={["year", "month", "day"]}
-              format={"DD.MM.YYYY"}
+              format={"MM.DD.YYYY"}
               value={
-                driverFormik.values.licenseValidity
-                  ? dayjs(driverFormik.values.licenseValidity).format(
-                      "DD.MM.YYYY"
-                    )
-                  : null
+                // driverFormik.values.licenseValidity
+                //   ?
+                dayjs(driverFormik.values.licenseValidity) as unknown as string
+                // : null
               }
-              onChange={(value) => {
-                const date = dayjs(value);
-                driverFormik.setFieldValue("licenseValidity", date);
+              onChange={(value: any) => {
+                // const date = dayjs(value)
+                driverFormik.setFieldValue(
+                  "licenseValidity",
+                  value.format("MM.DD.YYYY")
+                )
               }}
               error={
                 Boolean(driverFormik.errors.licenseValidity) &&
@@ -217,7 +219,7 @@ const AddNewDriver = () => {
                   <MenuItem key={index} value={type.value}>
                     {type.value}
                   </MenuItem>
-                );
+                )
               })}
             />
           </Grid>
@@ -225,14 +227,18 @@ const AddNewDriver = () => {
             <DateSelecter
               name="typeValidity"
               views={["year", "month", "day"]}
-              format={"DD.MM.YYYY"}
+              format={"MM.DD.YYYY"}
               value={
-                driverFormik.values.typeValidity
-                  ? dayjs(driverFormik.values.typeValidity).format("DD.MM.YYYY")
-                  : null
+                // driverFormik.values.typeValidity
+                // ?
+                dayjs(driverFormik.values.typeValidity) as unknown as string
+                // : null
               }
-              onChange={(value) =>
-                driverFormik.setFieldValue("typeValidity", dayjs(value))
+              onChange={(value: any) =>
+                driverFormik.setFieldValue(
+                  "typeValidity",
+                  value.format("MM.DD.YYYY")
+                )
               }
               error={
                 Boolean(driverFormik.errors.typeValidity) &&
@@ -268,7 +274,7 @@ const AddNewDriver = () => {
                   <MenuItem key={index} value={answer.value}>
                     {answer.value}
                   </MenuItem>
-                );
+                )
               })}
             />
           </Grid>
@@ -276,16 +282,18 @@ const AddNewDriver = () => {
             <DateSelecter
               name="codeNumValidity"
               views={["year", "month", "day"]}
-              format={"DD.MM.YYYY"}
+              format={"MM.DD.YYYY"}
               value={
-                driverFormik.values.codeNumValidity
-                  ? dayjs(driverFormik.values.codeNumValidity).format(
-                      "DD.MM.YYYY"
-                    )
-                  : null
+                // driverFormik.values.codeNumValidity
+                // ?
+                dayjs(driverFormik.values.codeNumValidity) as unknown as string
+                // : null
               }
-              onChange={(value) =>
-                driverFormik.setFieldValue("codeNumValidity", dayjs(value))
+              onChange={(value: any) =>
+                driverFormik.setFieldValue(
+                  "codeNumValidity",
+                  value.format("MM.DD.YYYY")
+                )
               }
               error={
                 Boolean(driverFormik.errors.codeNumValidity) &&
@@ -322,16 +330,20 @@ const AddNewDriver = () => {
             <DateSelecter
               name="driverCardValidity"
               views={["year", "month", "day"]}
-              format={"DD.MM.YYYY"}
+              format={"MM.DD.YYYY"}
               value={
-                driverFormik.values.driverCardValidity
-                  ? dayjs(driverFormik.values.driverCardValidity).format(
-                      "DD.MM.YYYY"
-                    )
-                  : null
+                // driverFormik.values.driverCardValidity
+                // ?
+                dayjs(
+                  driverFormik.values.driverCardValidity
+                ) as unknown as string
+                // : null
               }
-              onChange={(value) =>
-                driverFormik.setFieldValue("driverCardValidity", dayjs(value))
+              onChange={(value: any) =>
+                driverFormik.setFieldValue(
+                  "driverCardValidity",
+                  value.format("MM.DD.YYYY")
+                )
               }
               error={
                 Boolean(driverFormik.errors.driverCardValidity) &&
@@ -358,7 +370,7 @@ const AddNewDriver = () => {
         </Grid>
       </Form>
     </AddFormHolder>
-  );
-};
+  )
+}
 
-export default AddNewDriver;
+export default AddNewDriver

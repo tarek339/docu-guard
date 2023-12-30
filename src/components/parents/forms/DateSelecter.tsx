@@ -1,15 +1,15 @@
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers";
-import { Block } from "../container";
-import { useState } from "react";
-import { IDateSelecter } from "../../../types/interfaces";
-import { errorStyle, inputStyle, labelStyle } from ".";
-import colors from "../../../assets/theme/colors";
-import styles from "../../../assets/theme/styles";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
+import { DatePicker } from "@mui/x-date-pickers"
+import { Block } from "../container"
+import { useState } from "react"
+import { IDateSelecter } from "../../../types/interfaces"
+import { errorStyle, inputStyle, labelStyle } from "."
+import colors from "../../../assets/theme/colors"
+import styles from "../../../assets/theme/styles"
 
 export default function DateSelecter(props: IDateSelecter) {
-  const [onFocus, setOnFocus] = useState(false);
+  const [onFocus, setOnFocus] = useState(false)
   return (
     <Block style={{ position: "relative" }}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -25,22 +25,22 @@ export default function DateSelecter(props: IDateSelecter) {
               sx: {
                 boxShadow: styles.shadow,
                 border: `1px solid ${colors.greyLight}`,
-                borderRadius: "10px",
-              },
+                borderRadius: "10px"
+              }
             },
             actionBar: {
               sx: {
                 "&.MuiPickersYear-yearButton": {
-                  backgroundColor: "red",
-                },
-              },
+                  backgroundColor: "red"
+                }
+              }
             },
             calendarHeader: {
               sx: {
                 borderBottom: `1px solid ${colors.greyLight}`,
                 marginBottom: "0px",
-                paddingBottom: "8px",
-              },
+                paddingBottom: "8px"
+              }
             },
             day: {
               onMouseDown: () => setOnFocus(false),
@@ -49,35 +49,35 @@ export default function DateSelecter(props: IDateSelecter) {
                 "&.MuiPickersDay-today": {
                   color: colors.purple,
                   fontWeight: "bold",
-                  backgroundColor: colors.white,
+                  backgroundColor: colors.white
                 },
                 "&.MuiButtonBase-root.Mui-selected": {
                   backgroundColor: colors.purple,
-                  color: colors.white,
+                  color: colors.white
                 },
                 "&.MuiButtonBase-root": {
                   border: "none",
                   "&:hover": {
                     backgroundColor: colors.purple,
-                    color: colors.white,
+                    color: colors.white
                   },
                   "&:active": {
                     backgroundColor: colors.purple,
-                    color: colors.white,
-                  },
-                },
-              },
+                    color: colors.white
+                  }
+                }
+              }
             },
             openPickerButton: {
               onMouseDown: () => setOnFocus(true),
               sx: {
                 "&.MuiButtonBase-root": {
-                  color: onFocus ? colors.purple : "",
+                  color: onFocus ? colors.purple : ""
                 },
                 "& .MuiTouchRipple-root .Mui-error": {
-                  color: colors.error,
-                },
-              },
+                  color: colors.error
+                }
+              }
             },
             textField: {
               onMouseDown: () => setOnFocus(true),
@@ -89,16 +89,16 @@ export default function DateSelecter(props: IDateSelecter) {
               error: props.error,
               InputProps: {
                 disableUnderline: true,
-                sx: inputStyle,
+                sx: inputStyle
               },
               InputLabelProps: {
-                sx: labelStyle,
-              },
-            },
+                sx: labelStyle
+              }
+            }
           }}
         />
       </LocalizationProvider>
       <Block style={errorStyle}>{props.children}</Block>
     </Block>
-  );
+  )
 }
